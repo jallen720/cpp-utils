@@ -5,8 +5,8 @@ using std::string;
 namespace JCore {
 
 template<>
-const string toString(bool val) {
-    return val == true ? "true" : "false";
+const string toString(bool isTrue) {
+    return isTrue ? "true" : "false";
 }
 
 } // namespace JCore
