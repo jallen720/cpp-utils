@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "JCore/Exceptions/Error.hpp"
+#include "JCore/Errors/Error.hpp"
 
 namespace JCore {
 

@@ -1,6 +1,6 @@
-#include "JCore/Exceptions/ArgErrors/NullArg.hpp"
+#include "JCore/Errors/ArgErrors/NullArg.hpp"
 
-#include "JCore/Exceptions/MessageBuilders/buildArgMessage.hpp"
+#include "JCore/Errors/MessageBuilders/buildArgMessage.hpp"
 
 using std::string;
 

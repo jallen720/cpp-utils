@@ -1,6 +1,6 @@
-#include "JCore/Exceptions/Error.hpp"
+#include "JCore/Errors/Error.hpp"
 
-#include "JCore/Exceptions/MessageBuilders/buildSystemMessage.hpp"
+#include "JCore/Errors/MessageBuilders/buildSystemMessage.hpp"
 
 using std::runtime_error;
 using std::string;

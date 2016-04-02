@@ -1,15 +1,15 @@
-#include "JCore/Exceptions/ArgErrors/InvalidArgProperty.hpp"
+#include "JCore/Errors/ArgErrors/InvalidArgProperty.hpp"
 
-#include "JCore/Exceptions/MessageBuilders/buildArgMessage.hpp"
-#include "JCore/Exceptions/MessageBuilders/buildArgInfo.hpp"
-#include "JCore/Exceptions/MessageBuilders/buildMustBe.hpp"
+#include "JCore/Errors/MessageBuilders/buildArgMessage.hpp"
+#include "JCore/Errors/MessageBuilders/buildArgInfo.hpp"
+#include "JCore/Errors/MessageBuilders/buildMustBe.hpp"
 
 using std::string;
 using std::vector;
 
 namespace JCore {
 
-string buildArgPropertyMessage(
+static string buildArgPropertyMessage(
     const string& parameter,
     const string& function,
     const string& property,

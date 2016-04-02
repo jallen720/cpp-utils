@@ -1,4 +1,4 @@
-#include "JCore/Exceptions/MessageBuilders/buildArgMessage.hpp"
+#include "JCore/Errors/MessageBuilders/buildArgMessage.hpp"
 
 using std::string;
 

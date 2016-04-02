@@ -1,15 +1,15 @@
-#include "JCore/Exceptions/ArgErrors/InvalidMapKey.hpp"
+#include "JCore/Errors/ArgErrors/InvalidMapKey.hpp"
 
-#include "JCore/Exceptions/MessageBuilders/buildArgMessage.hpp"
-#include "JCore/Exceptions/MessageBuilders/buildArgInfo.hpp"
-#include "JCore/Exceptions/MessageBuilders/buildMustBe.hpp"
+#include "JCore/Errors/MessageBuilders/buildArgMessage.hpp"
+#include "JCore/Errors/MessageBuilders/buildArgInfo.hpp"
+#include "JCore/Errors/MessageBuilders/buildMustBe.hpp"
 
 using std::string;
 using std::vector;
 
 namespace JCore {
 
-string buildMapKeyMessage(
+static string buildMapKeyMessage(
     const string& parameter,
     const string& function,
     const string& mustBe)

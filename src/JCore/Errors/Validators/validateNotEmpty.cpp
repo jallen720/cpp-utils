@@ -1,8 +1,8 @@
-#include "JCore/Exceptions/Validators/validateNotEmpty.hpp"
+#include "JCore/Errors/Validators/validateNotEmpty.hpp"
 
 #include <cstring>
 
-#include "JCore/Exceptions/ArgErrors/EmptyStringArg.hpp"
+#include "JCore/Errors/ArgErrors/EmptyStringArg.hpp"
 
 using std::string;
 
@@ -14,7 +14,7 @@ void validateNotEmpty(const string& parameter, const string& function, const str
     }
 }
 
-bool isEmpty(const char* arg) {
+static bool isEmpty(const char* arg) {
     return strcmp(arg, "") == 0;
 }
 

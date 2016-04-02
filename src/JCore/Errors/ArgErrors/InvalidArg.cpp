@@ -1,15 +1,15 @@
-#include "JCore/Exceptions/ArgErrors/InvalidArg.hpp"
+#include "JCore/Errors/ArgErrors/InvalidArg.hpp"
 
-#include "JCore/Exceptions/MessageBuilders/buildArgMessage.hpp"
-#include "JCore/Exceptions/MessageBuilders/buildArgInfo.hpp"
-#include "JCore/Exceptions/MessageBuilders/buildMustBe.hpp"
+#include "JCore/Errors/MessageBuilders/buildArgMessage.hpp"
+#include "JCore/Errors/MessageBuilders/buildArgInfo.hpp"
+#include "JCore/Errors/MessageBuilders/buildMustBe.hpp"
 
 using std::string;
 using std::vector;
 
 namespace JCore {
 
-string buildInvalidArgMessage(
+static string buildInvalidArgMessage(
     const string& parameter,
     const string& function,
     const string& mustBe)

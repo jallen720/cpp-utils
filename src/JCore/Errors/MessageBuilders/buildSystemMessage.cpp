@@ -1,4 +1,4 @@
-#include "JCore/Exceptions/MessageBuilders/buildSystemMessage.hpp"
+#include "JCore/Errors/MessageBuilders/buildSystemMessage.hpp"
 
 using std::string;
 

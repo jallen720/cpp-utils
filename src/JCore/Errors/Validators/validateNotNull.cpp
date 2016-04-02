@@ -1,6 +1,6 @@
-#include "JCore/Exceptions/Validators/validateNotNull.hpp"
+#include "JCore/Errors/Validators/validateNotNull.hpp"
 
-#include "JCore/Exceptions/ArgErrors/NullArg.hpp"
+#include "JCore/Errors/ArgErrors/NullArg.hpp"
 
 using std::string;
 

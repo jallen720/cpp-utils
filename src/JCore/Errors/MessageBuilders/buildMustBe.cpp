@@ -1,4 +1,4 @@
-#include "JCore/Exceptions/MessageBuilders/buildMustBe.hpp"
+#include "JCore/Errors/MessageBuilders/buildMustBe.hpp"
 
 #include "JCore/accumulate.hpp"
 
@@ -7,7 +7,7 @@ using std::vector;
 
 namespace JCore {
 
-string concatValidArg(const string& mustBe, const string& validArg) {
+static string concatValidArg(const string& mustBe, const string& validArg) {
     return mustBe + "      " + validArg + ",\n";
 }
 
