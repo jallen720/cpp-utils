@@ -1,0 +1,10 @@
+# Build output directories
+build.d/
+bin/
+lib/
+
+# Sublime files
+*.sublime*
+
+# Misc. files
+todo

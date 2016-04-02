@@ -1,0 +1,20 @@
+# Project info
+cmake_minimum_required(VERSION "3.2.2" FATAL_ERROR)
+project("JCore")
+set(CMAKE_PATH "/home/joel/Desktop/projects/cmake")
+
+# Utilities
+include("${CMAKE_PATH}/macros/configure_project.cmake")
+include("${CMAKE_PATH}/macros/add_lib.cmake")
+include("${CMAKE_PATH}/macros/test_module_dependency.cmake")
+include("${CMAKE_PATH}/macros/add_lib_tests.cmake")
+
+# Configuration
+configure_project()
+
+# Library
+add_lib()
+
+# Tests
+test_module_dependency("GoogleTest")
+add_lib_tests()
