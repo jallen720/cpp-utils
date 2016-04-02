@@ -5,11 +5,11 @@
 namespace JCore {
 
 template<typename T>
-const std::string toString(T val) {
-    return std::to_string(val);
-}
+std::string toString(const T val);
 
 template<>
-const std::string toString(bool val);
+std::string toString(const bool isTrue);
 
 } // namespace JCore
+
+#include "JCore/toString.ipp"

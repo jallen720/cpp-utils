@@ -1,0 +1,24 @@
+#pragma once
+
+#include <vector>
+
+#include "JCore/Exceptions/Error.hpp"
+
+namespace JCore {
+
+class InvalidArgProperty : public Error {
+public:
+    InvalidArgProperty(
+        const std::string& parameter,
+        const std::string& function,
+        const std::string& property,
+        const std::string& validProperty);
+
+    InvalidArgProperty(
+        const std::string&              parameter,
+        const std::string&              function,
+        const std::string&              property,
+        const std::vector<std::string>& validProperties);
+};
+
+} // namespace JCore
