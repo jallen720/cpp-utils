@@ -47,7 +47,7 @@ static void validateStream(const ifstream& stream, const string& path) {
     }
 }
 
-static string getValidContent(const string& path) {
+static string loadValidContent(const string& path) {
     ifstream stream(path);
     validateStream(stream, path);
 
@@ -61,6 +61,6 @@ static string getValidContent(const string& path) {
 }
 
 File::Impl::Impl(const string& path)
-    : content(getValidContent(path)) {}
+    : content(loadValidContent(path)) {}
 
 } // namespace JCore

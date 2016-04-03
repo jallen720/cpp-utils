@@ -14,8 +14,8 @@ void expectNoThrow(const function<void()>& block) {
     try {
         block();
     }
-    catch (const exception& e) {
-        cerr << "std::exception thrown in test:\n  " << e.what() << "\n";
+    catch (const exception& error) {
+        cerr << "std::exception thrown in test:\n  " << error.what() << "\n";
         FAIL();
     }
     catch (...) {
