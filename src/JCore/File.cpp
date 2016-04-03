@@ -14,7 +14,7 @@ using std::istreambuf_iterator;
 namespace JCore {
 
 struct File::Impl {
-    const string contents;
+    const string content;
 
     explicit Impl(const string& path);
 };
@@ -30,13 +30,13 @@ File::File(const string& path)
 JCORE_PIMPL_COPY_DEFS(File)
 
 void File::forEachLine(LineCB lineCB) const {
-    for (const string& line : split(impl->contents, '\n')) {
+    for (const string& line : split(impl->content, '\n')) {
         lineCB(line);
     }
 }
 
-const string& File::getContents() const {
-    return impl->contents;
+const string& File::getContent() const {
+    return impl->content;
 }
 
 // Implementation
@@ -47,20 +47,20 @@ static void validateStream(const ifstream& stream, const string& path) {
     }
 }
 
-static string getValidContents(const string& path) {
+static string getValidContent(const string& path) {
     ifstream stream(path);
     validateStream(stream, path);
 
-    string contents {
+    string content {
         istreambuf_iterator<char>(stream),
         istreambuf_iterator<char>()
     };
 
     stream.close();
-    return contents;
+    return content;
 }
 
 File::Impl::Impl(const string& path)
-    : contents(getValidContents(path)) {}
+    : content(getValidContent(path)) {}
 
 } // namespace JCore

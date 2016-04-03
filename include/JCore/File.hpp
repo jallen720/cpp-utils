@@ -16,7 +16,7 @@ public:
     explicit File(const std::string& path);
     JCORE_PIMPL_COPY_DECLS(File)
     void forEachLine(LineCB lineCB) const;
-    const std::string& getContents() const;
+    const std::string& getContent() const;
 
 private:
     struct Impl;

@@ -4,6 +4,7 @@
 
 #include "JCore/Testing/expectNoThrow.hpp"
 #include "JCore/Testing/validResourcePath.hpp"
+#include "JCore/Testing/assertEqualElements.hpp"
 #include "JCore/Errors/FileError.hpp"
 #include "JCore/Errors/ArgErrors/EmptyStringArg.hpp"
 
@@ -26,31 +27,29 @@ TEST(FileTest, emptyPath) {
     EXPECT_THROW(File(""), EmptyStringArg);
 }
 
-TEST(FileTest, contentsMatch) {
-    static const string expectedResult =
+TEST(FileTest, contentMatch) {
+    static const string expectedContent =
         "line1\n"
         "line2\n"
         "line3\n";
 
-    EXPECT_EQ(expectedResult, File(validResourcePath("misc/", "test.txt")).getContents());
+    EXPECT_EQ(expectedContent, File(validResourcePath("misc/", "test.txt")).getContent());
 }
 
 TEST(FileTest, linesMatch) {
-    static const vector<string> expectedResult {
+    static const vector<string> expectedLines {
         "line1",
         "line2",
         "line3",
     };
 
-    vector<string> result;
+    vector<string> actualLines;
 
     File(validResourcePath("misc/", "test.txt")).forEachLine([&](const string& line) {
-        result.push_back(line);
+        actualLines.push_back(line);
     });
 
-    for (auto i = 0u; i < result.size(); i++) {
-        EXPECT_EQ(expectedResult[i], result[i]);
-    }
+    assertEqualElements(expectedLines, actualLines);
 }
 
 } // namespace JCore
