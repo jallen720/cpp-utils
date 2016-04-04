@@ -2,10 +2,10 @@
 
 #include <fstream>
 
-#include "JCore/split.hpp"
+#include "JCore/StringUtils/split.hpp"
 #include "JCore/Errors/FileError.hpp"
 #include "JCore/Errors/Validators/validateNotEmpty.hpp"
-#include "JCore/MACROS/JCORE_PIMPL_COPY_DEFS.hpp"
+#include "JCore/Macros/JCORE_PIMPL_COPY_DEFS.hpp"
 
 using std::string;
 using std::ifstream;

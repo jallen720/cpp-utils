@@ -4,7 +4,7 @@
 #include <string>
 #include <functional>
 
-#include "JCore/MACROS/JCORE_PIMPL_COPY_DECLS.hpp"
+#include "JCore/Macros/JCORE_PIMPL_COPY_DECLS.hpp"
 
 namespace JCore {
 

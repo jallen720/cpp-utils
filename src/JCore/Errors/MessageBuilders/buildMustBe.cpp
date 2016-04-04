@@ -1,6 +1,6 @@
 #include "JCore/Errors/MessageBuilders/buildMustBe.hpp"
 
-#include "JCore/accumulate.hpp"
+#include "JCore/Fn/accumulate.hpp"
 
 using std::string;
 using std::vector;

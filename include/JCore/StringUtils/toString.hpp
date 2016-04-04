@@ -12,4 +12,4 @@ std::string toString(const bool isTrue);
 
 } // namespace JCore
 
-#include "JCore/toString.ipp"
+#include "JCore/StringUtils/toString.ipp"

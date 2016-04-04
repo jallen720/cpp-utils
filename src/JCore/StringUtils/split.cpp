@@ -1,4 +1,4 @@
-#include "JCore/split.hpp"
+#include "JCore/StringUtils/split.hpp"
 
 #include <sstream>
 

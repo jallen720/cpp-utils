@@ -1,4 +1,4 @@
-#include "JCore/accumulate.hpp"
+#include "JCore/Fn/accumulate.hpp"
 
 #include <vector>
 #include <gtest/gtest.h>
