@@ -14,7 +14,7 @@ using std::vector;
 namespace JCore {
 
 TEST(FileTest, validCreation) {
-    expectNoThrow([] {
+    expectNoThrow([]() {
         File(validResourcePath("misc/", "test.txt"));
     });
 }
