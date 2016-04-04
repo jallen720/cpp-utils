@@ -1,6 +1,6 @@
 #include "JCore/StringUtils/split.hpp"
 
-#include "JCore/Testing/assertEqualElements.hpp"
+#include "JCore/TestUtils/assertEqualElements.hpp"
 
 using std::string;
 using std::vector;

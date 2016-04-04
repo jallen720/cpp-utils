@@ -2,9 +2,9 @@
 
 #include <gtest/gtest.h>
 
-#include "JCore/Testing/expectNoThrow.hpp"
-#include "JCore/Testing/validResourcePath.hpp"
-#include "JCore/Testing/invalidResourcePath.hpp"
+#include "JCore/TestUtils/expectNoThrow.hpp"
+#include "JCore/TestUtils/validResourcePath.hpp"
+#include "JCore/TestUtils/invalidResourcePath.hpp"
 #include "JCore/Errors/FileError.hpp"
 #include "JCore/Errors/ArgErrors/EmptyStringArg.hpp"
 

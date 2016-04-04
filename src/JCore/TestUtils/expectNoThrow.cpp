@@ -1,4 +1,4 @@
-#include "JCore/Testing/expectNoThrow.hpp"
+#include "JCore/TestUtils/expectNoThrow.hpp"
 
 #include <iostream>
 #include <exception>

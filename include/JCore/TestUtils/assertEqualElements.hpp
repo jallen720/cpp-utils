@@ -10,4 +10,4 @@ void assertEqualElements(
 
 } // namespace JCore
 
-#include "JCore/Testing/assertEqualElements.ipp"
+#include "JCore/TestUtils/assertEqualElements.ipp"

@@ -1,4 +1,4 @@
-#include "JCore/Testing/invalidResourcePath.hpp"
+#include "JCore/TestUtils/invalidResourcePath.hpp"
 
 using std::string;
 
