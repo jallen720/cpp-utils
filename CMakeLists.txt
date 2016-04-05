@@ -5,6 +5,7 @@ set(CMAKE_PATH "/home/joel/Desktop/projects/cmake")
 
 # Utilities
 include("${CMAKE_PATH}/macros/configure_project.cmake")
+include("${CMAKE_PATH}/macros/module_dependency.cmake")
 include("${CMAKE_PATH}/macros/add_lib.cmake")
 include("${CMAKE_PATH}/macros/test_module_dependency.cmake")
 include("${CMAKE_PATH}/macros/add_lib_tests.cmake")
@@ -13,7 +14,8 @@ include("${CMAKE_PATH}/macros/add_lib_tests.cmake")
 configure_project()
 
 # Library
-add_lib()
+module_dependency("GoogleTest")
+add_lib(SHARED)
 
 # Tests
 test_module_dependency("GoogleTest")
