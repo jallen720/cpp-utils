@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-using JCore::toString;
+namespace JCore {
 
 TEST(toStringTest, validStrings) {
     ASSERT_EQ(toString(1)    , "1");
@@ -17,3 +17,5 @@ TEST(toStringTest, validStrings) {
     ASSERT_EQ(toString(true) , "true");
     ASSERT_EQ(toString(false), "false");
 }
+
+} // namespace JCore
