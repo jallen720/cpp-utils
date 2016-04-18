@@ -1,5 +1,6 @@
 namespace JCore {
 
+
 template<typename T>
 void assertEqualElements(
     const std::vector<T>& expectedElements,
@@ -11,5 +12,6 @@ void assertEqualElements(
         ASSERT_EQ(expectedElements[i], actualElements[i]);
     }
 }
+
 
 } // namespace JCore

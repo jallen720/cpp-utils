@@ -1,12 +1,15 @@
 #pragma once
 
+
 #include <memory>
 #include <string>
 #include <functional>
 
 #include "JCore/Macros/JCORE_PIMPL_COPY_DECLS.hpp"
 
+
 namespace JCore {
+
 
 class File {
 private:
@@ -22,5 +25,6 @@ private:
     struct Impl;
     std::unique_ptr<Impl> impl;
 };
+
 
 } // namespace JCore

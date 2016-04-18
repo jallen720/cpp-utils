@@ -8,10 +8,13 @@
 #include "JCore/Errors/FileError.hpp"
 #include "JCore/Errors/ArgErrors/EmptyStringArg.hpp"
 
+
 using std::string;
 using std::vector;
 
+
 namespace JCore {
+
 
 TEST(FileTest, validCreation) {
     expectNoThrow([]() {
@@ -19,13 +22,16 @@ TEST(FileTest, validCreation) {
     });
 }
 
+
 TEST(FileTest, invalidFile) {
     EXPECT_THROW(File("does_not_exist"), FileError);
 }
 
+
 TEST(FileTest, emptyPath) {
     EXPECT_THROW(File(""), EmptyStringArg);
 }
+
 
 TEST(FileTest, contentMatch) {
     static const string expectedContent =
@@ -35,6 +41,7 @@ TEST(FileTest, contentMatch) {
 
     EXPECT_EQ(expectedContent, File(validResourcePath("misc/", "test.txt")).getContent());
 }
+
 
 TEST(FileTest, linesMatch) {
     static const vector<string> expectedLines {
@@ -51,5 +58,6 @@ TEST(FileTest, linesMatch) {
 
     assertEqualElements(expectedLines, actualLines);
 }
+
 
 } // namespace JCore

@@ -4,10 +4,13 @@
 #include "JCore/Errors/MessageBuilders/buildArgInfo.hpp"
 #include "JCore/Errors/MessageBuilders/buildMustBe.hpp"
 
+
 using std::string;
 using std::vector;
 
+
 namespace JCore {
+
 
 static string buildMapValueMessage(
     const string& parameter,
@@ -23,6 +26,7 @@ static string buildMapValueMessage(
     );
 }
 
+
 InvalidMapValue::InvalidMapValue(
     const string&         parameter,
     const string&         function,
@@ -34,5 +38,6 @@ InvalidMapValue::InvalidMapValue(
         key,
         buildMustBe(validValues)
     )) {}
+
 
 } // namespace JCore

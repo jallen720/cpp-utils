@@ -2,10 +2,13 @@
 
 #include "JCore/TestUtils/assertEqualElements.hpp"
 
+
 using std::string;
 using std::vector;
 
+
 namespace JCore {
+
 
 TEST(splitTest, successfulSplit) {
     assertEqualElements(
@@ -14,14 +17,17 @@ TEST(splitTest, successfulSplit) {
     );
 }
 
+
 TEST(splitTest, emptyString) {
     assertEqualElements(vector<string>(), split("", ' '));
 }
+
 
 TEST(splitTest, emptyStringsAroundDelimiter) {
     assertEqualElements({ "", "src1" }, split("=src1", '='));
     assertEqualElements({ "test" }    , split("test=", '='));
     assertEqualElements({ "" }        , split("="    , '='));
 }
+
 
 } // namespace JCore

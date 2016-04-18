@@ -4,10 +4,13 @@
 #include "JCore/Errors/MessageBuilders/buildArgInfo.hpp"
 #include "JCore/Errors/MessageBuilders/buildMustBe.hpp"
 
+
 using std::string;
 using std::vector;
 
+
 namespace JCore {
+
 
 static string buildArgPropertyMessage(
     const string& parameter,
@@ -23,6 +26,7 @@ static string buildArgPropertyMessage(
     );
 }
 
+
 InvalidArgProperty::InvalidArgProperty(
     const string& parameter,
     const string& function,
@@ -35,6 +39,7 @@ InvalidArgProperty::InvalidArgProperty(
         validProperty
     )) {}
 
+
 InvalidArgProperty::InvalidArgProperty(
     const string&         parameter,
     const string&         function,
@@ -46,5 +51,6 @@ InvalidArgProperty::InvalidArgProperty(
         property,
         buildMustBe(validProperties)
     )) {}
+
 
 } // namespace JCore

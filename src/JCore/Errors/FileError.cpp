@@ -1,8 +1,11 @@
 #include "JCore/Errors/FileError.hpp"
 
+
 using std::string;
 
+
 namespace JCore {
+
 
 static string buildFileMessage(
     const string& path,
@@ -14,6 +17,7 @@ static string buildFileMessage(
            "(): " + message;
 }
 
+
 static string buildFileMessage(
     const string& type,
     const string& path,
@@ -23,11 +27,13 @@ static string buildFileMessage(
     return type + " " + buildFileMessage(path, function, message);
 }
 
+
 FileError::FileError(
     const string& path,
     const string& function,
     const string& message)
     : Error(buildFileMessage(path, function, message)) {}
+
 
 FileError::FileError(
     const string& type,
@@ -35,5 +41,6 @@ FileError::FileError(
     const string& function,
     const string& message)
     : Error(buildFileMessage(type, path, function, message)) {}
+
 
 } // namespace JCore

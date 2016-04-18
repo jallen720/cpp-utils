@@ -4,11 +4,14 @@
 #include <exception>
 #include <gtest/gtest.h>
 
+
 using std::cerr;
 using std::exception;
 using std::function;
 
+
 namespace JCore {
+
 
 void expectNoThrow(const function<void()>& block) {
     try {
@@ -23,5 +26,6 @@ void expectNoThrow(const function<void()>& block) {
         FAIL();
     }
 }
+
 
 } // namespace JCore

@@ -8,7 +8,9 @@
 #include "JCore/Errors/FileError.hpp"
 #include "JCore/Errors/ArgErrors/EmptyStringArg.hpp"
 
+
 namespace JCore {
+
 
 TEST(loadJSONFileTest, loadValidFile) {
     expectNoThrow([]() {
@@ -16,16 +18,20 @@ TEST(loadJSONFileTest, loadValidFile) {
     });
 }
 
+
 TEST(loadJSONFileTest, emptyPath) {
     EXPECT_THROW(loadJSONFile(""), EmptyStringArg);
 }
+
 
 TEST(loadJSONFileTest, emptyFile) {
     EXPECT_THROW(loadJSONFile(invalidResourcePath("json/", "empty.json")), FileError);
 }
 
+
 TEST(loadJSONFileTest, parseError) {
     EXPECT_THROW(loadJSONFile(invalidResourcePath("json/", "parse_error.json")), FileError);
 }
+
 
 } // namespace JCore

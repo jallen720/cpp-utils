@@ -1,10 +1,13 @@
 #pragma once
 
+
 #include <vector>
 
 #include "JCore/Errors/Error.hpp"
 
+
 namespace JCore {
+
 
 class InvalidArgProperty : public Error {
 public:
@@ -20,5 +23,6 @@ public:
         const std::string&              property,
         const std::vector<std::string>& validProperties);
 };
+
 
 } // namespace JCore

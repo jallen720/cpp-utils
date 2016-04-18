@@ -2,9 +2,12 @@
 
 #include "JCore/Errors/MessageBuilders/buildArgMessage.hpp"
 
+
 using std::string;
 
+
 namespace JCore {
+
 
 ArgFailedRequirement::ArgFailedRequirement(
     const string& parameter,
@@ -15,5 +18,6 @@ ArgFailedRequirement::ArgFailedRequirement(
         function,
         " failed requirement:\n    " + requirement
     )) {}
+
 
 } // namespace JCore

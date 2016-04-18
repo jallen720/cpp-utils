@@ -2,12 +2,15 @@
 
 #include <sstream>
 
+
 using std::vector;
 using std::stringstream;
 using std::getline;
 using String = std::string;
 
+
 namespace JCore {
+
 
 vector<String> split(const String& string, const char delimiter) {
     vector<String> elements;
@@ -20,5 +23,6 @@ vector<String> split(const String& string, const char delimiter) {
 
     return elements;
 }
+
 
 } // namespace JCore

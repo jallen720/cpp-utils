@@ -2,9 +2,12 @@
 
 #include "JCore/Errors/MessageBuilders/buildArgMessage.hpp"
 
+
 using std::string;
 
+
 namespace JCore {
+
 
 NullArg::NullArg(const string& parameter, const string& function)
     : Error(buildArgMessage(
@@ -12,5 +15,6 @@ NullArg::NullArg(const string& parameter, const string& function)
         function,
         " cannot be null"
     )) {}
+
 
 } // namespace JCore

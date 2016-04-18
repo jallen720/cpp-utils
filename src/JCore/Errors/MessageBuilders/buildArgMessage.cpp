@@ -1,8 +1,11 @@
 #include "JCore/Errors/MessageBuilders/buildArgMessage.hpp"
 
+
 using std::string;
 
+
 namespace JCore {
+
 
 string buildArgMessage(
     const string& parameter,
@@ -16,5 +19,6 @@ string buildArgMessage(
            function + "()" +
            argInfo;
 }
+
 
 } // namespace JCore

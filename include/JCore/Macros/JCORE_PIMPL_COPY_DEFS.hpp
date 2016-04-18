@@ -1,5 +1,6 @@
 #pragma once
 
+
 #define JCORE_PIMPL_COPY_DEFS(OBJECT)\
 OBJECT::OBJECT(const OBJECT& original)\
     : impl(new Impl(*original.impl)) {}\
