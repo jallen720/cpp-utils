@@ -1,7 +1,7 @@
 # Project info
 cmake_minimum_required(VERSION "3.2.2" FATAL_ERROR)
 project("JCore")
-set(CMAKE_PATH "/home/joel/Desktop/projects/cmake")
+set(CMAKE_PATH "$ENV{CMAKE_PATH}")
 
 # Utilities
 include("${CMAKE_PATH}/macros/configure_project.cmake")
