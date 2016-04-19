@@ -5,7 +5,7 @@
 #include "JCore/StringUtils/split.hpp"
 #include "JCore/Errors/FileError.hpp"
 #include "JCore/Errors/Validators/validateNotEmpty.hpp"
-#include "JCore/Macros/JCORE_PIMPL_COPY_DEFS.hpp"
+#include "JCore/Macros/JCORE_COPYABLE_PIMPL_DEFS.hpp"
 
 
 using std::string;
@@ -33,7 +33,7 @@ File::File(const string& path)
     : impl(new Impl(getValidPath(path))) {}
 
 
-JCORE_PIMPL_COPY_DEFS(File)
+JCORE_COPYABLE_PIMPL_DEFS(File)
 
 
 void File::forEachLine(LineCB lineCB) const {

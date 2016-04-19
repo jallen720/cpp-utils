@@ -1,7 +1,7 @@
 #pragma once
 
 
-#define JCORE_PIMPL_COPY_DECLS(OBJECT)\
+#define JCORE_COPYABLE_PIMPL_DECLS(OBJECT)\
 OBJECT(const OBJECT& original);\
 OBJECT(OBJECT&& original);\
 ~OBJECT();\

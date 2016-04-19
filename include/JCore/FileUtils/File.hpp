@@ -5,7 +5,7 @@
 #include <string>
 #include <functional>
 
-#include "JCore/Macros/JCORE_PIMPL_COPY_DECLS.hpp"
+#include "JCore/Macros/JCORE_COPYABLE_PIMPL_DECLS.hpp"
 
 
 namespace JCore {
@@ -17,7 +17,7 @@ private:
 
 public:
     explicit File(const std::string& path);
-    JCORE_PIMPL_COPY_DECLS(File)
+    JCORE_COPYABLE_PIMPL_DECLS(File)
     void forEachLine(LineCB lineCB) const;
     const std::string& getContent() const;
 
