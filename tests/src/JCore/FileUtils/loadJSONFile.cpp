@@ -14,7 +14,7 @@ namespace JCore {
 
 TEST(loadJSONFileTest, loadValidFile) {
     expectNoThrow([]() {
-        loadJSONFile(validResourcePath("json/", "test_config.json"));
+        loadJSONFile(validResourcePath("json", "test_config.json"));
     });
 }
 
@@ -25,12 +25,12 @@ TEST(loadJSONFileTest, emptyPath) {
 
 
 TEST(loadJSONFileTest, emptyFile) {
-    EXPECT_THROW(loadJSONFile(invalidResourcePath("json/", "empty.json")), FileError);
+    EXPECT_THROW(loadJSONFile(invalidResourcePath("json", "empty.json")), FileError);
 }
 
 
 TEST(loadJSONFileTest, parseError) {
-    EXPECT_THROW(loadJSONFile(invalidResourcePath("json/", "parse_error.json")), FileError);
+    EXPECT_THROW(loadJSONFile(invalidResourcePath("json", "parse_error.json")), FileError);
 }
 
 

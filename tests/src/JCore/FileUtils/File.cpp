@@ -18,7 +18,7 @@ namespace JCore {
 
 TEST(FileTest, validCreation) {
     expectNoThrow([]() {
-        File(validResourcePath("misc/", "test.txt"));
+        File(validResourcePath("misc", "test.txt"));
     });
 }
 
@@ -39,7 +39,7 @@ TEST(FileTest, contentMatch) {
         "line2\n"
         "line3\n";
 
-    EXPECT_EQ(expectedContent, File(validResourcePath("misc/", "test.txt")).getContent());
+    EXPECT_EQ(expectedContent, File(validResourcePath("misc", "test.txt")).getContent());
 }
 
 
@@ -52,7 +52,7 @@ TEST(FileTest, linesMatch) {
 
     vector<string> actualLines;
 
-    File(validResourcePath("misc/", "test.txt")).forEachLine([&](const string& line) {
+    File(validResourcePath("misc", "test.txt")).forEachLine([&](const string& line) {
         actualLines.push_back(line);
     });
 
