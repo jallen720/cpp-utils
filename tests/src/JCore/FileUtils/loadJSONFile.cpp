@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "JCore/TestUtils/expectNoThrow.hpp"
+#include "JCore/TestUtils/assertNoThrow.hpp"
 #include "JCore/TestUtils/validResourcePath.hpp"
 #include "JCore/TestUtils/invalidResourcePath.hpp"
 #include "JCore/Errors/FileError.hpp"
@@ -13,7 +13,7 @@ namespace JCore {
 
 
 TEST(loadJSONFileTest, loadValidFile) {
-    expectNoThrow([]() {
+    assertNoThrow([]() {
         loadJSONFile(validResourcePath("json", "test_config.json"));
     });
 }

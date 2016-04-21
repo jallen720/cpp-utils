@@ -7,7 +7,7 @@
 namespace JCore {
 
 
-void expectNoThrow(const std::function<void()>& block);
+void assertNoThrow(const std::function<void()>& block);
 
 
 } // namespace JCore

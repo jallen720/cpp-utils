@@ -1,4 +1,4 @@
-#include "JCore/TestUtils/expectNoThrow.hpp"
+#include "JCore/TestUtils/assertNoThrow.hpp"
 
 #include <iostream>
 #include <exception>
@@ -13,7 +13,7 @@ using std::function;
 namespace JCore {
 
 
-void expectNoThrow(const function<void()>& block) {
+void assertNoThrow(const function<void()>& block) {
     try {
         block();
     }
