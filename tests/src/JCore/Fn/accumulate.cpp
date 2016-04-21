@@ -19,7 +19,7 @@ TEST(accumulateTest, test) {
     };
 
     ASSERT_EQ(6, accumulate(0, numbers, accumulator));
-    EXPECT_EQ(0, accumulate(0, empty, accumulator));
+    ASSERT_EQ(0, accumulate(0, empty, accumulator));
 }
 
 

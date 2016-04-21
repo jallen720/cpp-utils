@@ -24,12 +24,12 @@ TEST(FileTest, validCreation) {
 
 
 TEST(FileTest, invalidFile) {
-    EXPECT_THROW(File("does_not_exist"), FileError);
+    ASSERT_THROW(File("does_not_exist"), FileError);
 }
 
 
 TEST(FileTest, emptyPath) {
-    EXPECT_THROW(File(""), EmptyStringArg);
+    ASSERT_THROW(File(""), EmptyStringArg);
 }
 
 
@@ -39,7 +39,7 @@ TEST(FileTest, contentMatch) {
         "line2\n"
         "line3\n";
 
-    EXPECT_EQ(expectedContent, File(validResourcePath("misc", "test.txt")).getContent());
+    ASSERT_EQ(expectedContent, File(validResourcePath("misc", "test.txt")).getContent());
 }
 
 

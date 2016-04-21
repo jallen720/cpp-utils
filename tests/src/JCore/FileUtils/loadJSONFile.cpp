@@ -20,17 +20,17 @@ TEST(loadJSONFileTest, loadValidFile) {
 
 
 TEST(loadJSONFileTest, emptyPath) {
-    EXPECT_THROW(loadJSONFile(""), EmptyStringArg);
+    ASSERT_THROW(loadJSONFile(""), EmptyStringArg);
 }
 
 
 TEST(loadJSONFileTest, emptyFile) {
-    EXPECT_THROW(loadJSONFile(invalidResourcePath("json", "empty.json")), FileError);
+    ASSERT_THROW(loadJSONFile(invalidResourcePath("json", "empty.json")), FileError);
 }
 
 
 TEST(loadJSONFileTest, parseError) {
-    EXPECT_THROW(loadJSONFile(invalidResourcePath("json", "parse_error.json")), FileError);
+    ASSERT_THROW(loadJSONFile(invalidResourcePath("json", "parse_error.json")), FileError);
 }
 
 

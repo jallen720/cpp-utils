@@ -9,12 +9,12 @@ namespace JCore {
 
 
 TEST(directifyTest, validDirectory) {
-    EXPECT_TRUE(areEqual(directify("directory/"), "directory/"));
+    ASSERT_TRUE(areEqual(directify("directory/"), "directory/"));
 }
 
 
 TEST(directifyTest, invalidDirectory) {
-    EXPECT_TRUE(areEqual(directify("directory"), "directory/"));
+    ASSERT_TRUE(areEqual(directify("directory"), "directory/"));
 }
 
 
