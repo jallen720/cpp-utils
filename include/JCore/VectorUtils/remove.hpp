@@ -8,7 +8,11 @@ namespace JCore {
 
 
 template<typename T>
-void remove(const std::vector<T>& vector, const T& element);
+void remove(std::vector<T>& vector, const T& element);
+
+
+template<typename T, typename Predicate>
+void remove(std::vector<T>& vector, const Predicate& predicate);
 
 
 } // namespace JCore

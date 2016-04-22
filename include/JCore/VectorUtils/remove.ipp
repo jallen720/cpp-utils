@@ -11,6 +11,19 @@ void remove(std::vector<T>& vector, const T& element) {
             vector.begin(),
             vector.end(),
             element),
+
+        vector.end());
+}
+
+
+template<typename T, typename Predicate>
+void remove(std::vector<T>& vector, const Predicate& predicate) {
+    vector.erase(
+        std::remove_if(
+            vector.begin(),
+            vector.end(),
+            predicate),
+
         vector.end());
 }
 

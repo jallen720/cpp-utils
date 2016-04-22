@@ -11,7 +11,7 @@ using std::vector;
 namespace JCore {
 
 
-TEST(removeTest, validVector) {
+TEST(removeTest, validVectorRemoveElement) {
     vector<int> validVector { 1, 2, 3, 4 };
 
     remove(validVector, 1);
@@ -22,10 +22,29 @@ TEST(removeTest, validVector) {
 }
 
 
-TEST(removeTest, emptyVector) {
+TEST(removeTest, emptyVectorRemoveElement) {
     vector<int> emptyVector;
 
     remove(emptyVector, 1);
+    assertEqualElements(emptyVector, {});
+}
+
+
+TEST(removeTest, validVectorRemovePredicate) {
+    vector<int> validVector { 1, 2, 3, 4 };
+
+    remove(validVector, [](int element) { return element < 3; });
+    assertEqualElements(validVector, { 3, 4 });
+
+    remove(validVector, [](int element) { return element > 3; });
+    assertEqualElements(validVector, { 3 });
+}
+
+
+TEST(removeTest, emptyVectorRemovePredicate) {
+    vector<int> emptyVector;
+
+    remove(emptyVector, [](int element) { return element > 0; });
     assertEqualElements(emptyVector, {});
 }
 
