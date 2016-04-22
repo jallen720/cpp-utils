@@ -5,7 +5,7 @@ namespace JCore {
 
 
 template<typename T>
-void removeElement(std::vector<T>& vector, const T& element) {
+void remove(std::vector<T>& vector, const T& element) {
     vector.erase(
         std::remove(
             vector.begin(),

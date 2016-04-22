@@ -1,4 +1,4 @@
-#include "JCore/VectorUtils/removeElement.hpp"
+#include "JCore/VectorUtils/remove.hpp"
 
 #include <gtest/gtest.h>
 
@@ -11,21 +11,21 @@ using std::vector;
 namespace JCore {
 
 
-TEST(removeElementTest, validVector) {
+TEST(removeTest, validVector) {
     vector<int> validVector { 1, 2, 3, 4 };
 
-    removeElement(validVector, 1);
+    remove(validVector, 1);
     assertEqualElements(validVector, { 2, 3, 4 });
 
-    removeElement(validVector, 3);
+    remove(validVector, 3);
     assertEqualElements(validVector, { 2, 4 });
 }
 
 
-TEST(removeElementTest, emptyVector) {
+TEST(removeTest, emptyVector) {
     vector<int> emptyVector;
 
-    removeElement(emptyVector, 1);
+    remove(emptyVector, 1);
     assertEqualElements(emptyVector, {});
 }
 
