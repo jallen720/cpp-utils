@@ -6,25 +6,29 @@ namespace JCore {
 
 template<typename T>
 void remove(std::vector<T>& vector, const T& element) {
-    vector.erase(
-        std::remove(
+    typename std::vector<T>::iterator vectorElement =
+        std::find(
             vector.begin(),
             vector.end(),
-            element),
+            element);
 
-        vector.end());
+    if (vectorElement != vector.end()) {
+        vector.erase(vectorElement);
+    }
 }
 
 
 template<typename T, typename Predicate>
 void remove(std::vector<T>& vector, const Predicate& predicate) {
-    vector.erase(
-        std::remove_if(
+    typename std::vector<T>::iterator vectorElement =
+        std::find_if(
             vector.begin(),
             vector.end(),
-            predicate),
+            predicate);
 
-        vector.end());
+    if (vectorElement != vector.end()) {
+        vector.erase(vectorElement);
+    }
 }
 
 
