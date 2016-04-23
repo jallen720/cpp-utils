@@ -7,12 +7,19 @@ namespace JCore {
 
 
 TEST(typeOfTest, equalTypes) {
-    int a = 0;
-    int b = 1;
+    ASSERT_EQ(typeOf<int>()   , typeOf<int>());
+    ASSERT_EQ(typeOf<int&>()  , typeOf<int>());
 
-    EXPECT_EQ(typeOf<int>() , typeOf<int>());
-    EXPECT_EQ(typeOf(a)     , typeOf<int>());
-    EXPECT_EQ(typeOf(a)     , typeOf(b));
+    ASSERT_NE(typeOf<float>() , typeOf<int>());
+    ASSERT_NE(typeOf<int*>()  , typeOf<int>());
+}
+
+
+TEST(typeOfTest, typesWithCVQualifiers) {
+    ASSERT_EQ(typeOf<const int>()        , typeOf<int>());
+    ASSERT_EQ(typeOf<const int&>()       , typeOf<int>());
+    ASSERT_EQ(typeOf<int* const>()       , typeOf<int*>());
+    ASSERT_EQ(typeOf<const int* const>() , typeOf<const int*>());
 }
 
 
