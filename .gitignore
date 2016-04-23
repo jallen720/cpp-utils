@@ -8,3 +8,6 @@ lib/
 
 # Misc. files
 todo
+
+# Core dump
+core
