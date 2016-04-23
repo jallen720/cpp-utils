@@ -19,6 +19,7 @@ TEST(typeOfTest, typesWithCVQualifiers) {
     ASSERT_EQ(typeOf<const int>()        , typeOf<int>());
     ASSERT_EQ(typeOf<const int&>()       , typeOf<int>());
     ASSERT_EQ(typeOf<int* const>()       , typeOf<int*>());
+    ASSERT_EQ(typeOf<const int*>()       , typeOf<const int*>());
     ASSERT_EQ(typeOf<const int* const>() , typeOf<const int*>());
 }
 
