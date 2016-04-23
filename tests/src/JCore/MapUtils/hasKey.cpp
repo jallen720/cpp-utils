@@ -1,4 +1,4 @@
-#include "JCore/MapUtils/hasKey.hpp"
+#include "JCore/MapUtils/containsKey.hpp"
 
 #include <string>
 #include <gtest/gtest.h>
@@ -11,26 +11,26 @@ using std::string;
 namespace JCore {
 
 
-TEST(hasKeyTest, validMap) {
+TEST(containsKeyTest, validMap) {
     static const map<string, string> validMap {
         { "key0", "value0" },
         { "key1", "value1" },
         { "key2", "value2" },
     };
 
-    ASSERT_TRUE(hasKey(validMap, string("key0")));
-    ASSERT_TRUE(hasKey(validMap, string("key1")));
-    ASSERT_TRUE(hasKey(validMap, string("key2")));
-    ASSERT_FALSE(hasKey(validMap, string("key3")));
-    ASSERT_FALSE(hasKey(validMap, string("value0")));
+    ASSERT_TRUE(containsKey(validMap, string("key0")));
+    ASSERT_TRUE(containsKey(validMap, string("key1")));
+    ASSERT_TRUE(containsKey(validMap, string("key2")));
+    ASSERT_FALSE(containsKey(validMap, string("key3")));
+    ASSERT_FALSE(containsKey(validMap, string("value0")));
 }
 
 
-TEST(hasKeyTest, emptyMap) {
+TEST(containsKeyTest, emptyMap) {
     static const map<string, string> emptyMap;
 
-    ASSERT_FALSE(hasKey(emptyMap, string("key0")));
-    ASSERT_FALSE(hasKey(emptyMap, string("")));
+    ASSERT_FALSE(containsKey(emptyMap, string("key0")));
+    ASSERT_FALSE(containsKey(emptyMap, string("")));
 }
 
 
