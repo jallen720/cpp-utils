@@ -1,14 +1,14 @@
 #pragma once
 
 
-#include <typeindex>
+#include "JCore/TypeUtils/Type.hpp"
 
 
 namespace JCore {
 
 
 template<typename T>
-std::type_index typeOf();
+Type typeOf();
 
 
 } // namespace JCore
