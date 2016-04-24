@@ -11,7 +11,8 @@ namespace JCore {
 
 
 Error::Error(const string& message)
-    : runtime_error(buildSystemMessage("JCORE", message)) {}
+    : runtime_error(buildSystemMessage("JCORE", message))
+{}
 
 
 } // namespace JCore

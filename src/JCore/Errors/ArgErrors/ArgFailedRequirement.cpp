@@ -16,8 +16,8 @@ ArgFailedRequirement::ArgFailedRequirement(
     : Error(buildArgMessage(
         parameter,
         function,
-        " failed requirement:\n    " + requirement
-    )) {}
+        " failed requirement:\n    " + requirement))
+{}
 
 
 } // namespace JCore

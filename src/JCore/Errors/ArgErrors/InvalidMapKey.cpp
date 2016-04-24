@@ -18,11 +18,10 @@ static string buildMapKeyMessage(
     const string& mustBe)
 {
     return buildArgMessage(
-        parameter,
-        function,
-        buildArgInfo(mustBe),
-        "map key in argument"
-    );
+               parameter,
+               function,
+               buildArgInfo(mustBe),
+               "map key in argument");
 }
 
 
@@ -33,8 +32,8 @@ InvalidMapKey::InvalidMapKey(
     : Error(buildMapKeyMessage(
         parameter,
         function,
-        buildMustBe(validKeys)
-    )) {}
+        buildMustBe(validKeys)))
+{}
 
 
 } // namespace JCore

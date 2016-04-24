@@ -14,8 +14,8 @@ EmptyStringArg::EmptyStringArg(const string& parameter, const string& function)
         parameter,
         function,
         " cannot be empty",
-        "string argument"
-    )) {}
+        "string argument"))
+{}
 
 
 } // namespace JCore

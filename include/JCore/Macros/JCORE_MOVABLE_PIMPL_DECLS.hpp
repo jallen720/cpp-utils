@@ -2,8 +2,8 @@
 
 
 #define JCORE_MOVABLE_PIMPL_DECLS(OBJECT)\
-OBJECT(const OBJECT& original) = delete;\
-OBJECT(OBJECT&& original);\
+OBJECT(const OBJECT&) = delete;\
+OBJECT(OBJECT&&);\
 ~OBJECT();\
-OBJECT& operator =(const OBJECT& original) = delete;\
-OBJECT& operator =(OBJECT&& original);
+OBJECT& operator =(const OBJECT&) = delete;\
+OBJECT& operator =(OBJECT&&);

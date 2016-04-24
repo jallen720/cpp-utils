@@ -13,8 +13,8 @@ NullArg::NullArg(const string& parameter, const string& function)
     : Error(buildArgMessage(
         parameter,
         function,
-        " cannot be null"
-    )) {}
+        " cannot be null"))
+{}
 
 
 } // namespace JCore

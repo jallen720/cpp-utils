@@ -12,7 +12,7 @@ namespace JCore {
 
 
 TEST(containsKeyTest, validMap) {
-    static const map<string, string> validMap {
+    const map<string, string> validMap {
         { "key0", "value0" },
         { "key1", "value1" },
         { "key2", "value2" },
@@ -27,7 +27,7 @@ TEST(containsKeyTest, validMap) {
 
 
 TEST(containsKeyTest, emptyMap) {
-    static const map<string, string> emptyMap;
+    const map<string, string> emptyMap;
 
     ASSERT_FALSE(containsKey(emptyMap, string("key0")));
     ASSERT_FALSE(containsKey(emptyMap, string("")));

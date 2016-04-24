@@ -19,11 +19,10 @@ static string buildArgPropertyMessage(
     const string& mustBe)
 {
     return buildArgMessage(
-        parameter,
-        function,
-        buildArgInfo(mustBe),
-        "property \"" + property + "\" of argument"
-    );
+               parameter,
+               function,
+               buildArgInfo(mustBe),
+               "property \"" + property + "\" of argument");
 }
 
 
@@ -36,8 +35,8 @@ InvalidArgProperty::InvalidArgProperty(
         parameter,
         function,
         property,
-        validProperty
-    )) {}
+        validProperty))
+{}
 
 
 InvalidArgProperty::InvalidArgProperty(
@@ -49,8 +48,8 @@ InvalidArgProperty::InvalidArgProperty(
         parameter,
         function,
         property,
-        buildMustBe(validProperties)
-    )) {}
+        buildMustBe(validProperties)))
+{}
 
 
 } // namespace JCore

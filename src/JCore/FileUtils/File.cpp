@@ -30,7 +30,8 @@ static const string& getValidPath(const string& path) {
 
 
 File::File(const string& path)
-    : impl(new Impl(getValidPath(path))) {}
+    : impl(new Impl(getValidPath(path)))
+{}
 
 
 JCORE_COPYABLE_PIMPL_DEFS(File)
@@ -61,12 +62,10 @@ static string loadValidContent(const string& path) {
     ifstream stream(path);
     validateStream(stream, path);
 
-
     string content {
         istreambuf_iterator<char>(stream),
         istreambuf_iterator<char>()
     };
-
 
     stream.close();
     return content;
@@ -74,7 +73,8 @@ static string loadValidContent(const string& path) {
 
 
 File::Impl::Impl(const string& path)
-    : content(loadValidContent(path)) {}
+    : content(loadValidContent(path))
+{}
 
 
 } // namespace JCore

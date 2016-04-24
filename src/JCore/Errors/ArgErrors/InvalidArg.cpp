@@ -28,8 +28,8 @@ InvalidArg::InvalidArg(
     : Error(buildInvalidArgMessage(
         parameter,
         function,
-        validArgument
-    )) {}
+        validArgument))
+{}
 
 
 InvalidArg::InvalidArg(
@@ -39,8 +39,8 @@ InvalidArg::InvalidArg(
     : Error(buildInvalidArgMessage(
         parameter,
         function,
-        buildMustBe(validArguments)
-    )) {}
+        buildMustBe(validArguments)))
+{}
 
 
 } // namespace JCore

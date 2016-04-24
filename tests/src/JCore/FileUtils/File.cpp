@@ -34,7 +34,7 @@ TEST(FileTest, emptyPath) {
 
 
 TEST(FileTest, contentMatch) {
-    static const string expectedContent =
+    const string expectedContent =
         "line1\n"
         "line2\n"
         "line3\n";
@@ -44,7 +44,7 @@ TEST(FileTest, contentMatch) {
 
 
 TEST(FileTest, linesMatch) {
-    static const vector<string> expectedLines {
+    const vector<string> expectedLines {
         "line1",
         "line2",
         "line3",

@@ -19,11 +19,10 @@ static string buildMapValueMessage(
     const string& mustBe)
 {
     return buildArgMessage(
-        parameter,
-        function,
-        buildArgInfo(mustBe),
-        "map value for \"" + key + "\" key in argument"
-    );
+               parameter,
+               function,
+               buildArgInfo(mustBe),
+               "map value for \"" + key + "\" key in argument");
 }
 
 
@@ -36,8 +35,8 @@ InvalidMapValue::InvalidMapValue(
         parameter,
         function,
         key,
-        buildMustBe(validValues)
-    )) {}
+        buildMustBe(validValues)))
+{}
 
 
 } // namespace JCore
