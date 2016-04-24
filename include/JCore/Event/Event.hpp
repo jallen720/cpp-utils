@@ -1,0 +1,30 @@
+#pragma once
+
+
+#include <vector>
+
+
+namespace JCore {
+
+
+template<typename Listener, typename ...Args>
+class Event final {
+private:
+    using OnEventFunc = void (Listener::*)(Args...);
+
+public:
+    explicit Event(OnEventFunc onEventFunc);
+    void subscribe(Listener* listener);
+    void unsubscribe(Listener* listener);
+    void trigger(Args... args);
+
+private:
+    OnEventFunc m_onEventFunc;
+    std::vector<Listener*> m_listeners;
+};
+
+
+} // namespace JCore
+
+
+#include "JCore/Event/Event.ipp"
