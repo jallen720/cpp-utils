@@ -17,6 +17,8 @@ TEST_F(EventTest, subscribe) {
     assertNoThrow([&]() {
         testEvent.subscribe(&testEventListener);
     });
+
+    ASSERT_TRUE(testEvent.isSubscribed(&testEventListener));
 }
 
 
@@ -40,6 +42,8 @@ TEST_F(EventTest, unsubscribe) {
     assertNoThrow([&]() {
         testEvent.unsubscribe(&testEventListener);
     });
+
+    ASSERT_FALSE(testEvent.isSubscribed(&testEventListener));
 }
 
 

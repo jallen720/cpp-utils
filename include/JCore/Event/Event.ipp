@@ -31,16 +31,16 @@ void Event<Listener, Args...>::unsubscribe(Listener* listener) {
 
 
 template<typename Listener, typename ...Args>
-void Event<Listener, Args...>::trigger(Args... args) {
-    for (Listener* listener : m_listeners) {
-        ((listener)->*(m_onEventFunc))(args...);
-    }
+bool Event<Listener, Args...>::isSubscribed(Listener* listener) {
+    return JCore::contains(m_listeners, listener);
 }
 
 
 template<typename Listener, typename ...Args>
-bool Event<Listener, Args...>::isSubscribed(Listener* listener) {
-    return JCore::contains(m_listeners, listener);
+void Event<Listener, Args...>::trigger(Args... args) {
+    for (Listener* listener : m_listeners) {
+        ((listener)->*(m_onEventFunc))(args...);
+    }
 }
 
 
