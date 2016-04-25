@@ -1,6 +1,11 @@
+#include <stdexcept>
+
 #include "JCore/Event/Fixtures/EventTest.hpp"
 #include "JCore/TestUtils/assertNoThrow.hpp"
 #include "JCore/Errors/ArgErrors/NullArg.hpp"
+
+
+using std::runtime_error;
 
 
 namespace JCore {
@@ -20,6 +25,14 @@ TEST_F(EventTest, subscribeNullListener) {
 }
 
 
+TEST_F(EventTest, subscribeDuplicateListener) {
+    ITestEventListener testEventListener;
+    testEvent.subscribe(&testEventListener);
+
+    ASSERT_THROW(testEvent.subscribe(&testEventListener), runtime_error);
+}
+
+
 TEST_F(EventTest, unsubscribe) {
     ITestEventListener testEventListener;
     testEvent.subscribe(&testEventListener);
@@ -32,6 +45,13 @@ TEST_F(EventTest, unsubscribe) {
 
 TEST_F(EventTest, unsubscribeNullListener) {
     ASSERT_THROW(testEvent.unsubscribe(nullptr), NullArg);
+}
+
+
+TEST_F(EventTest, unsubscribeNonSubscribedListener) {
+    ITestEventListener testEventListener;
+
+    ASSERT_THROW(testEvent.unsubscribe(&testEventListener), runtime_error);
 }
 
 

@@ -21,6 +21,10 @@ public:
 private:
     OnEventFunc m_onEventFunc;
     std::vector<Listener*> m_listeners;
+
+    bool isSubscribed(Listener* listener);
+    void validateCanSubscribe(Listener* listener);
+    void validateCanUnsubscribe(Listener* listener);
 };
 
 
