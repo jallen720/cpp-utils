@@ -24,9 +24,9 @@ TEST(splitTest, emptyString) {
 
 
 TEST(splitTest, emptyStringsAroundDelimiter) {
-    assertEqualElements({ "", "src1" }, split("=src1", '='));
-    assertEqualElements({ "test" }    , split("test=", '='));
-    assertEqualElements({ "" }        , split("="    , '='));
+    assertEqualElements({ "", "src1" } , split("=src1" , '='));
+    assertEqualElements({ "test" }     , split("test=" , '='));
+    assertEqualElements({ "" }         , split("="     , '='));
 }
 
 
