@@ -13,22 +13,22 @@ namespace JCore {
 
 
 static string buildMapKeyMessage(
-    const string& parameter,
-    const string& function,
-    const string& mustBe)
+    const string & parameter,
+    const string & function,
+    const string & mustBe)
 {
     return buildArgMessage(
-               parameter,
-               function,
-               buildArgInfo(mustBe),
-               "map key in argument");
+        parameter,
+        function,
+        buildArgInfo(mustBe),
+        "map key in argument");
 }
 
 
 InvalidMapKey::InvalidMapKey(
-    const string&         parameter,
-    const string&         function,
-    const vector<string>& validKeys)
+    const string & parameter,
+    const string & function,
+    const vector<string> & validKeys)
     : Error(buildMapKeyMessage(
         parameter,
         function,

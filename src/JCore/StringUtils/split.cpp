@@ -12,7 +12,7 @@ using String = std::string;
 namespace JCore {
 
 
-vector<String> split(const String& string, const char delimiter) {
+vector<String> split(const String & string, const char delimiter) {
     vector<String> elements;
     stringstream stream(string);
     String element;

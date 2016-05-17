@@ -9,18 +9,18 @@
 namespace JCore {
 
 
-class FileError : public Error {
+class FileError final : public Error {
 public:
     FileError(
-        const std::string& path,
-        const std::string& function,
-        const std::string& message);
+        const std::string & path,
+        const std::string & function,
+        const std::string & message);
 
     FileError(
-        const std::string& type,
-        const std::string& path,
-        const std::string& function,
-        const std::string& message);
+        const std::string & type,
+        const std::string & path,
+        const std::string & function,
+        const std::string & message);
 };
 
 

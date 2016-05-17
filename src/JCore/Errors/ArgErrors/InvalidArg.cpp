@@ -13,18 +13,18 @@ namespace JCore {
 
 
 static string buildInvalidArgMessage(
-    const string& parameter,
-    const string& function,
-    const string& mustBe)
+    const string & parameter,
+    const string & function,
+    const string & mustBe)
 {
     return buildArgMessage(parameter, function, buildArgInfo(mustBe));
 }
 
 
 InvalidArg::InvalidArg(
-    const string& parameter,
-    const string& function,
-    const string& validArgument)
+    const string & parameter,
+    const string & function,
+    const string & validArgument)
     : Error(buildInvalidArgMessage(
         parameter,
         function,
@@ -33,9 +33,9 @@ InvalidArg::InvalidArg(
 
 
 InvalidArg::InvalidArg(
-    const string&         parameter,
-    const string&         function,
-    const vector<string>& validArguments)
+    const string & parameter,
+    const string & function,
+    const vector<string> & validArguments)
     : Error(buildInvalidArgMessage(
         parameter,
         function,

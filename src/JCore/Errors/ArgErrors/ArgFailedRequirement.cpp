@@ -10,9 +10,9 @@ namespace JCore {
 
 
 ArgFailedRequirement::ArgFailedRequirement(
-    const string& parameter,
-    const string& function,
-    const string& requirement)
+    const string & parameter,
+    const string & function,
+    const string & requirement)
     : Error(buildArgMessage(
         parameter,
         function,

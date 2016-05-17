@@ -10,7 +10,7 @@ namespace JCore {
 
 class Error : public std::runtime_error {
 public:
-    explicit Error(const std::string& message);
+    explicit Error(const std::string & message);
 };
 
 

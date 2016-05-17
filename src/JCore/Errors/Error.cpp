@@ -10,7 +10,7 @@ using std::string;
 namespace JCore {
 
 
-Error::Error(const string& message)
+Error::Error(const string & message)
     : runtime_error(buildSystemMessage("JCORE", message))
 {}
 

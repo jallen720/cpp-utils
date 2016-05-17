@@ -7,7 +7,7 @@
 namespace JCore {
 
 
-std::string invalidResourcePath(const std::string& subDirectory, const std::string& name);
+std::string invalidResourcePath(const std::string & subDirectory, const std::string & name);
 
 
 } // namespace JCore

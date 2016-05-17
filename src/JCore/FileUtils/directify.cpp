@@ -7,7 +7,7 @@ using std::string;
 namespace JCore {
 
 
-string directify(const string& directory) {
+string directify(const string & directory) {
     return directory.back() == '/'
            ? directory
            : directory + '/';

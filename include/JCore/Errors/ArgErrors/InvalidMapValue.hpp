@@ -9,13 +9,13 @@
 namespace JCore {
 
 
-class InvalidMapValue : public Error {
+class InvalidMapValue final : public Error {
 public:
     InvalidMapValue(
-        const std::string&              parameter,
-        const std::string&              function,
-        const std::string&              key,
-        const std::vector<std::string>& validValues);
+        const std::string & parameter,
+        const std::string & function,
+        const std::string & key,
+        const std::vector<std::string> & validValues);
 };
 
 

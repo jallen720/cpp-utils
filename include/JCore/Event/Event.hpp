@@ -14,17 +14,17 @@ private:
 
 public:
     explicit Event(OnEventFunc onEventFunc);
-    void subscribe(Listener* listener);
-    void unsubscribe(Listener* listener);
-    bool isSubscribed(Listener* listener);
+    void subscribe(Listener * listener);
+    void unsubscribe(Listener * listener);
+    bool isSubscribed(Listener * listener);
     void trigger(Args... args);
 
 private:
     OnEventFunc m_onEventFunc;
-    std::vector<Listener*> m_listeners;
+    std::vector<Listener *> m_listeners;
 
-    void validateCanSubscribe(Listener* listener);
-    void validateCanUnsubscribe(Listener* listener);
+    void validateCanSubscribe(Listener * listener);
+    void validateCanUnsubscribe(Listener * listener);
 };
 
 

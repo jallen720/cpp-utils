@@ -14,13 +14,13 @@ using std::invalid_argument;
 namespace JCore {
 
 
-JSON loadJSONFile(const string& path) {
+JSON loadJSONFile(const string & path) {
     validateNotEmpty("path", "loadJSONFile", path);
 
     try {
         return JSON::parse(File(path).getContent());
     }
-    catch (const std::invalid_argument& error) {
+    catch (const std::invalid_argument & error) {
         throw FileError("JSON", path, "loadJSONFile", error.what());
     }
 }

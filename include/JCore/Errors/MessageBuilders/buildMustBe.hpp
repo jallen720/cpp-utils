@@ -8,7 +8,7 @@
 namespace JCore {
 
 
-std::string buildMustBe(const std::vector<std::string>& validArguments);
+std::string buildMustBe(const std::vector<std::string> & validArguments);
 
 
 } // namespace JCore

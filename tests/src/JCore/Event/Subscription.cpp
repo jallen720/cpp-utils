@@ -16,7 +16,7 @@ TEST_F(SubscriptionTest, subscription) {
 
 
 TEST_F(SubscriptionTest, subscriptionForNullListener) {
-    auto runTest = [&]() {
+    const auto runTest = [&]() -> void {
         Subscription<ITestEventListener, int>(testEvent, nullptr);
     };
 

@@ -13,24 +13,24 @@ namespace JCore {
 
 
 static string buildArgPropertyMessage(
-    const string& parameter,
-    const string& function,
-    const string& property,
-    const string& mustBe)
+    const string & parameter,
+    const string & function,
+    const string & property,
+    const string & mustBe)
 {
     return buildArgMessage(
-               parameter,
-               function,
-               buildArgInfo(mustBe),
-               "property \"" + property + "\" of argument");
+        parameter,
+        function,
+        buildArgInfo(mustBe),
+        "property \"" + property + "\" of argument");
 }
 
 
 InvalidArgProperty::InvalidArgProperty(
-    const string& parameter,
-    const string& function,
-    const string& property,
-    const string& validProperty)
+    const string & parameter,
+    const string & function,
+    const string & property,
+    const string & validProperty)
     : Error(buildArgPropertyMessage(
         parameter,
         function,
@@ -40,10 +40,10 @@ InvalidArgProperty::InvalidArgProperty(
 
 
 InvalidArgProperty::InvalidArgProperty(
-    const string&         parameter,
-    const string&         function,
-    const string&         property,
-    const vector<string>& validProperties)
+    const string & parameter,
+    const string & function,
+    const string & property,
+    const vector<string> & validProperties)
     : Error(buildArgPropertyMessage(
         parameter,
         function,

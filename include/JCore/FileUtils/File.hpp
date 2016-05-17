@@ -11,15 +11,15 @@
 namespace JCore {
 
 
-class File {
+class File final {
 private:
-    using LineCB = const std::function<void(const std::string&)>&;
+    using LineCB = const std::function<void(const std::string &)> &;
 
 public:
-    explicit File(const std::string& path);
+    explicit File(const std::string & path);
     JCORE_COPYABLE_PIMPL_DECLS(File)
     void forEachLine(LineCB lineCB) const;
-    const std::string& getContent() const;
+    const std::string & getContent() const;
 
 private:
     struct Impl;

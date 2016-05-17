@@ -3,8 +3,8 @@ namespace JCore {
 
 template<typename T>
 void assertEqualElements(
-    const std::vector<T>& expectedElements,
-    const std::vector<T>& actualElements)
+    const std::vector<T> & expectedElements,
+    const std::vector<T> & actualElements)
 {
     ASSERT_EQ(expectedElements.size(), actualElements.size());
 

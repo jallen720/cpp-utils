@@ -13,7 +13,7 @@ namespace JCore {
 
 
 TEST(loadJSONFileTest, loadValidFile) {
-    assertNoThrow([]() {
+    assertNoThrow([]() -> void {
         loadJSONFile(validResourcePath("json", "test_config.json"));
     });
 }

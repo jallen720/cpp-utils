@@ -9,7 +9,7 @@
 namespace JCore {
 
 
-JSON loadJSONFile(const std::string& path);
+JSON loadJSONFile(const std::string & path);
 
 
 } // namespace JCore

@@ -7,12 +7,12 @@
 namespace JCore {
 
 
-class ArgFailedRequirement : public Error {
+class ArgFailedRequirement final : public Error {
 public:
     ArgFailedRequirement(
-        const std::string& parameter,
-        const std::string& function,
-        const std::string& requirement);
+        const std::string & parameter,
+        const std::string & function,
+        const std::string & requirement);
 };
 
 

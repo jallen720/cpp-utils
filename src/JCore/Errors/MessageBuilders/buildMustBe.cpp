@@ -10,12 +10,12 @@ using std::vector;
 namespace JCore {
 
 
-static string concatValidArg(const string& mustBe, const string& validArg) {
+static string concatValidArg(const string & mustBe, const string & validArg) {
     return mustBe + "      " + validArg + ",\n";
 }
 
 
-string buildMustBe(const vector<string>& validArgs) {
+string buildMustBe(const vector<string> & validArgs) {
     return accumulate<string>("\n", validArgs, concatValidArg);
 }
 

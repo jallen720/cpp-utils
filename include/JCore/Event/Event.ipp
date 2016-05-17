@@ -15,7 +15,7 @@ Event<Listener, Args...>::Event(OnEventFunc onEventFunc)
 
 
 template<typename Listener, typename ...Args>
-void Event<Listener, Args...>::subscribe(Listener* listener) {
+void Event<Listener, Args...>::subscribe(Listener * listener) {
     validateNotNull("listener", "Event<>::subscribe", listener);
     validateCanSubscribe(listener);
     m_listeners.push_back(listener);
@@ -23,7 +23,7 @@ void Event<Listener, Args...>::subscribe(Listener* listener) {
 
 
 template<typename Listener, typename ...Args>
-void Event<Listener, Args...>::unsubscribe(Listener* listener) {
+void Event<Listener, Args...>::unsubscribe(Listener * listener) {
     validateNotNull("listener", "Event<>::unsubscribe", listener);
     validateCanUnsubscribe(listener);
     remove(m_listeners, listener);
@@ -31,21 +31,21 @@ void Event<Listener, Args...>::unsubscribe(Listener* listener) {
 
 
 template<typename Listener, typename ...Args>
-bool Event<Listener, Args...>::isSubscribed(Listener* listener) {
+bool Event<Listener, Args...>::isSubscribed(Listener * listener) {
     return JCore::contains(m_listeners, listener);
 }
 
 
 template<typename Listener, typename ...Args>
 void Event<Listener, Args...>::trigger(Args... args) {
-    for (Listener* listener : m_listeners) {
+    for (Listener * listener : m_listeners) {
         ((listener)->*(m_onEventFunc))(args...);
     }
 }
 
 
 template<typename Listener, typename ...Args>
-void Event<Listener, Args...>::validateCanSubscribe(Listener* listener) {
+void Event<Listener, Args...>::validateCanSubscribe(Listener * listener) {
     if (isSubscribed(listener)) {
         throw std::runtime_error("can't subscribe duplicate listeners to an event");
     }
@@ -53,11 +53,11 @@ void Event<Listener, Args...>::validateCanSubscribe(Listener* listener) {
 
 
 template<typename Listener, typename ...Args>
-void Event<Listener, Args...>::validateCanUnsubscribe(Listener* listener) {
+void Event<Listener, Args...>::validateCanUnsubscribe(Listener * listener) {
     if (!isSubscribed(listener)) {
         throw std::runtime_error(
-                  "can't unsubscribe listener as it is not currently subscribed "
-                  "to this event");
+            "can't unsubscribe listener as it is not currently subscribed "
+            "to this event");
     }
 }
 

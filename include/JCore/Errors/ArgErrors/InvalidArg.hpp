@@ -9,17 +9,17 @@
 namespace JCore {
 
 
-class InvalidArg : public Error {
+class InvalidArg final : public Error {
 public:
     InvalidArg(
-        const std::string& parameter,
-        const std::string& function,
-        const std::string& validArgument);
+        const std::string & parameter,
+        const std::string & function,
+        const std::string & validArgument);
 
     InvalidArg(
-        const std::string&              parameter,
-        const std::string&              function,
-        const std::vector<std::string>& validArguments);
+        const std::string & parameter,
+        const std::string & function,
+        const std::vector<std::string> & validArguments);
 };
 
 

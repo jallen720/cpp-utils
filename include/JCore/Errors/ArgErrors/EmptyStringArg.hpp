@@ -7,9 +7,9 @@
 namespace JCore {
 
 
-class EmptyStringArg : public Error {
+class EmptyStringArg final : public Error {
 public:
-    EmptyStringArg(const std::string& parameter, const std::string& function);
+    EmptyStringArg(const std::string & parameter, const std::string & function);
 };
 
 

@@ -36,13 +36,13 @@ TEST(removeTest, emptyVectorRemoveElement) {
 TEST(removeTest, validVectorRemovePredicate) {
     vector<int> validVector { 1, 2, 3, 4 };
 
-    remove(validVector, [](int element) { return element < 3; });
+    remove(validVector, [](const int element) -> bool { return element < 3; });
     assertEqualElements({ 2, 3, 4 }, validVector);
 
-    remove(validVector, [](int element) { return element > 2; });
+    remove(validVector, [](const int element) -> bool { return element > 2; });
     assertEqualElements({ 2, 4 }, validVector);
 
-    remove(validVector, [](int element) { return element > 4; });
+    remove(validVector, [](const int element) -> bool { return element > 4; });
     assertEqualElements({ 2, 4 }, validVector);
 }
 
@@ -50,7 +50,7 @@ TEST(removeTest, validVectorRemovePredicate) {
 TEST(removeTest, emptyVectorRemovePredicate) {
     vector<int> emptyVector;
 
-    remove(emptyVector, [](int element) { return element > 0; });
+    remove(emptyVector, [](const int element) -> bool { return element > 0; });
     assertEqualElements({}, emptyVector);
 }
 

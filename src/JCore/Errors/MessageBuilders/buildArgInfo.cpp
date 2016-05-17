@@ -7,7 +7,7 @@ using std::string;
 namespace JCore {
 
 
-string buildArgInfo(const string& mustBe) {
+string buildArgInfo(const string & mustBe) {
     return ":\n"
            "    must be: " + mustBe;
 }

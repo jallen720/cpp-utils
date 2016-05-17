@@ -14,7 +14,7 @@ namespace JCore {
 TEST_F(EventTest, subscribe) {
     ITestEventListener testEventListener;
 
-    assertNoThrow([&]() {
+    assertNoThrow([&]() -> void {
         testEvent.subscribe(&testEventListener);
     });
 
@@ -39,7 +39,7 @@ TEST_F(EventTest, unsubscribe) {
     ITestEventListener testEventListener;
     testEvent.subscribe(&testEventListener);
 
-    assertNoThrow([&]() {
+    assertNoThrow([&]() -> void {
         testEvent.unsubscribe(&testEventListener);
     });
 

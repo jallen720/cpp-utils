@@ -7,7 +7,7 @@ using std::string;
 namespace JCore {
 
 
-string buildSystemMessage(const string& system, const string& message) {
+string buildSystemMessage(const string & system, const string & message) {
     return system + " ERROR: " + message;
 }
 

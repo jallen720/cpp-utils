@@ -9,7 +9,7 @@ using std::string;
 namespace JCore {
 
 
-EmptyStringArg::EmptyStringArg(const string& parameter, const string& function)
+EmptyStringArg::EmptyStringArg(const string & parameter, const string & function)
     : Error(buildArgMessage(
         parameter,
         function,

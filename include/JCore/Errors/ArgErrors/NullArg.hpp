@@ -7,9 +7,9 @@
 namespace JCore {
 
 
-class NullArg : public Error {
+class NullArg final : public Error {
 public:
-    NullArg(const std::string& parameter, const std::string& function);
+    NullArg(const std::string & parameter, const std::string & function);
 };
 
 

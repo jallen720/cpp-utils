@@ -17,7 +17,7 @@ namespace JCore {
 
 
 TEST(FileTest, validCreation) {
-    assertNoThrow([]() {
+    assertNoThrow([]() -> void {
         File(validResourcePath("misc", "test.txt"));
     });
 }
@@ -52,7 +52,7 @@ TEST(FileTest, linesMatch) {
 
     vector<string> actualLines;
 
-    File(validResourcePath("misc", "test.txt")).forEachLine([&](const string& line) {
+    File(validResourcePath("misc", "test.txt")).forEachLine([&](const string & line) -> void {
         actualLines.push_back(line);
     });
 

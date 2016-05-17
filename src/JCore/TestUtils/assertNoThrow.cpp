@@ -13,11 +13,11 @@ using std::function;
 namespace JCore {
 
 
-void assertNoThrow(const function<void()>& block) {
+void assertNoThrow(const function<void()> & block) {
     try {
         block();
     }
-    catch (const exception& error) {
+    catch (const exception & error) {
         cerr << "std::exception thrown in test:\n  " << error.what() << "\n";
         FAIL();
     }

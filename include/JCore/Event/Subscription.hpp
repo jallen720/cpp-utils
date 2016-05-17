@@ -13,12 +13,12 @@ private:
     using SubscriptionEvent = Event<Listener, Args...>;
 
 public:
-    Subscription(SubscriptionEvent& event, Listener* listener);
+    Subscription(SubscriptionEvent & event, Listener * listener);
     ~Subscription();
 
 private:
-    SubscriptionEvent& m_event;
-    Listener* m_listener;
+    SubscriptionEvent & m_event;
+    Listener * m_listener;
 };
 
 

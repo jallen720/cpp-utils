@@ -9,19 +9,19 @@
 namespace JCore {
 
 
-class InvalidArgProperty : public Error {
+class InvalidArgProperty final : public Error {
 public:
     InvalidArgProperty(
-        const std::string& parameter,
-        const std::string& function,
-        const std::string& property,
-        const std::string& validProperty);
+        const std::string & parameter,
+        const std::string & function,
+        const std::string & property,
+        const std::string & validProperty);
 
     InvalidArgProperty(
-        const std::string&              parameter,
-        const std::string&              function,
-        const std::string&              property,
-        const std::vector<std::string>& validProperties);
+        const std::string & parameter,
+        const std::string & function,
+        const std::string & property,
+        const std::vector<std::string> & validProperties);
 };
 
 
