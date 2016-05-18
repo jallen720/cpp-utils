@@ -5,6 +5,7 @@
 #include "JCore/StringUtils/split.hpp"
 #include "JCore/Errors/FileError.hpp"
 #include "JCore/Errors/Validators/validateNotEmpty.hpp"
+#include "JCore/Macros/JCORE_MOVABLE_PIMPL_DEFAULT_DEFS.hpp"
 #include "JCore/Macros/JCORE_COPYABLE_PIMPL_DEFS.hpp"
 
 
@@ -34,6 +35,10 @@ File::File(const string & path)
 {}
 
 
+File::~File() = default;
+
+
+JCORE_MOVABLE_PIMPL_DEFAULT_DEFS(File)
 JCORE_COPYABLE_PIMPL_DEFS(File)
 
 
