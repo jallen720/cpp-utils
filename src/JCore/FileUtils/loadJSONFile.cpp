@@ -20,7 +20,7 @@ JSON loadJSONFile(const string & path) {
     try {
         return JSON::parse(File(path).getContent());
     }
-    catch (const std::invalid_argument & error) {
+    catch (const invalid_argument & error) {
         throw FileError("JSON", path, "loadJSONFile", error.what());
     }
 }
