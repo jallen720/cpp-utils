@@ -1,4 +1,4 @@
-#include "JCore/FileUtils/loadJSONFile.hpp"
+#include "JCore/JSON/loadJSONFile.hpp"
 
 #include <gtest/gtest.h>
 

@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <gtest/gtest.h>
 
-#include "JCore/FileUtils/loadJSONFile.hpp"
+#include "JCore/JSON/loadJSONFile.hpp"
 #include "JCore/TestUtils/validResourcePath.hpp"
 #include "JCore/TestUtils/assertEqualElements.hpp"
 #include "JCore/TestUtils/assertNoThrow.hpp"
