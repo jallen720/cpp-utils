@@ -14,7 +14,7 @@ namespace JCore {
 
 TEST(loadJSONFileTest, loadValidFile) {
     assertNoThrow([]() -> void {
-        loadJSONFile(validResourcePath("json", "test_config.json"));
+        loadJSONFile(validResourcePath("json", "testConfig.json"));
     });
 }
 
@@ -30,7 +30,7 @@ TEST(loadJSONFileTest, emptyFile) {
 
 
 TEST(loadJSONFileTest, parseError) {
-    ASSERT_THROW(loadJSONFile(invalidResourcePath("json", "parse_error.json")), FileError);
+    ASSERT_THROW(loadJSONFile(invalidResourcePath("json", "parseError.json")), FileError);
 }
 
 
