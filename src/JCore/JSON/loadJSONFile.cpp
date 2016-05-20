@@ -22,7 +22,7 @@ JSON loadJSONFile(const string & path) {
         json = JSON::parse(File(path).getContent());
     }
     catch (const invalid_argument & error) {
-        fileError("JSON", path, "loadJSONFile", error.what());
+        fileError(path, "loadJSONFile", error.what());
     }
 
     return json;
