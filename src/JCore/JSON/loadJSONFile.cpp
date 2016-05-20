@@ -4,7 +4,7 @@
 
 #include "JCore/FileUtils/File.hpp"
 #include "JCore/Errors/Validators/validateNotEmpty.hpp"
-#include "JCore/Errors/FileError.hpp"
+#include "JCore/Errors/fileError.hpp"
 
 
 using std::string;
@@ -16,13 +16,16 @@ namespace JCore {
 
 JSON loadJSONFile(const string & path) {
     validateNotEmpty("path", "loadJSONFile", path);
+    JSON json;
 
     try {
-        return JSON::parse(File(path).getContent());
+        json = JSON::parse(File(path).getContent());
     }
     catch (const invalid_argument & error) {
-        throw FileError("JSON", path, "loadJSONFile", error.what());
+        fileError("JSON", path, "loadJSONFile", error.what());
     }
+
+    return json;
 }
 
 

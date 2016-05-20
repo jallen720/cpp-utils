@@ -1,7 +1,10 @@
-#include "JCore/Errors/FileError.hpp"
+#include "JCore/Errors/fileError.hpp"
+
+#include <stdexcept>
 
 
 using std::string;
+using std::runtime_error;
 
 
 namespace JCore {
@@ -28,21 +31,23 @@ static string buildFileMessage(
 }
 
 
-FileError::FileError(
+void fileError(
     const string & path,
     const string & function,
     const string & message)
-    : Error(buildFileMessage(path, function, message))
-{}
+{
+    throw runtime_error(buildFileMessage(path, function, message));
+}
 
 
-FileError::FileError(
+void fileError(
     const string & type,
     const string & path,
     const string & function,
     const string & message)
-    : Error(buildFileMessage(type, path, function, message))
-{}
+{
+    throw runtime_error(buildFileMessage(type, path, function, message));
+}
 
 
 } // namespace JCore

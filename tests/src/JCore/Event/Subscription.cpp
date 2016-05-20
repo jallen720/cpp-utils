@@ -1,7 +1,11 @@
 #include "JCore/Event/Subscription.hpp"
 
+#include <stdexcept>
+
 #include "JCore/Event/Fixtures/SubscriptionTest.hpp"
-#include "JCore/Errors/ArgErrors/NullArg.hpp"
+
+
+using std::runtime_error;
 
 
 namespace JCore {
@@ -20,7 +24,7 @@ TEST_F(SubscriptionTest, subscriptionForNullListener) {
         Subscription<ITestEventListener, int>(testEvent, nullptr);
     };
 
-    ASSERT_THROW(runTest(), NullArg);
+    ASSERT_THROW(runTest(), runtime_error);
 }
 
 

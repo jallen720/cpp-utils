@@ -3,7 +3,7 @@
 #include <fstream>
 
 #include "JCore/StringUtils/split.hpp"
-#include "JCore/Errors/FileError.hpp"
+#include "JCore/Errors/fileError.hpp"
 #include "JCore/Errors/Validators/validateNotEmpty.hpp"
 #include "JCore/Macros/JCORE_MOVABLE_PIMPL_DEFAULT_DEFS.hpp"
 #include "JCore/Macros/JCORE_COPYABLE_PIMPL_DEFS.hpp"
@@ -58,7 +58,7 @@ const string & File::getContent() const {
 
 static void validateStream(const ifstream & stream, const string & path) {
     if (!stream.is_open()) {
-        throw FileError(path, "File::Impl::Impl", "failed to open input stream");
+        fileError(path, "File::Impl::Impl", "failed to open input stream");
     }
 }
 

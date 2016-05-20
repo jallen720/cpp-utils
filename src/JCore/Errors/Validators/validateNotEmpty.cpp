@@ -1,6 +1,6 @@
 #include "JCore/Errors/Validators/validateNotEmpty.hpp"
 
-#include "JCore/Errors/ArgErrors/EmptyStringArg.hpp"
+#include "JCore/Errors/emptyStringArgError.hpp"
 #include "JCore/StringUtils/isEmpty.hpp"
 
 
@@ -12,14 +12,14 @@ namespace JCore {
 
 void validateNotEmpty(const string & parameter, const string & function, const string & arg) {
     if (arg.empty()) {
-        throw EmptyStringArg(parameter, function);
+        emptyStringArgError(parameter, function);
     }
 }
 
 
 void validateNotEmpty(const string & parameter, const string & function, const char * arg) {
     if (isEmpty(arg)) {
-        throw EmptyStringArg(parameter, function);
+        emptyStringArgError(parameter, function);
     }
 }
 

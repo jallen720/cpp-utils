@@ -2,7 +2,6 @@
 
 #include "JCore/Event/Fixtures/EventTest.hpp"
 #include "JCore/TestUtils/assertNoThrow.hpp"
-#include "JCore/Errors/ArgErrors/NullArg.hpp"
 
 
 using std::runtime_error;
@@ -23,7 +22,7 @@ TEST_F(EventTest, subscribe) {
 
 
 TEST_F(EventTest, subscribeNullListener) {
-    ASSERT_THROW(testEvent.subscribe(nullptr), NullArg);
+    ASSERT_THROW(testEvent.subscribe(nullptr), runtime_error);
 }
 
 
@@ -48,7 +47,7 @@ TEST_F(EventTest, unsubscribe) {
 
 
 TEST_F(EventTest, unsubscribeNullListener) {
-    ASSERT_THROW(testEvent.unsubscribe(nullptr), NullArg);
+    ASSERT_THROW(testEvent.unsubscribe(nullptr), runtime_error);
 }
 
 
