@@ -1,4 +1,4 @@
-#include "JCore/JSON/iterateJSONObject.hpp"
+#include "JCore/JSON/iterateJSON.hpp"
 
 #include <string>
 #include <vector>
@@ -19,7 +19,7 @@ using std::domain_error;
 namespace JCore {
 
 
-TEST(iterateJSONObjectTest, validIteratedData) {
+TEST(iterateJSONTest, validIteratedData) {
     const vector<string> expectedKeys {
         "key0",
         "key1",
@@ -31,7 +31,7 @@ TEST(iterateJSONObjectTest, validIteratedData) {
     vector<int> actualValues;
     JSON jsonObject = loadJSONFile(validResourcePath("json", "key-value-pairs.json"));
 
-    iterateJSONObject(jsonObject, [&](const string & key, const JSON & value) -> void {
+    iterateJSON(jsonObject, [&](const string & key, const JSON & value) -> void {
         actualKeys.push_back(key);
         actualValues.push_back(value.get<int>());
     });
@@ -41,12 +41,12 @@ TEST(iterateJSONObjectTest, validIteratedData) {
 }
 
 
-TEST(iterateJSONObjectTest, unalphabeticalKeysIteratedAlphabetically) {
+TEST(iterateJSONTest, unalphabeticalKeysIteratedAlphabetically) {
     const vector<string> expectedKeys { "a", "b", "c", "d", "e", "f" };
     vector<string> actualKeys;
     JSON jsonObject = loadJSONFile(validResourcePath("json", "unalphabetical-keys.json"));
 
-    iterateJSONObject(jsonObject, [&](const string & key, const JSON &) -> void {
+    iterateJSON(jsonObject, [&](const string & key, const JSON &) -> void {
         actualKeys.push_back(key);
     });
 
@@ -54,16 +54,16 @@ TEST(iterateJSONObjectTest, unalphabeticalKeysIteratedAlphabetically) {
 }
 
 
-TEST(iterateJSONObjectTest, iterateDifferentTypes) {
+TEST(iterateJSONTest, iterateDifferentTypes) {
     JSON jsonObject = loadJSONFile(validResourcePath("json", "types.json"));
     const auto blank = [&](const string &, const JSON &) -> void {};
 
     assertNoThrow([&]() -> void {
-        iterateJSONObject(jsonObject["object"], blank);
+        iterateJSON(jsonObject["object"], blank);
     });
 
-    ASSERT_THROW(iterateJSONObject(jsonObject["list"], blank), domain_error);
-    ASSERT_THROW(iterateJSONObject(jsonObject["key"], blank), domain_error);
+    ASSERT_THROW(iterateJSON(jsonObject["list"], blank), domain_error);
+    ASSERT_THROW(iterateJSON(jsonObject["key"], blank), domain_error);
 }
 
 
