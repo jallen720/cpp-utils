@@ -29,7 +29,7 @@ TEST(iterateJSONObjectTest, validIteratedData) {
     const vector<int> expectedValues { 0, 1, 2 };
     vector<string> actualKeys;
     vector<int> actualValues;
-    JSON jsonObject = loadJSONFile(validResourcePath("json", "keyValuePairs.json"));
+    JSON jsonObject = loadJSONFile(validResourcePath("json", "key-value-pairs.json"));
 
     iterateJSONObject(jsonObject, [&](const string & key, const JSON & value) -> void {
         actualKeys.push_back(key);
@@ -44,7 +44,7 @@ TEST(iterateJSONObjectTest, validIteratedData) {
 TEST(iterateJSONObjectTest, unalphabeticalKeysIteratedAlphabetically) {
     const vector<string> expectedKeys { "a", "b", "c", "d", "e", "f" };
     vector<string> actualKeys;
-    JSON jsonObject = loadJSONFile(validResourcePath("json", "unalphabeticalKeys.json"));
+    JSON jsonObject = loadJSONFile(validResourcePath("json", "unalphabetical-keys.json"));
 
     iterateJSONObject(jsonObject, [&](const string & key, const JSON &) -> void {
         actualKeys.push_back(key);
