@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <gtest/gtest.h>
 
+#include "JCore/JSON/Fixtures/iterateJSONTest.hpp"
 #include "JCore/JSON/loadJSONFile.hpp"
 #include "JCore/TestUtils/validResourcePath.hpp"
 #include "JCore/TestUtils/assertEqualElements.hpp"
@@ -19,7 +20,7 @@ using std::domain_error;
 namespace JCore {
 
 
-TEST(iterateJSONTest, validIteratedData) {
+TEST_F(iterateJSONTest, validIteratedData) {
     const vector<string> expectedKeys {
         "key0",
         "key1",
@@ -29,11 +30,10 @@ TEST(iterateJSONTest, validIteratedData) {
     const vector<int> expectedValues { 0, 1, 2 };
     vector<string> actualKeys;
     vector<int> actualValues;
-    JSON jsonObject = loadJSONFile(validResourcePath("json", "key-value-pairs.json"));
 
-    iterateJSON(jsonObject, [&](const string & key, const JSON & value) -> void {
+    iterateJSON(keyValuePairs, [&](const string & key, const int value) -> void {
         actualKeys.push_back(key);
-        actualValues.push_back(value.get<int>());
+        actualValues.push_back(value);
     });
 
     assertEqualElements(expectedKeys, actualKeys);
@@ -41,12 +41,12 @@ TEST(iterateJSONTest, validIteratedData) {
 }
 
 
-TEST(iterateJSONTest, unalphabeticalKeysIteratedAlphabetically) {
+TEST_F(iterateJSONTest, unalphabeticalKeysIteratedAlphabetically) {
     const vector<string> expectedKeys { "a", "b", "c", "d", "e", "f" };
     vector<string> actualKeys;
-    JSON jsonObject = loadJSONFile(validResourcePath("json", "unalphabetical-keys.json"));
+    JSON json = loadJSONFile(validResourcePath("json", "unalphabetical-keys.json"));
 
-    iterateJSON(jsonObject, [&](const string & key, const JSON &) -> void {
+    iterateJSON(json, [&](const string & key, const JSON &) -> void {
         actualKeys.push_back(key);
     });
 
@@ -54,16 +54,25 @@ TEST(iterateJSONTest, unalphabeticalKeysIteratedAlphabetically) {
 }
 
 
-TEST(iterateJSONTest, iterateDifferentTypes) {
-    JSON jsonObject = loadJSONFile(validResourcePath("json", "types.json"));
-    const auto blank = [&](const string &, const JSON &) -> void {};
+TEST_F(iterateJSONTest, iterateDifferentTypes) {
+    JSON json = loadJSONFile(validResourcePath("json", "types.json"));
+    const auto blank = [](const string &, const JSON &) -> void {};
 
     assertNoThrow([&]() -> void {
-        iterateJSON(jsonObject["object"], blank);
+        iterateJSON(json["object"], blank);
     });
 
-    ASSERT_THROW(iterateJSON(jsonObject["list"], blank), domain_error);
-    ASSERT_THROW(iterateJSON(jsonObject["key"], blank), domain_error);
+    ASSERT_THROW(iterateJSON(json["list"], blank), domain_error);
+    ASSERT_THROW(iterateJSON(json["key"], blank), domain_error);
+}
+
+
+TEST_F(iterateJSONTest, incorrectValueType) {
+    const auto incorrectValueTypeCB = [](const string &, const string &) -> void {};
+
+    // keyValuePairs has values of type int, so passing a callback that takes a string as the value
+    // type will fail.
+    ASSERT_THROW(iterateJSON(keyValuePairs, incorrectValueTypeCB), domain_error);
 }
 
 
