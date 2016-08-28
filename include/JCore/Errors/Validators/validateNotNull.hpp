@@ -8,8 +8,8 @@ namespace JCore {
 
 
 void validateNotNull(
-    const std::string & parameter,
-    const std::string & function,
+    const std::string & parameterName,
+    const std::string & functionName,
     const void * arg);
 
 

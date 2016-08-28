@@ -12,21 +12,21 @@ namespace JCore {
 
 static string buildFileMessage(
     const string & path,
-    const string & function,
+    const string & functionName,
     const string & message)
 {
     return "error in file at " + path +
-           " accessed by " + function +
+           " accessed by " + functionName +
            "(): " + message;
 }
 
 
 void fileError(
     const string & path,
-    const string & function,
+    const string & functionName,
     const string & message)
 {
-    throw runtime_error(buildFileMessage(path, function, message));
+    throw runtime_error(buildFileMessage(path, functionName, message));
 }
 
 

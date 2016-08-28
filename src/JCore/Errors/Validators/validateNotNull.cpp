@@ -9,9 +9,9 @@ using std::string;
 namespace JCore {
 
 
-void validateNotNull(const string & parameter, const string & function, const void * arg) {
+void validateNotNull(const string & parameterName, const string & functionName, const void * arg) {
     if (arg == nullptr) {
-        nullArgError(parameter, function);
+        nullArgError(parameterName, functionName);
     }
 }
 

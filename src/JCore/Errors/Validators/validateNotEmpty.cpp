@@ -10,16 +10,16 @@ using std::string;
 namespace JCore {
 
 
-void validateNotEmpty(const string & parameter, const string & function, const string & arg) {
+void validateNotEmpty(const string & parameterName, const string & functionName, const string & arg) {
     if (arg.empty()) {
-        emptyStringArgError(parameter, function);
+        emptyStringArgError(parameterName, functionName);
     }
 }
 
 
-void validateNotEmpty(const string & parameter, const string & function, const char * arg) {
+void validateNotEmpty(const string & parameterName, const string & functionName, const char * arg) {
     if (isEmpty(arg)) {
-        emptyStringArgError(parameter, function);
+        emptyStringArgError(parameterName, functionName);
     }
 }
 

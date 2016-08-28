@@ -8,15 +8,15 @@ namespace JCore {
 
 
 string buildArgMessage(
-    const string & parameter,
-    const string & function,
+    const string & parameterName,
+    const string & functionName,
     const string & argInfo,
     const string & argDescription)
 {
     return "\n  " +
            argDescription + " passed to \"" +
-           parameter + "\" parameter for " +
-           function + "()" +
+           parameterName + "\" parameterName for " +
+           functionName + "()" +
            argInfo;
 }
 

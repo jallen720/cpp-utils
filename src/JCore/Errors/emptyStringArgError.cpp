@@ -12,10 +12,10 @@ using std::runtime_error;
 namespace JCore {
 
 
-void emptyStringArgError(const string & parameter, const string & function) {
+void emptyStringArgError(const string & parameterName, const string & functionName) {
     throw runtime_error(buildArgMessage(
-        parameter,
-        function,
+        parameterName,
+        functionName,
         " cannot be empty",
         "string argument"));
 }

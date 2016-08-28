@@ -7,7 +7,7 @@
 namespace JCore {
 
 
-void emptyStringArgError(const std::string & parameter, const std::string & function);
+void emptyStringArgError(const std::string & parameterName, const std::string & functionName);
 
 
 } // namespace JCore
