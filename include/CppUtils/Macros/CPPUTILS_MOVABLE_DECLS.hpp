@@ -1,6 +1,6 @@
 #pragma once
 
 
-#define JCORE_MOVABLE_DECLS(OBJECT)\
+#define CPPUTILS_MOVABLE_DECLS(OBJECT)\
 OBJECT(OBJECT &&);\
 OBJECT & operator = (OBJECT &&);

@@ -5,8 +5,8 @@
 #include "CppUtils/StringUtils/split.hpp"
 #include "CppUtils/Errors/fileError.hpp"
 #include "CppUtils/Errors/Validators/validateNotEmpty.hpp"
-#include "CppUtils/Macros/JCORE_MOVABLE_PIMPL_DEFAULT_DEFS.hpp"
-#include "CppUtils/Macros/JCORE_COPYABLE_PIMPL_DEFS.hpp"
+#include "CppUtils/Macros/CPPUTILS_MOVABLE_PIMPL_DEFAULT_DEFS.hpp"
+#include "CppUtils/Macros/CPPUTILS_COPYABLE_PIMPL_DEFS.hpp"
 
 
 using std::string;
@@ -38,8 +38,8 @@ File::File(const string & path)
 File::~File() = default;
 
 
-JCORE_MOVABLE_PIMPL_DEFAULT_DEFS(File)
-JCORE_COPYABLE_PIMPL_DEFS(File)
+CPPUTILS_MOVABLE_PIMPL_DEFAULT_DEFS(File)
+CPPUTILS_COPYABLE_PIMPL_DEFS(File)
 
 
 void File::forEachLine(LineCB lineCB) const {

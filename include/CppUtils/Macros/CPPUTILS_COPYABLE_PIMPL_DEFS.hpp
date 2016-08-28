@@ -1,7 +1,7 @@
 #pragma once
 
 
-#define JCORE_COPYABLE_PIMPL_DEFS(OBJECT)\
+#define CPPUTILS_COPYABLE_PIMPL_DEFS(OBJECT)\
 OBJECT::OBJECT(const OBJECT & original)\
     : impl(new Impl(*original.impl)) {}\
 \

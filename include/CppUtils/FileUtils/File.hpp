@@ -5,8 +5,8 @@
 #include <string>
 #include <functional>
 
-#include "CppUtils/Macros/JCORE_MOVABLE_DECLS.hpp"
-#include "CppUtils/Macros/JCORE_COPYABLE_DECLS.hpp"
+#include "CppUtils/Macros/CPPUTILS_MOVABLE_DECLS.hpp"
+#include "CppUtils/Macros/CPPUTILS_COPYABLE_DECLS.hpp"
 
 
 namespace CppUtils {
@@ -19,8 +19,8 @@ private:
 public:
     explicit File(const std::string & path);
     ~File();
-    JCORE_MOVABLE_DECLS(File)
-    JCORE_COPYABLE_DECLS(File)
+    CPPUTILS_MOVABLE_DECLS(File)
+    CPPUTILS_COPYABLE_DECLS(File)
     void forEachLine(LineCB lineCB) const;
     const std::string & getContent() const;
 
