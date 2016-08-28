@@ -1,6 +1,6 @@
 # Project info
 cmake_minimum_required(VERSION "3.2.2" FATAL_ERROR)
-project("JCore")
+project("CppUtils")
 set(CMAKE_PATH "$ENV{CMAKE_PATH}")
 
 # Utilities
