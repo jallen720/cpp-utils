@@ -9,8 +9,8 @@
 namespace CppUtils {
 
 
-template<typename JSONDataCB>
-void iterateJSON(const JSON & json, const JSONDataCB & jsonDataCB);
+template<typename Callback>
+void iterateJSON(const JSON & json, const Callback & callback);
 
 
 } // namespace CppUtils

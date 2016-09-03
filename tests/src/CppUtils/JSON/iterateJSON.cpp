@@ -14,6 +14,7 @@
 
 using std::string;
 using std::vector;
+using std::runtime_error;
 using std::domain_error;
 
 
@@ -62,17 +63,17 @@ TEST_F(iterateJSONTest, iterateDifferentTypes) {
         iterateJSON(json["object"], blank);
     });
 
-    ASSERT_THROW(iterateJSON(json["list"], blank), domain_error);
-    ASSERT_THROW(iterateJSON(json["key"], blank), domain_error);
+    ASSERT_THROW(iterateJSON(json["list"], blank), runtime_error);
+    ASSERT_THROW(iterateJSON(json["key"], blank), runtime_error);
 }
 
 
 TEST_F(iterateJSONTest, incorrectValueType) {
-    const auto incorrectValueTypeCB = [](const string &, const string &) -> void {};
+    const auto callback = [](const string &, const string &) -> void {};
 
     // keyValuePairs has values of type int, so passing a callback that takes a string as the value
     // type will fail.
-    ASSERT_THROW(iterateJSON(keyValuePairs, incorrectValueTypeCB), domain_error);
+    ASSERT_THROW(iterateJSON(keyValuePairs, callback), domain_error);
 }
 
 
