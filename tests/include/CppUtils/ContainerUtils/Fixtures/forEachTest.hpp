@@ -11,9 +11,9 @@
 namespace CppUtils {
 
 
-class iterateJSONTest : public testing::Test {
+class forEachTest : public testing::Test {
 protected:
-    JSON keyValuePairs = readJSONFile(validResourcePath("json", "key-value-pairs.json"));
+    const JSON keyValuePairs = readJSONFile(validResourcePath("json", "key-value-pairs.json"));
 };
 
 
