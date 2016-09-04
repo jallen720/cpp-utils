@@ -1,4 +1,4 @@
-#include "CppUtils/JSON/loadJSONFile.hpp"
+#include "CppUtils/JSON/readJSONFile.hpp"
 
 #include <stdexcept>
 
@@ -14,15 +14,15 @@ using std::invalid_argument;
 namespace CppUtils {
 
 
-JSON loadJSONFile(const string & path) {
-    validateNotEmpty("path", "loadJSONFile", path);
+JSON readJSONFile(const string & path) {
+    validateNotEmpty("path", "readJSONFile", path);
     JSON json;
 
     try {
         json = JSON::parse(readFile(path));
     }
     catch (const invalid_argument & error) {
-        fileError(path, "loadJSONFile", error.what());
+        fileError(path, "readJSONFile", error.what());
     }
 
     return json;

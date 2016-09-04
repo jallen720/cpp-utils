@@ -6,7 +6,7 @@
 #include <gtest/gtest.h>
 
 #include "CppUtils/JSON/Fixtures/iterateJSONTest.hpp"
-#include "CppUtils/JSON/loadJSONFile.hpp"
+#include "CppUtils/JSON/readJSONFile.hpp"
 #include "CppUtils/TestUtils/validResourcePath.hpp"
 #include "CppUtils/TestUtils/assertEqualElements.hpp"
 #include "CppUtils/TestUtils/assertNoThrow.hpp"
@@ -45,7 +45,7 @@ TEST_F(iterateJSONTest, validIteratedData) {
 TEST_F(iterateJSONTest, unalphabeticalKeysIteratedAlphabetically) {
     const vector<string> expectedKeys { "a", "b", "c", "d", "e", "f" };
     vector<string> actualKeys;
-    JSON json = loadJSONFile(validResourcePath("json", "unalphabetical-keys.json"));
+    JSON json = readJSONFile(validResourcePath("json", "unalphabetical-keys.json"));
 
     iterateJSON(json, [&](const string & key, const JSON &) -> void {
         actualKeys.push_back(key);
@@ -56,7 +56,7 @@ TEST_F(iterateJSONTest, unalphabeticalKeysIteratedAlphabetically) {
 
 
 TEST_F(iterateJSONTest, iterateDifferentTypes) {
-    JSON json = loadJSONFile(validResourcePath("json", "types.json"));
+    JSON json = readJSONFile(validResourcePath("json", "types.json"));
     const auto blank = [](const string &, const JSON &) -> void {};
 
     assertNoThrow([&]() -> void {

@@ -9,7 +9,7 @@
 namespace CppUtils {
 
 
-JSON loadJSONFile(const std::string & path);
+JSON readJSONFile(const std::string & path);
 
 
 } // namespace CppUtils
