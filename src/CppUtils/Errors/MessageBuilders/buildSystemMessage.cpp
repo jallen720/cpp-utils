@@ -4,10 +4,12 @@
 using std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-string buildSystemMessage(const string & systemName, const string & message) {
+string buildSystemMessage(const string & systemName, const string & message)
+{
     return systemName + " ERROR: " + message;
 }
 

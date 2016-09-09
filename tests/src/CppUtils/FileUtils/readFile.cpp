@@ -13,27 +13,33 @@ using std::vector;
 using std::runtime_error;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(readFileTest, validCreation) {
-    assertNoThrow([]() -> void {
+TEST(readFileTest, validCreation)
+{
+    assertNoThrow([]() -> void
+    {
         readFile(validResourcePath("misc", "test.txt"));
     });
 }
 
 
-TEST(readFileTest, invalidFile) {
+TEST(readFileTest, invalidFile)
+{
     ASSERT_THROW(readFile("does_not_exist"), runtime_error);
 }
 
 
-TEST(readFileTest, emptyPath) {
+TEST(readFileTest, emptyPath)
+{
     ASSERT_THROW(readFile(""), runtime_error);
 }
 
 
-TEST(readFileTest, contentMatch) {
+TEST(readFileTest, contentMatch)
+{
     const string expectedContent =
         "line1\n"
         "line2\n"

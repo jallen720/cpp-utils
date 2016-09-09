@@ -7,16 +7,19 @@
 using std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(areEqualTest, stringAndCString) {
+TEST(areEqualTest, stringAndCString)
+{
     ASSERT_TRUE(areEqual(string("test"), "test"));
     ASSERT_FALSE(areEqual(string("test1"), "test"));
 }
 
 
-TEST(areEqualTest, cStrings) {
+TEST(areEqualTest, cStrings)
+{
     ASSERT_TRUE(areEqual("test", "test"));
     ASSERT_FALSE(areEqual("test1", "test"));
 }

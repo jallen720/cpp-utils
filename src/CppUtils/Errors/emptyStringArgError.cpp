@@ -9,10 +9,12 @@ using std::string;
 using std::runtime_error;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-void emptyStringArgError(const string & parameterName, const string & functionName) {
+void emptyStringArgError(const string & parameterName, const string & functionName)
+{
     throw runtime_error(buildArgMessage(
         parameterName,
         functionName,

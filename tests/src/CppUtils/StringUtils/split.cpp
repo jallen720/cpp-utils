@@ -7,23 +7,26 @@ using std::string;
 using std::vector;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(splitTest, successfulSplit) {
+TEST(splitTest, successfulSplit)
+{
     assertEqualElements(
         { "this", "is", "a", "sentence!" },
-        split("this is a sentence!", ' ')
-    );
+        split("this is a sentence!", ' '));
 }
 
 
-TEST(splitTest, emptyString) {
+TEST(splitTest, emptyString)
+{
     assertEqualElements(vector<string>(), split("", ' '));
 }
 
 
-TEST(splitTest, emptyStringsAroundDelimiter) {
+TEST(splitTest, emptyStringsAroundDelimiter)
+{
     assertEqualElements({ "", "src1" } , split("=src1" , '='));
     assertEqualElements({ "test" }     , split("test=" , '='));
     assertEqualElements({ "" }         , split("="     , '='));

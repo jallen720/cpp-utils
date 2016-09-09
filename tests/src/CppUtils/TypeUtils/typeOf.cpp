@@ -3,10 +3,12 @@
 #include <gtest/gtest.h>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(typeOfTest, equalTypes) {
+TEST(typeOfTest, equalTypes)
+{
     ASSERT_EQ(typeOf<int>()   , typeOf<int>());
     ASSERT_EQ(typeOf<int&>()  , typeOf<int>());
     ASSERT_NE(typeOf<float>() , typeOf<int>());
@@ -14,7 +16,8 @@ TEST(typeOfTest, equalTypes) {
 }
 
 
-TEST(typeOfTest, typesWithCVQualifiers) {
+TEST(typeOfTest, typesWithCVQualifiers)
+{
     ASSERT_EQ(typeOf<const int>()        , typeOf<int>());
     ASSERT_EQ(typeOf<const int&>()       , typeOf<int>());
     ASSERT_EQ(typeOf<int* const>()       , typeOf<int*>());

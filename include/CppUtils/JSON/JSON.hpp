@@ -4,7 +4,8 @@
 #include "CppUtils/JSON/private/json.hpp"
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 using JSON = nlohmann::json;

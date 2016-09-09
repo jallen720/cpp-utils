@@ -1,11 +1,13 @@
 #include <typeinfo>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 template<typename T>
-Type typeOf() {
+Type typeOf()
+{
     return Type(typeid(T));
 }
 

@@ -4,7 +4,8 @@
 #include <string>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 void validateNotNull(

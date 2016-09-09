@@ -15,10 +15,12 @@ using std::runtime_error;
 using std::domain_error;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST_F(forEachTest, forEachVector) {
+TEST_F(forEachTest, forEachVector)
+{
     int result = 0;
     const vector<int> values { 1, 2, 3, 4 };
     const auto valueHandler = [&](const int value) -> void { result += value; };
@@ -30,22 +32,26 @@ TEST_F(forEachTest, forEachVector) {
 }
 
 
-TEST_F(forEachTest, forEachEmptyVector) {
+TEST_F(forEachTest, forEachEmptyVector)
+{
     // Function passed to forEach() should never be called if vector is empty.
     forEach(vector<int> {}, [](const int /*value*/) -> void { FAIL(); });
 }
 
 
-TEST_F(forEachTest, forEachMap) {
+TEST_F(forEachTest, forEachMap)
+{
     vector<string> result;
 
-    const map<string, const int> values {
+    const map<string, const int> values
+    {
         { "first"  , 3 },
         { "second" , 1 },
         { "third"  , 2 },
     };
 
-    forEach(values, [&](const string & key, const int value) -> void {
+    forEach(values, [&](const string & key, const int value) -> void
+    {
         result.push_back(key + toString(value));
     });
 
@@ -59,14 +65,17 @@ TEST_F(forEachTest, forEachMap) {
 }
 
 
-TEST_F(forEachTest, forEachEmptyMap) {
+TEST_F(forEachTest, forEachEmptyMap)
+{
     // Function passed to forEach() should never be called if map is empty.
     forEach(map<string, int> {}, [](const string & /*key*/, const int /*value*/) -> void { FAIL(); });
 }
 
 
-TEST_F(forEachTest, forEachJSON) {
-    const vector<string> expectedKeys {
+TEST_F(forEachTest, forEachJSON)
+{
+    const vector<string> expectedKeys
+    {
         "key0",
         "key1",
         "key2",
@@ -76,7 +85,8 @@ TEST_F(forEachTest, forEachJSON) {
     vector<string> actualKeys;
     vector<int> actualValues;
 
-    forEach(keyValuePairs, [&](const string & key, const int value) -> void {
+    forEach(keyValuePairs, [&](const string & key, const int value) -> void
+    {
         actualKeys.push_back(key);
         actualValues.push_back(value);
     });
@@ -86,12 +96,14 @@ TEST_F(forEachTest, forEachJSON) {
 }
 
 
-TEST_F(forEachTest, unalphabeticalKeysIteratedAlphabetically) {
+TEST_F(forEachTest, unalphabeticalKeysIteratedAlphabetically)
+{
     const vector<string> expectedKeys { "a", "b", "c", "d", "e", "f" };
     vector<string> actualKeys;
     const JSON json = readJSONFile(validResourcePath("json", "unalphabetical-keys.json"));
 
-    forEach(json, [&](const string & key, const JSON &) -> void {
+    forEach(json, [&](const string & key, const JSON &) -> void
+    {
         actualKeys.push_back(key);
     });
 
@@ -99,20 +111,19 @@ TEST_F(forEachTest, unalphabeticalKeysIteratedAlphabetically) {
 }
 
 
-TEST_F(forEachTest, differentJSONTypes) {
+TEST_F(forEachTest, differentJSONTypes)
+{
     const JSON json = readJSONFile(validResourcePath("json", "types.json"));
     const auto callback = [](const string &, const JSON &) -> void {};
 
-    assertNoThrow([&]() -> void {
-        forEach(json["object"], callback);
-    });
-
+    assertNoThrow([&]() -> void { forEach(json["object"], callback); });
     ASSERT_THROW(forEach(json["list"], callback), runtime_error);
     ASSERT_THROW(forEach(json["key"], callback), runtime_error);
 }
 
 
-TEST_F(forEachTest, incorrectValueType) {
+TEST_F(forEachTest, incorrectValueType)
+{
     const auto callback = [](const string &, const string &) -> void {};
 
     // keyValuePairs has values of type int, so passing a callback that takes a string as the value

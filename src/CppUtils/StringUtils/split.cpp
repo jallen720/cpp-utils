@@ -9,15 +9,18 @@ using std::getline;
 using String = std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-vector<String> split(const String & string, const char delimiter) {
+vector<String> split(const String & string, const char delimiter)
+{
     vector<String> elements;
     stringstream stream(string);
     String element;
 
-    while (getline(stream, element, delimiter)) {
+    while (getline(stream, element, delimiter))
+    {
         elements.push_back(element);
     }
 

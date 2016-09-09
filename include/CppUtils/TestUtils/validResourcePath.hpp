@@ -4,7 +4,8 @@
 #include <string>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 std::string validResourcePath(const std::string & subDirectory, const std::string & name);

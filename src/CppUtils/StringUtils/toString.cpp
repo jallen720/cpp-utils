@@ -4,11 +4,13 @@
 using std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 template<>
-string toString(const bool isTrue) {
+string toString(const bool isTrue)
+{
     return isTrue ? "true" : "false";
 }
 

@@ -4,7 +4,8 @@
 #include "CppUtils/TypeUtils/Type.hpp"
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 template<typename T>

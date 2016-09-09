@@ -8,10 +8,12 @@
 #include "CppUtils/TestUtils/validResourcePath.hpp"
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-class forEachTest : public testing::Test {
+class forEachTest : public testing::Test
+{
 protected:
     const JSON keyValuePairs = readJSONFile(validResourcePath("json", "key-value-pairs.json"));
 };

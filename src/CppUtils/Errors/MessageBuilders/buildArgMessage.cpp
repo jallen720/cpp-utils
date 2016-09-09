@@ -4,7 +4,8 @@
 using std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 string buildArgMessage(

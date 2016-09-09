@@ -5,10 +5,12 @@
 #include "CppUtils/Errors/Validators/validateNotNull.hpp"
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-bool isEmpty(const char * cString) {
+bool isEmpty(const char * cString)
+{
     validateNotNull("cString", "isEmpty", cString);
     return strcmp(cString, "") == 0;
 }

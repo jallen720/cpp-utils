@@ -1,7 +1,8 @@
 #pragma once
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 bool isEmpty(const char * cString);

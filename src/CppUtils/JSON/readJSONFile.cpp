@@ -11,17 +11,21 @@ using std::string;
 using std::invalid_argument;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-JSON readJSONFile(const string & path) {
+JSON readJSONFile(const string & path)
+{
     validateNotEmpty("path", "readJSONFile", path);
     JSON json;
 
-    try {
+    try
+    {
         json = JSON::parse(readFile(path));
     }
-    catch (const invalid_argument & error) {
+    catch (const invalid_argument & error)
+    {
         fileError(path, "readJSONFile", error.what());
     }
 

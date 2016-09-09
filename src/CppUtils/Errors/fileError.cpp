@@ -7,7 +7,8 @@ using std::string;
 using std::runtime_error;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 static string buildFileMessage(
@@ -15,9 +16,7 @@ static string buildFileMessage(
     const string & functionName,
     const string & message)
 {
-    return "error in file at " + path +
-           " accessed by " + functionName +
-           "(): " + message;
+    return "error in file at " + path + " accessed by " + functionName + "(): " + message;
 }
 
 

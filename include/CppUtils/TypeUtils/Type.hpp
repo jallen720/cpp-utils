@@ -4,7 +4,8 @@
 #include <typeindex>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 using Type = std::type_index;

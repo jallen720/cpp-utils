@@ -7,15 +7,18 @@
 using std::vector;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-int accumulator(const int accumulation, const int number) {
+int accumulator(const int accumulation, const int number)
+{
     return accumulation + number;
 }
 
 
-TEST(accumulateTest, test) {
+TEST(accumulateTest, test)
+{
     const vector<int> numbers { 1, 2, 3 };
     const vector<int> empty;
 

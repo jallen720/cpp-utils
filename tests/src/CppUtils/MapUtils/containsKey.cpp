@@ -8,11 +8,14 @@ using std::map;
 using std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(containsKeyTest, validMap) {
-    const map<string, const string> validMap {
+TEST(containsKeyTest, validMap)
+{
+    const map<string, const string> validMap
+    {
         { "key0" , "value0" },
         { "key1" , "value1" },
         { "key2" , "value2" },
@@ -26,7 +29,8 @@ TEST(containsKeyTest, validMap) {
 }
 
 
-TEST(containsKeyTest, emptyMap) {
+TEST(containsKeyTest, emptyMap)
+{
     const map<string, const string> emptyMap;
 
     ASSERT_FALSE(containsKey(emptyMap, string("key0")));

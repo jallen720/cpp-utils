@@ -4,7 +4,8 @@
 #include <string>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 std::string directify(const std::string & directory);

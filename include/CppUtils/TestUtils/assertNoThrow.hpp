@@ -4,7 +4,8 @@
 #include <functional>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 void assertNoThrow(const std::function<void()> & block);

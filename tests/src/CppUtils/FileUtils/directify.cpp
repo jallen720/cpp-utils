@@ -5,15 +5,18 @@
 #include "CppUtils/StringUtils/areEqual.hpp"
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(directifyTest, validDirectory) {
+TEST(directifyTest, validDirectory)
+{
     ASSERT_TRUE(areEqual(directify("directory/"), "directory/"));
 }
 
 
-TEST(directifyTest, invalidDirectory) {
+TEST(directifyTest, invalidDirectory)
+{
     ASSERT_TRUE(areEqual(directify("directory"), "directory/"));
 }
 

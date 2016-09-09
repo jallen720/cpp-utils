@@ -1,7 +1,8 @@
 #pragma once
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 template<typename T, typename Container, typename Accumulator>

@@ -2,7 +2,8 @@
 #include <gtest/gtest.h>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 template<typename T>

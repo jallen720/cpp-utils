@@ -10,11 +10,14 @@ using std::map;
 using std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(getValuesTest, validMap) {
-    const map<string, const int> validMap {
+TEST(getValuesTest, validMap)
+{
+    const map<string, const int> validMap
+    {
         { "key0" , 0 },
         { "key1" , 1 },
         { "key2" , 2 },
@@ -24,7 +27,8 @@ TEST(getValuesTest, validMap) {
 }
 
 
-TEST(getValuesTest, emptyMap) {
+TEST(getValuesTest, emptyMap)
+{
     const map<string, const int> emptyMap;
     assertEqualElements({}, getValues(emptyMap));
 }

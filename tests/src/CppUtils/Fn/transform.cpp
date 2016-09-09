@@ -12,11 +12,14 @@ using std::pair;
 using std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(transformTest, transformVector) {
-    const vector<string> strings {
+TEST(transformTest, transformVector)
+{
+    const vector<string> strings
+    {
         "string0",
         "string1",
         "string2",
@@ -28,14 +31,17 @@ TEST(transformTest, transformVector) {
             "1string1!",
             "2string2!",
         },
-        transform<string>(strings, [](const string & element) -> string {
+        transform<string>(strings, [](const string & element) -> string
+        {
             return element.back() + element + "!";
         }));
 }
 
 
-TEST(transformTest, transformMap) {
-    const map<int, int> mappedNumbers {
+TEST(transformTest, transformMap)
+{
+    const map<int, int> mappedNumbers
+    {
         { 1 , 0 },
         { 2 , 3 },
         { 6 , 5 },
@@ -43,7 +49,8 @@ TEST(transformTest, transformMap) {
 
     assertEqualElements(
         { 1, 5, 11 },
-        transform<int>(mappedNumbers, [](const pair<int, int> & numbers) -> int {
+        transform<int>(mappedNumbers, [](const pair<int, int> & numbers) -> int
+        {
             return numbers.first + numbers.second;
         }));
 }

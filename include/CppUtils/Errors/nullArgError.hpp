@@ -4,7 +4,8 @@
 #include <string>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 void nullArgError(const std::string & parameterName, const std::string & functionName);

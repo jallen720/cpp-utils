@@ -4,10 +4,12 @@
 using std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-string directify(const string & directory) {
+string directify(const string & directory)
+{
     return directory.back() == '/'
            ? directory
            : directory + '/';

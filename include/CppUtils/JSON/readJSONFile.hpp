@@ -6,7 +6,8 @@
 #include "CppUtils/JSON/JSON.hpp"
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 JSON readJSONFile(const std::string & path);

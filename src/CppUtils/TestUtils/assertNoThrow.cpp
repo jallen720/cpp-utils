@@ -10,18 +10,23 @@ using std::exception;
 using std::function;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-void assertNoThrow(const function<void()> & block) {
-    try {
+void assertNoThrow(const function<void()> & block)
+{
+    try
+    {
         block();
     }
-    catch (const exception & error) {
+    catch (const exception & error)
+    {
         cerr << "std::exception thrown in test:\n  " << error.what() << "\n";
         FAIL();
     }
-    catch (...) {
+    catch (...)
+    {
         cerr << "Unknown exception thrown in test!\n";
         FAIL();
     }

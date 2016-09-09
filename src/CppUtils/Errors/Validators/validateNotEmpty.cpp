@@ -7,18 +7,23 @@
 using std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-void validateNotEmpty(const string & parameterName, const string & functionName, const string & arg) {
-    if (arg.empty()) {
+void validateNotEmpty(const string & parameterName, const string & functionName, const string & arg)
+{
+    if (arg.empty())
+    {
         emptyStringArgError(parameterName, functionName);
     }
 }
 
 
-void validateNotEmpty(const string & parameterName, const string & functionName, const char * arg) {
-    if (isEmpty(arg)) {
+void validateNotEmpty(const string & parameterName, const string & functionName, const char * arg)
+{
+    if (isEmpty(arg))
+    {
         emptyStringArgError(parameterName, functionName);
     }
 }

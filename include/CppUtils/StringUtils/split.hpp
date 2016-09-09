@@ -5,7 +5,8 @@
 #include <string>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 std::vector<std::string> split(const std::string & string, const char delimiter);

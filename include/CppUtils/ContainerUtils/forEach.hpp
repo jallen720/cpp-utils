@@ -7,7 +7,8 @@
 #include "CppUtils/JSON/JSON.hpp"
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 template<typename T, typename Callback>

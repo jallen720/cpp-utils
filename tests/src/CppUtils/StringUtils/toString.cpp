@@ -3,10 +3,12 @@
 #include <gtest/gtest.h>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(toStringTest, validStrings) {
+TEST(toStringTest, validStrings)
+{
     ASSERT_EQ(toString(1)     , "1");
     ASSERT_EQ(toString(1l)    , "1");
     ASSERT_EQ(toString(1ll)   , "1");

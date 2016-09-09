@@ -8,10 +8,12 @@
 using std::vector;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(removeTest, validVectorRemoveElement) {
+TEST(removeTest, validVectorRemoveElement)
+{
     vector<int> validVector { 1, 2, 1, 3, 4, 3 };
 
     remove(validVector, 1);
@@ -25,7 +27,8 @@ TEST(removeTest, validVectorRemoveElement) {
 }
 
 
-TEST(removeTest, emptyVectorRemoveElement) {
+TEST(removeTest, emptyVectorRemoveElement)
+{
     vector<int> emptyVector;
 
     remove(emptyVector, 1);
@@ -33,7 +36,8 @@ TEST(removeTest, emptyVectorRemoveElement) {
 }
 
 
-TEST(removeTest, validVectorRemovePredicate) {
+TEST(removeTest, validVectorRemovePredicate)
+{
     vector<int> validVector { 1, 2, 3, 4 };
 
     remove(validVector, [](const int element) -> bool { return element < 3; });
@@ -47,7 +51,8 @@ TEST(removeTest, validVectorRemovePredicate) {
 }
 
 
-TEST(removeTest, emptyVectorRemovePredicate) {
+TEST(removeTest, emptyVectorRemovePredicate)
+{
     vector<int> emptyVector;
 
     remove(emptyVector, [](const int element) -> bool { return element > 0; });

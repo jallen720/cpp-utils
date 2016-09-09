@@ -6,11 +6,14 @@
 using std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-void validateNotNull(const string & parameterName, const string & functionName, const void * arg) {
-    if (arg == nullptr) {
+void validateNotNull(const string & parameterName, const string & functionName, const void * arg)
+{
+    if (arg == nullptr)
+    {
         nullArgError(parameterName, functionName);
     }
 }

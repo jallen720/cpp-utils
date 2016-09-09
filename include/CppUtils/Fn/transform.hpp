@@ -4,7 +4,8 @@
 #include <vector>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 template<typename T, typename Container, typename Function>

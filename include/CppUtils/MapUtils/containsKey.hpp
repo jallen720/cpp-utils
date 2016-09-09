@@ -4,7 +4,8 @@
 #include <map>
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
 template<typename Key, typename Value>

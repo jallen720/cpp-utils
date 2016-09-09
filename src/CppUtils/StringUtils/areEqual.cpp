@@ -6,15 +6,18 @@
 using String = std::string;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-bool areEqual(const String & string, const char * cString) {
+bool areEqual(const String & string, const char * cString)
+{
     return strcmp(string.c_str(), cString) == 0;
 }
 
 
-bool areEqual(const char * cStringA, const char * cStringB) {
+bool areEqual(const char * cStringA, const char * cStringB)
+{
     return strcmp(cStringA, cStringB) == 0;
 }
 

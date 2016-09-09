@@ -6,10 +6,12 @@
 using std::vector;
 
 
-namespace CppUtils {
+namespace CppUtils
+{
 
 
-TEST(containsTest, validVectorContainsElement) {
+TEST(containsTest, validVectorContainsElement)
+{
     const vector<int> validVector { 1, 2, 3, 4 };
 
     ASSERT_TRUE(contains(validVector, 1));
@@ -17,14 +19,16 @@ TEST(containsTest, validVectorContainsElement) {
 }
 
 
-TEST(containsTest, emptyVectorContainsElement) {
+TEST(containsTest, emptyVectorContainsElement)
+{
     const vector<int> emptyVector;
 
     ASSERT_FALSE(contains(emptyVector, 1));
 }
 
 
-TEST(containsTest, validVectorContainsPredicate) {
+TEST(containsTest, validVectorContainsPredicate)
+{
     const vector<int> validVector { 1, 2, 3, 4 };
 
     ASSERT_TRUE(contains(validVector, [](const int element) -> bool { return element < 3; }));
@@ -34,7 +38,8 @@ TEST(containsTest, validVectorContainsPredicate) {
 }
 
 
-TEST(containsTest, emptyVectorContainsPredicate) {
+TEST(containsTest, emptyVectorContainsPredicate)
+{
     const vector<int> emptyVector;
 
     ASSERT_FALSE(contains(emptyVector, [](const int element) -> bool { return element >= 1; }));
