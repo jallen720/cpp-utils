@@ -13,9 +13,9 @@ namespace CppUtils {
 
 TEST(containsKeyTest, validMap) {
     const map<string, const string> validMap {
-        { "key0", "value0" },
-        { "key1", "value1" },
-        { "key2", "value2" },
+        { "key0" , "value0" },
+        { "key1" , "value1" },
+        { "key2" , "value2" },
     };
 
     ASSERT_TRUE(containsKey(validMap, string("key0")));

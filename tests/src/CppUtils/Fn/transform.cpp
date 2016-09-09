@@ -36,9 +36,9 @@ TEST(transformTest, transformVector) {
 
 TEST(transformTest, transformMap) {
     const map<int, int> mappedNumbers {
-        { 1, 0 },
-        { 2, 3 },
-        { 6, 5 },
+        { 1 , 0 },
+        { 2 , 3 },
+        { 6 , 5 },
     };
 
     assertEqualElements(

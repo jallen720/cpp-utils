@@ -69,7 +69,7 @@ TEST_F(forEachTest, forEachJSON) {
     const vector<string> expectedKeys {
         "key0",
         "key1",
-        "key2"
+        "key2",
     };
 
     const vector<int> expectedValues { 0, 1, 2 };

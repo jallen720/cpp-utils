@@ -9,7 +9,6 @@ namespace CppUtils {
 TEST(typeOfTest, equalTypes) {
     ASSERT_EQ(typeOf<int>()   , typeOf<int>());
     ASSERT_EQ(typeOf<int&>()  , typeOf<int>());
-
     ASSERT_NE(typeOf<float>() , typeOf<int>());
     ASSERT_NE(typeOf<int*>()  , typeOf<int>());
 }
