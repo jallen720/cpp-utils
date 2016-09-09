@@ -7,11 +7,8 @@
 namespace CppUtils {
 
 
-template<typename T, typename _>
-bool containsKey(const std::map<const T, _> & map, const T & key);
-
-template<typename T, typename _>
-bool containsKey(const std::map<T, _> & map, const T & key);
+template<typename Key, typename Value>
+bool containsKey(const std::map<Key, Value> & map, const Key & key);
 
 
 } // namespace CppUtils
