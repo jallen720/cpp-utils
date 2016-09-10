@@ -6,7 +6,7 @@ namespace CppUtils
 
 
 template<typename T>
-Type typeOf()
+Type type_of()
 {
     return Type(typeid(T));
 }

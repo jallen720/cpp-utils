@@ -12,7 +12,7 @@ namespace CppUtils
 
 using JSON = nlohmann::json;
 
-JSON readJSONFile(const std::string & path);
+JSON read_json_file(const std::string & path);
 
 
 } // namespace CppUtils

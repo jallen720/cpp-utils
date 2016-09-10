@@ -11,29 +11,29 @@ namespace CppUtils
 {
 
 
-void validateNotEmpty(const string & parameterName, const string & functionName, const string & arg)
+void validate_not_empty(const string & parameter_name, const string & function_name, const string & arg)
 {
     if (arg.empty())
     {
-        emptyStringArgError(parameterName, functionName);
+        empty_string_arg_error(parameter_name, function_name);
     }
 }
 
 
-void validateNotEmpty(const string & parameterName, const string & functionName, const char * arg)
+void validate_not_empty(const string & parameter_name, const string & function_name, const char * arg)
 {
-    if (isEmpty(arg))
+    if (is_empty(arg))
     {
-        emptyStringArgError(parameterName, functionName);
+        empty_string_arg_error(parameter_name, function_name);
     }
 }
 
 
-void validateNotNull(const string & parameterName, const string & functionName, const void * arg)
+void validate_not_null(const string & parameter_name, const string & function_name, const void * arg)
 {
     if (arg == nullptr)
     {
-        nullArgError(parameterName, functionName);
+        null_arg_error(parameter_name, function_name);
     }
 }
 

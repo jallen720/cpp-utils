@@ -19,39 +19,39 @@ namespace CppUtils
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// areEqual() Tests
+// are_equal() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(areEqualTest, stringAndCString)
+TEST(are_equal_Test, string_and_c_string)
 {
-    ASSERT_TRUE(areEqual(string("test"), "test"));
-    ASSERT_FALSE(areEqual(string("test1"), "test"));
+    ASSERT_TRUE(are_equal(string("test"), "test"));
+    ASSERT_FALSE(are_equal(string("test1"), "test"));
 }
 
 
-TEST(areEqualTest, cStrings)
+TEST(are_equal_Test, c_strings)
 {
-    ASSERT_TRUE(areEqual("test", "test"));
-    ASSERT_FALSE(areEqual("test1", "test"));
+    ASSERT_TRUE(are_equal("test", "test"));
+    ASSERT_FALSE(are_equal("test1", "test"));
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// isEmpty() Tests
+// is_empty() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(isEmptyTest, validStrings)
+TEST(is_empty_Test, valid_strings)
 {
-    ASSERT_TRUE(isEmpty(""));
-    ASSERT_TRUE(isEmpty("\0"));
-    ASSERT_FALSE(isEmpty("not empty"));
+    ASSERT_TRUE(is_empty(""));
+    ASSERT_TRUE(is_empty("\0"));
+    ASSERT_FALSE(is_empty("not empty"));
 }
 
 
-TEST(isEmptyTest, nullString)
+TEST(is_empty_Test, null_string)
 {
-    ASSERT_THROW(isEmpty(nullptr), runtime_error);
+    ASSERT_THROW(is_empty(nullptr), runtime_error);
 }
 
 
@@ -60,46 +60,46 @@ TEST(isEmptyTest, nullString)
 // split() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(splitTest, successfulSplit)
+TEST(split_Test, successful_split)
 {
-    assertEqualElements(
+    assert_equal_elements(
         { "this", "is", "a", "sentence!" },
         split("this is a sentence!", ' '));
 }
 
 
-TEST(splitTest, emptyString)
+TEST(split_Test, empty_string)
 {
-    assertEqualElements(vector<string>(), split("", ' '));
+    assert_equal_elements(vector<string>(), split("", ' '));
 }
 
 
-TEST(splitTest, emptyStringsAroundDelimiter)
+TEST(split_Test, empty_strings_around_delimiter)
 {
-    assertEqualElements({ "", "src1" } , split("=src1" , '='));
-    assertEqualElements({ "test" }     , split("test=" , '='));
-    assertEqualElements({ "" }         , split("="     , '='));
+    assert_equal_elements({ "", "src1" } , split("=src1" , '='));
+    assert_equal_elements({ "test" }     , split("test=" , '='));
+    assert_equal_elements({ "" }         , split("="     , '='));
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// toString() Tests
+// to_string() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(toStringTest, validStrings)
+TEST(to_string_Test, valid_strings)
 {
-    ASSERT_EQ(toString(1)     , "1");
-    ASSERT_EQ(toString(1l)    , "1");
-    ASSERT_EQ(toString(1ll)   , "1");
-    ASSERT_EQ(toString(1u)    , "1");
-    ASSERT_EQ(toString(1ul)   , "1");
-    ASSERT_EQ(toString(1ull)  , "1");
-    ASSERT_EQ(toString(1.0f)  , "1.000000");
-    ASSERT_EQ(toString(1.0)   , "1.000000");
-    ASSERT_EQ(toString(1.0l)  , "1.000000");
-    ASSERT_EQ(toString(true)  , "true");
-    ASSERT_EQ(toString(false) , "false");
+    ASSERT_EQ(to_string(1)     , "1");
+    ASSERT_EQ(to_string(1l)    , "1");
+    ASSERT_EQ(to_string(1ll)   , "1");
+    ASSERT_EQ(to_string(1u)    , "1");
+    ASSERT_EQ(to_string(1ul)   , "1");
+    ASSERT_EQ(to_string(1ull)  , "1");
+    ASSERT_EQ(to_string(1.0f)  , "1.000000");
+    ASSERT_EQ(to_string(1.0)   , "1.000000");
+    ASSERT_EQ(to_string(1.0l)  , "1.000000");
+    ASSERT_EQ(to_string(true)  , "true");
+    ASSERT_EQ(to_string(false) , "false");
 }
 
 

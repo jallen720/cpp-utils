@@ -29,7 +29,7 @@ static int accumulator(const int accumulation, const int number)
 }
 
 
-TEST(accumulateTest, test)
+TEST(accumulate_Test, test)
 {
     const vector<int> numbers { 1, 2, 3 };
     const vector<int> empty;
@@ -44,7 +44,7 @@ TEST(accumulateTest, test)
 // transform() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(transformTest, transformVector)
+TEST(transform_Test, transform_vector)
 {
     const vector<string> strings
     {
@@ -53,7 +53,7 @@ TEST(transformTest, transformVector)
         "string2",
     };
 
-    assertEqualElements(
+    assert_equal_elements(
         {
             "0string0!",
             "1string1!",
@@ -66,18 +66,18 @@ TEST(transformTest, transformVector)
 }
 
 
-TEST(transformTest, transformMap)
+TEST(transform_Test, transform_map)
 {
-    const map<int, int> mappedNumbers
+    const map<int, int> mapped_numbers
     {
         { 1 , 0 },
         { 2 , 3 },
         { 6 , 5 },
     };
 
-    assertEqualElements(
+    assert_equal_elements(
         { 1, 5, 11 },
-        transform<int>(mappedNumbers, [](const pair<int, int> & numbers) -> int
+        transform<int>(mapped_numbers, [](const pair<int, int> & numbers) -> int
         {
             return numbers.first + numbers.second;
         }));

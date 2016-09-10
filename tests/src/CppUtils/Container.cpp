@@ -18,27 +18,27 @@ namespace CppUtils
 {
 
 
-TEST_F(forEachTest, forEachVector)
+TEST_F(for_each_Test, for_each_vector)
 {
     int result = 0;
     const vector<int> values { 1, 2, 3, 4 };
-    const auto valueHandler = [&](const int value) -> void { result += value; };
+    const auto value_handler = [&](const int value) -> void { result += value; };
 
-    forEach(values, valueHandler);
+    for_each(values, value_handler);
     ASSERT_EQ(result, 10);
-    forEach(values, valueHandler);
+    for_each(values, value_handler);
     ASSERT_EQ(result, 20);
 }
 
 
-TEST_F(forEachTest, forEachEmptyVector)
+TEST_F(for_each_Test, for_each_empty_vector)
 {
-    // Function passed to forEach() should never be called if vector is empty.
-    forEach(vector<int> {}, [](const int /*value*/) -> void { FAIL(); });
+    // Function passed to for_each() should never be called if vector is empty.
+    for_each(vector<int> {}, [](const int /*value*/) -> void { FAIL(); });
 }
 
 
-TEST_F(forEachTest, forEachMap)
+TEST_F(for_each_Test, for_each_map)
 {
     vector<string> result;
 
@@ -49,12 +49,12 @@ TEST_F(forEachTest, forEachMap)
         { "third"  , 2 },
     };
 
-    forEach(values, [&](const string & key, const int value) -> void
+    for_each(values, [&](const string & key, const int value) -> void
     {
-        result.push_back(key + toString(value));
+        result.push_back(key + to_string(value));
     });
 
-    assertEqualElements(
+    assert_equal_elements(
         {
             "first3",
             "second1",
@@ -64,70 +64,70 @@ TEST_F(forEachTest, forEachMap)
 }
 
 
-TEST_F(forEachTest, forEachEmptyMap)
+TEST_F(for_each_Test, for_each_empty_map)
 {
-    // Function passed to forEach() should never be called if map is empty.
-    forEach(map<string, int> {}, [](const string & /*key*/, const int /*value*/) -> void { FAIL(); });
+    // Function passed to for_each() should never be called if map is empty.
+    for_each(map<string, int> {}, [](const string & /*key*/, const int /*value*/) -> void { FAIL(); });
 }
 
 
-TEST_F(forEachTest, forEachJSON)
+TEST_F(for_each_Test, for_each_json)
 {
-    const vector<string> expectedKeys
+    const vector<string> expected_keys
     {
         "key0",
         "key1",
         "key2",
     };
 
-    const vector<int> expectedValues { 0, 1, 2 };
-    vector<string> actualKeys;
-    vector<int> actualValues;
+    const vector<int> expected_values { 0, 1, 2 };
+    vector<string> actual_keys;
+    vector<int> actual_values;
 
-    forEach(keyValuePairs, [&](const string & key, const int value) -> void
+    for_each(key_value_pairs, [&](const string & key, const int value) -> void
     {
-        actualKeys.push_back(key);
-        actualValues.push_back(value);
+        actual_keys.push_back(key);
+        actual_values.push_back(value);
     });
 
-    assertEqualElements(expectedKeys, actualKeys);
-    assertEqualElements(expectedValues, actualValues);
+    assert_equal_elements(expected_keys, actual_keys);
+    assert_equal_elements(expected_values, actual_values);
 }
 
 
-TEST_F(forEachTest, unalphabeticalKeysIteratedAlphabetically)
+TEST_F(for_each_Test, unalphabetical_keys_iterated_alphabetically)
 {
-    const vector<string> expectedKeys { "a", "b", "c", "d", "e", "f" };
-    vector<string> actualKeys;
-    const JSON json = readJSONFile(validResourcePath("json", "unalphabetical-keys.json"));
+    const vector<string> expected_keys { "a", "b", "c", "d", "e", "f" };
+    vector<string> actual_keys;
+    const JSON json = read_json_file(valid_resource_path("json", "unalphabetical_keys.json"));
 
-    forEach(json, [&](const string & key, const JSON &) -> void
+    for_each(json, [&](const string & key, const JSON &) -> void
     {
-        actualKeys.push_back(key);
+        actual_keys.push_back(key);
     });
 
-    assertEqualElements(expectedKeys, actualKeys);
+    assert_equal_elements(expected_keys, actual_keys);
 }
 
 
-TEST_F(forEachTest, differentJSONTypes)
+TEST_F(for_each_Test, different_json_types)
 {
-    const JSON json = readJSONFile(validResourcePath("json", "types.json"));
+    const JSON json = read_json_file(valid_resource_path("json", "types.json"));
     const auto callback = [](const string &, const JSON &) -> void {};
 
-    assertNoThrow([&]() -> void { forEach(json["object"], callback); });
-    ASSERT_THROW(forEach(json["list"], callback), runtime_error);
-    ASSERT_THROW(forEach(json["key"], callback), runtime_error);
+    assert_no_throw([&]() -> void { for_each(json["object"], callback); });
+    ASSERT_THROW(for_each(json["list"], callback), runtime_error);
+    ASSERT_THROW(for_each(json["key"], callback), runtime_error);
 }
 
 
-TEST_F(forEachTest, incorrectValueType)
+TEST_F(for_each_Test, incorrect_value_type)
 {
     const auto callback = [](const string &, const string &) -> void {};
 
-    // keyValuePairs has values of type int, so passing a callback that takes a string as the value
+    // key_value_pairs has values of type int, so passing a callback that takes a string as the value
     // type will fail.
-    ASSERT_THROW(forEach(keyValuePairs, callback), domain_error);
+    ASSERT_THROW(for_each(key_value_pairs, callback), domain_error);
 }
 
 

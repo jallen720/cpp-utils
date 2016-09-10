@@ -8,13 +8,9 @@ namespace CppUtils
 {
 
 
-void emptyStringArgError(const std::string & parameterName, const std::string & functionName);
-void nullArgError(const std::string & parameterName, const std::string & functionName);
-
-void fileError(
-    const std::string & path,
-    const std::string & functionName,
-    const std::string & message);
+void empty_string_arg_error(const std::string & parameter_name, const std::string & function_name);
+void null_arg_error(const std::string & parameter_name, const std::string & function_name);
+void file_error(const std::string & path, const std::string & function_name, const std::string & message);
 
 
 } // namespace CppUtils

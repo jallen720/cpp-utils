@@ -23,14 +23,14 @@ string directify(const string & directory)
 }
 
 
-string readFile(const string & path)
+string read_file(const string & path)
 {
-    validateNotEmpty("path", "readFile", path);
+    validate_not_empty("path", "read_file", path);
     ifstream stream(path);
 
     if (!stream.is_open())
     {
-        fileError(path, "readFile", "failed to open input stream");
+        file_error(path, "read_file", "failed to open input stream");
     }
 
     string content

@@ -28,15 +28,15 @@ bool contains(const std::vector<T> & vector, const Predicate & predicate)
 template<typename T>
 void remove(std::vector<T> & vector, const T & element)
 {
-    typename std::vector<T>::iterator vectorElement =
+    typename std::vector<T>::iterator vector_element =
         std::find(
             vector.begin(),
             vector.end(),
             element);
 
-    if (vectorElement != vector.end())
+    if (vector_element != vector.end())
     {
-        vector.erase(vectorElement);
+        vector.erase(vector_element);
     }
 }
 
@@ -44,15 +44,15 @@ void remove(std::vector<T> & vector, const T & element)
 template<typename T, typename Predicate>
 void remove(std::vector<T> & vector, const Predicate & predicate)
 {
-    typename std::vector<T>::iterator vectorElement =
+    typename std::vector<T>::iterator vector_element =
         std::find_if(
             vector.begin(),
             vector.end(),
             predicate);
 
-    if (vectorElement != vector.end())
+    if (vector_element != vector.end())
     {
-        vector.erase(vectorElement);
+        vector.erase(vector_element);
     }
 }
 

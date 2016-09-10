@@ -11,10 +11,10 @@ namespace CppUtils
 {
 
 
-class forEachTest : public testing::Test
+class for_each_Test : public testing::Test
 {
 protected:
-    const JSON keyValuePairs = readJSONFile(validResourcePath("json", "key-value-pairs.json"));
+    const JSON key_value_pairs = read_json_file(valid_resource_path("json", "key_value_pairs.json"));
 };
 
 

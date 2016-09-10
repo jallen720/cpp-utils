@@ -15,22 +15,22 @@ namespace CppUtils
 {
 
 
-bool areEqual(const std::string & string, const char * cString)
+bool are_equal(const std::string & string, const char * c_string)
 {
-    return strcmp(string.c_str(), cString) == 0;
+    return strcmp(string.c_str(), c_string) == 0;
 }
 
 
-bool areEqual(const char * cStringA, const char * cStringB)
+bool are_equal(const char * c_string_a, const char * c_string_b)
 {
-    return strcmp(cStringA, cStringB) == 0;
+    return strcmp(c_string_a, c_string_b) == 0;
 }
 
 
-bool isEmpty(const char * cString)
+bool is_empty(const char * c_string)
 {
-    validateNotNull("cString", "isEmpty", cString);
-    return strcmp(cString, "") == 0;
+    validate_not_null("c_string", "is_empty", c_string);
+    return strcmp(c_string, "") == 0;
 }
 
 
@@ -50,7 +50,7 @@ vector<std::string> split(const std::string & string, const char delimiter)
 
 
 template<>
-std::string toString(const bool value)
+std::string to_string(const bool value)
 {
     return value == true ? "true" : "false";
 }

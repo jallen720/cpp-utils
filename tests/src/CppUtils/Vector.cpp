@@ -17,40 +17,40 @@ namespace CppUtils
 // contains() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(containsTest, validVectorContainsElement)
+TEST(contains_Test, valid_vector_contains_element)
 {
-    const vector<int> validVector { 1, 2, 3, 4 };
+    const vector<int> valid_vector { 1, 2, 3, 4 };
 
-    ASSERT_TRUE(contains(validVector, 1));
-    ASSERT_FALSE(contains(validVector, 5));
+    ASSERT_TRUE(contains(valid_vector, 1));
+    ASSERT_FALSE(contains(valid_vector, 5));
 }
 
 
-TEST(containsTest, emptyVectorContainsElement)
+TEST(contains_Test, empty_vector_contains_element)
 {
-    const vector<int> emptyVector;
+    const vector<int> empty_vector;
 
-    ASSERT_FALSE(contains(emptyVector, 1));
+    ASSERT_FALSE(contains(empty_vector, 1));
 }
 
 
-TEST(containsTest, validVectorContainsPredicate)
+TEST(contains_Test, valid_vector_contains_predicate)
 {
-    const vector<int> validVector { 1, 2, 3, 4 };
+    const vector<int> valid_vector { 1, 2, 3, 4 };
 
-    ASSERT_TRUE(contains(validVector, [](const int element) -> bool { return element < 3; }));
-    ASSERT_TRUE(contains(validVector, [](const int element) -> bool { return element == 4; }));
-    ASSERT_FALSE(contains(validVector, [](const int element) -> bool { return element > 4; }));
-    ASSERT_FALSE(contains(validVector, [](const int element) -> bool { return element < 1; }));
+    ASSERT_TRUE(contains(valid_vector, [](const int element) -> bool { return element < 3; }));
+    ASSERT_TRUE(contains(valid_vector, [](const int element) -> bool { return element == 4; }));
+    ASSERT_FALSE(contains(valid_vector, [](const int element) -> bool { return element > 4; }));
+    ASSERT_FALSE(contains(valid_vector, [](const int element) -> bool { return element < 1; }));
 }
 
 
-TEST(containsTest, emptyVectorContainsPredicate)
+TEST(contains_Test, empty_vector_contains_predicate)
 {
-    const vector<int> emptyVector;
+    const vector<int> empty_vector;
 
-    ASSERT_FALSE(contains(emptyVector, [](const int element) -> bool { return element >= 1; }));
-    ASSERT_FALSE(contains(emptyVector, [](const int element) -> bool { return element == 0; }));
+    ASSERT_FALSE(contains(empty_vector, [](const int element) -> bool { return element >= 1; }));
+    ASSERT_FALSE(contains(empty_vector, [](const int element) -> bool { return element == 0; }));
 }
 
 
@@ -59,51 +59,51 @@ TEST(containsTest, emptyVectorContainsPredicate)
 // remove() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(removeTest, validVectorRemoveElement)
+TEST(remove_Test, valid_vector_remove_element)
 {
-    vector<int> validVector { 1, 2, 1, 3, 4, 3 };
+    vector<int> valid_vector { 1, 2, 1, 3, 4, 3 };
 
-    remove(validVector, 1);
-    assertEqualElements({ 2, 1, 3, 4, 3 }, validVector);
+    remove(valid_vector, 1);
+    assert_equal_elements({ 2, 1, 3, 4, 3 }, valid_vector);
 
-    remove(validVector, 3);
-    assertEqualElements({ 2, 1, 4, 3 }, validVector);
+    remove(valid_vector, 3);
+    assert_equal_elements({ 2, 1, 4, 3 }, valid_vector);
 
-    remove(validVector, 5);
-    assertEqualElements({ 2, 1, 4, 3 }, validVector);
+    remove(valid_vector, 5);
+    assert_equal_elements({ 2, 1, 4, 3 }, valid_vector);
 }
 
 
-TEST(removeTest, emptyVectorRemoveElement)
+TEST(remove_Test, empty_vector_remove_element)
 {
-    vector<int> emptyVector;
+    vector<int> empty_vector;
 
-    remove(emptyVector, 1);
-    assertEqualElements({}, emptyVector);
+    remove(empty_vector, 1);
+    assert_equal_elements({}, empty_vector);
 }
 
 
-TEST(removeTest, validVectorRemovePredicate)
+TEST(remove_Test, valid_vector_remove_predicate)
 {
-    vector<int> validVector { 1, 2, 3, 4 };
+    vector<int> valid_vector { 1, 2, 3, 4 };
 
-    remove(validVector, [](const int element) -> bool { return element < 3; });
-    assertEqualElements({ 2, 3, 4 }, validVector);
+    remove(valid_vector, [](const int element) -> bool { return element < 3; });
+    assert_equal_elements({ 2, 3, 4 }, valid_vector);
 
-    remove(validVector, [](const int element) -> bool { return element > 2; });
-    assertEqualElements({ 2, 4 }, validVector);
+    remove(valid_vector, [](const int element) -> bool { return element > 2; });
+    assert_equal_elements({ 2, 4 }, valid_vector);
 
-    remove(validVector, [](const int element) -> bool { return element > 4; });
-    assertEqualElements({ 2, 4 }, validVector);
+    remove(valid_vector, [](const int element) -> bool { return element > 4; });
+    assert_equal_elements({ 2, 4 }, valid_vector);
 }
 
 
-TEST(removeTest, emptyVectorRemovePredicate)
+TEST(remove_Test, empty_vector_remove_predicate)
 {
-    vector<int> emptyVector;
+    vector<int> empty_vector;
 
-    remove(emptyVector, [](const int element) -> bool { return element > 0; });
-    assertEqualElements({}, emptyVector);
+    remove(empty_vector, [](const int element) -> bool { return element > 0; });
+    assert_equal_elements({}, empty_vector);
 }
 
 

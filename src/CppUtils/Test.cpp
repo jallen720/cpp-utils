@@ -17,7 +17,10 @@ namespace CppUtils
 {
 
 
-void assertNoThrow(const function<void()> & block)
+static const string TESTS_RESOURCES_DIRECTORY = "tests/resources/";
+
+
+void assert_no_throw(const function<void()> & block)
 {
     try
     {
@@ -36,19 +39,15 @@ void assertNoThrow(const function<void()> & block)
 }
 
 
-string invalidResourcePath(const string & subDirectory, const string & name)
+string invalid_resource_path(const string & sub_directory, const string & name)
 {
-    static const string INVALID_RESOURCES_DIRECTORY = "tests/resources/invalid/";
-
-    return INVALID_RESOURCES_DIRECTORY + directify(subDirectory) + name;
+    return TESTS_RESOURCES_DIRECTORY + "invalid/" + directify(sub_directory) + name;
 }
 
 
-string validResourcePath(const string & subDirectory, const string & name)
+string valid_resource_path(const string & sub_directory, const string & name)
 {
-    static const string VALID_RESOURCES_DIRECTORY = "tests/resources/valid/";
-
-    return VALID_RESOURCES_DIRECTORY + directify(subDirectory) + name;
+    return TESTS_RESOURCES_DIRECTORY + "valid/" + directify(sub_directory) + name;
 }
 
 

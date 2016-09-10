@@ -11,54 +11,48 @@ namespace CppUtils
 {
 
 
-string buildArgMessage(
-    const string & parameterName,
-    const string & functionName,
-    const string & argInfo,
-    const string & argDescription = "argument")
+string build_arg_message(
+    const string & parameter_name,
+    const string & function_name,
+    const string & arg_info,
+    const string & arg_description = "argument")
 {
     return "\n  " +
-           argDescription + " passed to \"" +
-           parameterName + "\" parameterName for " +
-           functionName + "()" +
-           argInfo;
+           arg_description + " passed to \"" +
+           parameter_name + "\" parameter for " +
+           function_name + "()" +
+           arg_info;
 }
 
 
-static string buildFileMessage(
-    const string & path,
-    const string & functionName,
-    const string & message)
+static string build_file_message(const string & path, const string & function_name, const string & message)
 {
-    return "error in file at " + path + " accessed by " + functionName + "(): " + message;
+    return "error in file at " + path + " accessed by " + function_name + "(): " + message;
 }
 
 
-void emptyStringArgError(const string & parameterName, const string & functionName)
+void empty_string_arg_error(const string & parameter_name, const string & function_name)
 {
-    throw runtime_error(buildArgMessage(
-        parameterName,
-        functionName,
+    throw runtime_error(build_arg_message(
+        parameter_name,
+        function_name,
         " cannot be empty",
         "string argument"));
 }
 
 
-void nullArgError(const string & parameterName, const string & functionName)
+void null_arg_error(const string & parameter_name, const string & function_name)
 {
-    throw runtime_error(buildArgMessage(
-        parameterName,
-        functionName,
+    throw runtime_error(build_arg_message(
+        parameter_name,
+        function_name,
         " cannot be null"));
 }
 
 
-void fileError(
-    const string & path,
-    const string & functionName,
-    const string & message)
+void file_error(const string & path, const string & function_name, const string & message)
 {
-    throw runtime_error(buildFileMessage(path, functionName, message));
+    throw runtime_error(build_file_message(path, function_name, message));
 }
 
 

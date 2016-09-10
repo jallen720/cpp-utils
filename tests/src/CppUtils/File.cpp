@@ -21,52 +21,52 @@ namespace CppUtils
 // directify() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(directifyTest, validDirectory)
+TEST(directify_Test, valid_directory)
 {
-    ASSERT_TRUE(areEqual(directify("directory/"), "directory/"));
+    ASSERT_TRUE(are_equal(directify("directory/"), "directory/"));
 }
 
 
-TEST(directifyTest, invalidDirectory)
+TEST(directify_Test, invalid_directory)
 {
-    ASSERT_TRUE(areEqual(directify("directory"), "directory/"));
+    ASSERT_TRUE(are_equal(directify("directory"), "directory/"));
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// readFile() Tests
+// read_file() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(readFileTest, validCreation)
+TEST(read_file_Test, valid_file)
 {
-    assertNoThrow([]() -> void
+    assert_no_throw([]() -> void
     {
-        readFile(validResourcePath("misc", "test.txt"));
+        read_file(valid_resource_path("misc", "test.txt"));
     });
 }
 
 
-TEST(readFileTest, invalidFile)
+TEST(read_file_Test, non_existant_file)
 {
-    ASSERT_THROW(readFile("does_not_exist"), runtime_error);
+    ASSERT_THROW(read_file("does_not_exist"), runtime_error);
 }
 
 
-TEST(readFileTest, emptyPath)
+TEST(read_file_Test, empty_path)
 {
-    ASSERT_THROW(readFile(""), runtime_error);
+    ASSERT_THROW(read_file(""), runtime_error);
 }
 
 
-TEST(readFileTest, contentMatch)
+TEST(read_file_Test, content_match)
 {
     const string expectedContent =
         "line1\n"
         "line2\n"
         "line3\n";
 
-    ASSERT_EQ(expectedContent, readFile(validResourcePath("misc", "test.txt")));
+    ASSERT_EQ(expectedContent, read_file(valid_resource_path("misc", "test.txt")));
 }
 
 

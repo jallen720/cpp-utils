@@ -15,18 +15,18 @@ namespace CppUtils
 {
 
 
-JSON readJSONFile(const string & path)
+JSON read_json_file(const string & path)
 {
-    validateNotEmpty("path", "readJSONFile", path);
+    validate_not_empty("path", "read_json_file", path);
     JSON json;
 
     try
     {
-        json = JSON::parse(readFile(path));
+        json = JSON::parse(read_file(path));
     }
     catch (const invalid_argument & error)
     {
-        fileError(path, "readJSONFile", error.what());
+        file_error(path, "read_json_file", error.what());
     }
 
     return json;

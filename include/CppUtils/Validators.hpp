@@ -8,20 +8,9 @@ namespace CppUtils
 {
 
 
-void validateNotEmpty(
-    const std::string & parameterName,
-    const std::string & functionName,
-    const std::string & arg);
-
-void validateNotEmpty(
-    const std::string & parameterName,
-    const std::string & functionName,
-    const char * arg);
-
-void validateNotNull(
-    const std::string & parameterName,
-    const std::string & functionName,
-    const void * arg);
+void validate_not_empty(const std::string & parameter_name, const std::string & function_name, const std::string & arg);
+void validate_not_empty(const std::string & parameter_name, const std::string & function_name, const char * arg);
+void validate_not_null(const std::string & parameter_name, const std::string & function_name, const void * arg);
 
 
 } // namespace CppUtils

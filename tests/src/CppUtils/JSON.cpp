@@ -13,30 +13,30 @@ namespace CppUtils
 {
 
 
-TEST(readJSONFileTest, loadValidFile)
+TEST(read_json_file_Test, load_valid_file)
 {
-    assertNoThrow([]() -> void
+    assert_no_throw([]() -> void
     {
-        readJSONFile(validResourcePath("json", "test-config.json"));
+        read_json_file(valid_resource_path("json", "test_config.json"));
     });
 }
 
 
-TEST(readJSONFileTest, emptyPath)
+TEST(read_json_file_Test, empty_path)
 {
-    ASSERT_THROW(readJSONFile(""), runtime_error);
+    ASSERT_THROW(read_json_file(""), runtime_error);
 }
 
 
-TEST(readJSONFileTest, emptyFile)
+TEST(read_json_file_Test, empty_file)
 {
-    ASSERT_THROW(readJSONFile(invalidResourcePath("json", "empty.json")), runtime_error);
+    ASSERT_THROW(read_json_file(invalid_resource_path("json", "empty.json")), runtime_error);
 }
 
 
-TEST(readJSONFileTest, parseError)
+TEST(read_json_file_Test, parse_error)
 {
-    ASSERT_THROW(readJSONFile(invalidResourcePath("json", "parse-error.json")), runtime_error);
+    ASSERT_THROW(read_json_file(invalid_resource_path("json", "parse_error.json")), runtime_error);
 }
 
 

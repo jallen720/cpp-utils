@@ -9,7 +9,7 @@ namespace CppUtils
 
 
 std::string directify(const std::string & directory);
-std::string readFile(const std::string & path);
+std::string read_file(const std::string & path);
 
 
 } // namespace CppUtils
