@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "CppUtils/JSON/private/json.hpp"
+#include "CppUtils/__internal__/json.hpp"
 
 
 namespace CppUtils
