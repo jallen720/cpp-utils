@@ -3,7 +3,7 @@
 #include <cstring>
 #include <sstream>
 
-#include "CppUtils/Errors/Validators.hpp"
+#include "CppUtils/Validators.hpp"
 
 
 using std::vector;

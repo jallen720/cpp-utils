@@ -3,7 +3,7 @@
 #include <fstream>
 
 #include "CppUtils/Errors.hpp"
-#include "CppUtils/Errors/Validators.hpp"
+#include "CppUtils/Validators.hpp"
 
 
 using std::string;
