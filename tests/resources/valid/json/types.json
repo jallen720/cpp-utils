@@ -1,11 +1,5 @@
 {
-    "object" : {
-        "key" : "value"
-    },
-
-    "list" : [
-        "value"
-    ],
-
-    "key" : "value"
+    "object": { "key" : "value" },
+    "list": [ "value" ],
+    "key": "value"
 }

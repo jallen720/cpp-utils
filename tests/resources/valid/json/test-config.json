@@ -1,15 +1,15 @@
 {
-    "string" : "UTF-8",
-
-    "vector" : [
+    "string": "UTF-8",
+    "vector":
+    [
         "elem0",
         "elem1",
         "elem2"
     ],
-
-    "map" : {
-        "int"    : 3,
-        "bool"   : true,
-        "string" : "myString"
+    "map":
+    {
+        "int": 3,
+        "bool": true,
+        "string": "myString"
     }
 }
