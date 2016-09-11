@@ -31,4 +31,21 @@ std::vector<T> transform(const Container & container, const Transformer & transf
 }
 
 
+template<typename T, typename Predicate>
+std::vector<T> filter(const std::vector<T> & vector, const Predicate & predicate)
+{
+    std::vector<T> result;
+
+    for (const T & element : vector)
+    {
+        if (predicate(element))
+        {
+            result.push_back(element);
+        }
+    }
+
+    return result;
+}
+
+
 } // namespace Cpp_Utils

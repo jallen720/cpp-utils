@@ -133,4 +133,28 @@ TEST(transform_Test, transform_empty_map)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// filter() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static bool vector_predicate(int element)
+{
+    return element > 2;
+}
+
+
+TEST(filter_Test, filter_vector)
+{
+    const vector<int> numbers = { 1, 2, 3, 4 };
+    assert_equal_elements({ 3, 4 }, filter(numbers, vector_predicate));
+}
+
+
+TEST(filter_Test, filter_empty_vector)
+{
+    assert_equal_elements({}, filter(vector<int>(), vector_predicate));
+}
+
+
 } // namespace Cpp_Utils
