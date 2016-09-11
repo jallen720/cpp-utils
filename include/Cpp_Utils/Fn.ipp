@@ -16,8 +16,8 @@ T accumulate(const T & initial_value, const Container & container, const Accumul
 }
 
 
-template<typename T, typename Container, typename Function>
-std::vector<T> transform(const Container & container, const Function & function)
+template<typename T, typename Container, typename Transformer>
+std::vector<T> transform(const Container & container, const Transformer & transformer)
 {
     std::vector<T> result(container.size());
 
@@ -25,7 +25,7 @@ std::vector<T> transform(const Container & container, const Function & function)
         container.begin(),
         container.end(),
         result.begin(),
-        function);
+        transformer);
 
     return result;
 }
