@@ -18,6 +18,9 @@ std::vector<Value> get_values(const std::map<Key, Value> & map);
 template<typename Key, typename Value>
 std::vector<Value> get_values(const std::map<Key, const Value> & map);
 
+template<typename Key, typename Value>
+const Value & at(const std::map<Key, const Value> & map, const Key & key);
+
 
 } // namespace Cpp_Utils
 
