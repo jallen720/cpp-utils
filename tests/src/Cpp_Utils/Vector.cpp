@@ -107,4 +107,29 @@ TEST(remove_Test, empty_vector_remove_predicate)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// sort() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(sort_Test, valid_vector)
+{
+    vector<int> values { 2, 4, 3, 1 };
+
+    sort(values, [](const int value_a, const int value_b) -> bool
+    {
+        return value_a > value_b;
+    });
+
+    assert_equal_elements({ 4, 3, 2, 1 }, values);
+
+    sort(values, [](const int value_a, const int value_b) -> bool
+    {
+        return value_a < value_b;
+    });
+
+    assert_equal_elements({ 1, 2, 3, 4 }, values);
+}
+
+
 } // namespace Cpp_Utils

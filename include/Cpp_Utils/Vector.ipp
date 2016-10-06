@@ -57,4 +57,14 @@ void remove(std::vector<T> & vector, const Predicate & predicate)
 }
 
 
+template<typename T, typename Comparator>
+void sort(std::vector<T> & vector, const Comparator & comparator)
+{
+    std::sort(
+        vector.begin(),
+        vector.end(),
+        comparator);
+}
+
+
 } // namespace Cpp_Utils
