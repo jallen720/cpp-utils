@@ -39,4 +39,16 @@ bool contains_key(const JSON & json, const string & key)
 }
 
 
+string get_type_name(const JSON & json)
+{
+    return json.is_null() ? "null" :
+           json.is_boolean() ? "boolean" :
+           json.is_number() ? "number" :
+           json.is_string() ? "string" :
+           json.is_array() ? "array" :
+           json.is_object() ? "object" :
+           "unknown";
+}
+
+
 } // namespace Cpp_Utils

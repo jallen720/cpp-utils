@@ -75,4 +75,34 @@ TEST(contains_key_Test, empty_json)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// get_type_name() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(get_type_name_Test, valid_types)
+{
+    const JSON json = R"(
+        {
+            "null": null,
+            "boolean": true,
+            "number": 1,
+            "string": "value",
+            "array": [ 1, 2, 3 ],
+            "object":
+            {
+                "key": "value"
+            }
+        })"_json;
+
+    ASSERT_STREQ(get_type_name(json["null"]).c_str(), "null");
+    ASSERT_STREQ(get_type_name(json["boolean"]).c_str(), "boolean");
+    ASSERT_STREQ(get_type_name(json["number"]).c_str(), "number");
+    ASSERT_STREQ(get_type_name(json["string"]).c_str(), "string");
+    ASSERT_STREQ(get_type_name(json["array"]).c_str(), "array");
+    ASSERT_STREQ(get_type_name(json["object"]).c_str(), "object");
+    ASSERT_STREQ(get_type_name(json["object"]["key"]).c_str(), "string");
+}
+
+
 } // namespace Cpp_Utils
