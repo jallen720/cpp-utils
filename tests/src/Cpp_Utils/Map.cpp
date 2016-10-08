@@ -41,7 +41,6 @@ TEST(contains_key_Test, valid_map)
 TEST(contains_key_Test, empty_map)
 {
     const map<string, const string> empty_map;
-
     ASSERT_FALSE(contains_key(empty_map, string("key0")));
     ASSERT_FALSE(contains_key(empty_map, string("")));
 }

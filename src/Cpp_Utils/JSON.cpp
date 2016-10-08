@@ -33,4 +33,10 @@ JSON read_json_file(const string & path)
 }
 
 
+bool contains_key(const JSON & json, const string & key)
+{
+    return json.find(key) != json.end();
+}
+
+
 } // namespace Cpp_Utils
