@@ -47,7 +47,8 @@ string get_type_name(const JSON & json)
            json.is_string() ? "string" :
            json.is_array() ? "array" :
            json.is_object() ? "object" :
-           "unknown";
+           json.is_discarded() ? "discarded" :
+           "undefined";
 }
 
 

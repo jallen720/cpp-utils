@@ -102,6 +102,7 @@ TEST(get_type_name_Test, valid_types)
     ASSERT_STREQ(get_type_name(json["array"]).c_str(), "array");
     ASSERT_STREQ(get_type_name(json["object"]).c_str(), "object");
     ASSERT_STREQ(get_type_name(json["object"]["key"]).c_str(), "string");
+    ASSERT_STREQ(get_type_name(json["undefined_key"]).c_str(), "undefined");
 }
 
 
