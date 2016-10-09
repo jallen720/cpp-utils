@@ -35,6 +35,66 @@ void for_each(const std::map<T, U> & map, const Callback & callback)
 }
 
 
+template<typename T, typename U, typename Callback>
+void for_each(std::map<const T, U> & map, const Callback & callback)
+{
+    for (std::pair<const T, U> & element : map)
+    {
+        callback(element.first, element.second);
+    }
+}
+
+
+template<typename T, typename U, typename Callback>
+void for_each(std::map<T, U> & map, const Callback & callback)
+{
+    for (std::pair<const T, U> & element : map)
+    {
+        callback(element.first, element.second);
+    }
+}
+
+
+template<typename T, typename U, typename Callback>
+void for_each(const std::unordered_map<const T, U> & map, const Callback & callback)
+{
+    for (const std::pair<const T, U> & element : map)
+    {
+        callback(element.first, element.second);
+    }
+}
+
+
+template<typename T, typename U, typename Callback>
+void for_each(const std::unordered_map<T, U> & map, const Callback & callback)
+{
+    for (const std::pair<T, U> & element : map)
+    {
+        callback(element.first, element.second);
+    }
+}
+
+
+template<typename T, typename U, typename Callback>
+void for_each(std::unordered_map<const T, U> & map, const Callback & callback)
+{
+    for (std::pair<const T, U> & element : map)
+    {
+        callback(element.first, element.second);
+    }
+}
+
+
+template<typename T, typename U, typename Callback>
+void for_each(std::unordered_map<T, U> & map, const Callback & callback)
+{
+    for (std::pair<const T, U> & element : map)
+    {
+        callback(element.first, element.second);
+    }
+}
+
+
 template<typename Callback>
 void for_each(const JSON & json, const Callback & callback)
 {

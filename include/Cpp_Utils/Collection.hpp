@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <map>
+#include <unordered_map>
 
 #include "Cpp_Utils/JSON.hpp"
 
@@ -19,6 +20,24 @@ void for_each(const std::map<const T, U> & map, const Callback & callback);
 
 template<typename T, typename U, typename Callback>
 void for_each(const std::map<T, U> & map, const Callback & callback);
+
+template<typename T, typename U, typename Callback>
+void for_each(std::map<const T, U> & map, const Callback & callback);
+
+template<typename T, typename U, typename Callback>
+void for_each(std::map<T, U> & map, const Callback & callback);
+
+template<typename T, typename U, typename Callback>
+void for_each(const std::unordered_map<const T, U> & map, const Callback & callback);
+
+template<typename T, typename U, typename Callback>
+void for_each(const std::unordered_map<T, U> & map, const Callback & callback);
+
+template<typename T, typename U, typename Callback>
+void for_each(std::unordered_map<const T, U> & map, const Callback & callback);
+
+template<typename T, typename U, typename Callback>
+void for_each(std::unordered_map<T, U> & map, const Callback & callback);
 
 template<typename Callback>
 void for_each(const JSON & json, const Callback & callback);
