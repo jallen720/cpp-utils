@@ -42,6 +42,9 @@ void for_each(std::unordered_map<T, U> & map, const Callback & callback);
 template<typename Callback>
 void for_each(const JSON & json, const Callback & callback);
 
+template<typename T, typename Predicate>
+bool find(T & out, const std::vector<T> & vector, const Predicate & predicate);
+
 
 } // namespace Cpp_Utils
 

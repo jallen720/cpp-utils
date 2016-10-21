@@ -18,6 +18,11 @@ namespace Cpp_Utils
 {
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// for_each() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_F(for_each_Test, for_each_vector)
 {
     int result = 0;
@@ -128,6 +133,31 @@ TEST_F(for_each_Test, incorrect_value_type)
     // key_value_pairs has values of type int, so passing a callback that takes a string as the value
     // type will fail.
     ASSERT_THROW(for_each(key_value_pairs, callback), domain_error);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// find() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(find_Test, matching_predicate)
+{
+    const vector<int> values { 1, 2, 3, 4 };
+    int value = 0;
+
+    ASSERT_TRUE(find(value, values, [](const int value) -> bool { return value > 2; }));
+    ASSERT_EQ(value, 3);
+}
+
+
+TEST(find_Test, non_matching_predicate)
+{
+    const vector<int> values { 1, 2, 3, 4 };
+    int value = 0;
+
+    ASSERT_FALSE(find(value, values, [](const int value) -> bool { return value > 4; }));
+    ASSERT_EQ(value, 0);
 }
 
 
