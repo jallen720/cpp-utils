@@ -35,11 +35,11 @@ std::vector<Value> get_values(const std::map<Key, const Value> & map)
 
 
 template<typename Key, typename Value>
-const Value & at(const std::map<Key, const Value> & map, const Key & key)
+const Value & at_key(const std::map<Key, const Value> & map, const Key & key)
 {
     if (!contains_key(map, key))
     {
-        throw std::runtime_error("map does not contain key \"" + key + "\"");
+        throw std::runtime_error("ERROR: map does not contain key \"" + key + "\"!");
     }
 
     return map.at(key);

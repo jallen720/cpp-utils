@@ -73,10 +73,10 @@ TEST(get_values_Test, empty_map)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// at() Tests
+// at_key() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(at_Test, valid_key)
+TEST(at_key_Test, valid_key)
 {
     const map<string, const int> valid_map
     {
@@ -87,12 +87,12 @@ TEST(at_Test, valid_key)
 
     assert_no_throw([&]() -> void
     {
-        ASSERT_EQ(at(valid_map, string("key1")), 1);
+        ASSERT_EQ(at_key(valid_map, string("key1")), 1);
     });
 }
 
 
-TEST(at_Test, invalid_key)
+TEST(at_key_Test, invalid_key)
 {
     const map<string, const int> valid_map
     {
@@ -101,7 +101,7 @@ TEST(at_Test, invalid_key)
         { "key2" , 2 },
     };
 
-    ASSERT_THROW(at(valid_map, string("key3")), runtime_error);
+    ASSERT_THROW(at_key(valid_map, string("key3")), runtime_error);
 }
 
 
