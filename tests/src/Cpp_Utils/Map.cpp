@@ -105,4 +105,38 @@ TEST(at_key_Test, invalid_key)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// at_value() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(at_value_Test, valid_value)
+{
+    const map<string, const int> valid_map
+    {
+        { "key0" , 0 },
+        { "key1" , 1 },
+        { "key2" , 2 },
+    };
+
+    assert_no_throw([&]() -> void
+    {
+        ASSERT_TRUE(at_value(valid_map, 1) == string("key1"));
+    });
+}
+
+
+TEST(at_value_Test, invalid_value)
+{
+    const map<string, const int> valid_map
+    {
+        { "key0" , 0 },
+        { "key1" , 1 },
+        { "key2" , 2 },
+    };
+
+    ASSERT_THROW(at_value(valid_map, 3), runtime_error);
+}
+
+
 } // namespace Cpp_Utils

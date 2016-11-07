@@ -56,4 +56,22 @@ const Value & at_key(const std::map<Key, const Value> & map, const Key & key)
 }
 
 
+template<typename Key, typename Value>
+const Key & at_value(const std::map<Key, const Value> & map, const Value & value)
+{
+    Map_Iterator<Key, const Value> it =
+        std::find_if(map.begin(), map.end(), [&](const std::pair<Key, const Value> & data) -> bool
+        {
+            return data.second == value;
+        });
+
+    if (it == map.end())
+    {
+        throw std::runtime_error("ERROR: map does not contain that value!");
+    }
+
+    return it->first;
+}
+
+
 } // namespace Cpp_Utils
