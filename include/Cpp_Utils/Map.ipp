@@ -8,6 +8,10 @@ namespace Cpp_Utils
 
 
 template<typename Key, typename Value>
+using Map_Iterator = typename std::map<Key, Value>::const_iterator;
+
+
+template<typename Key, typename Value>
 bool contains_key(const std::map<Key, Value> & map, const Key & key)
 {
     return map.find(key) != map.end();
@@ -41,7 +45,7 @@ std::vector<Value> get_values(const std::map<Key, const Value> & map)
 template<typename Key, typename Value>
 const Value & at_key(const std::map<Key, const Value> & map, const Key & key)
 {
-    const std::map<Key, const Value>::const_iterator it = map.find(key);
+    Map_Iterator<Key, const Value> it = map.find(key);
 
     if (it == map.end())
     {
