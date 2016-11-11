@@ -74,4 +74,16 @@ const Key & at_value(const std::map<Key, const Value> & map, const Value & value
 }
 
 
+template<typename Key, typename Value>
+void remove(std::map<Key, const Value> & map, const Key & key)
+{
+    if (!contains_key(map, key))
+    {
+        throw std::runtime_error("ERROR: cannot remove from map as map doesn't contain that key!");
+    }
+
+    map.erase(key);
+}
+
+
 } // namespace Cpp_Utils

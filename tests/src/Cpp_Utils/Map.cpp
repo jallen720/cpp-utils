@@ -139,4 +139,36 @@ TEST(at_value_Test, invalid_value)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// remove() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(remove_Test, valid_key)
+{
+    map<string, const int> valid_map
+    {
+        { "key0" , 0 },
+        { "key1" , 1 },
+        { "key2" , 2 },
+    };
+
+    remove(valid_map, string("key1"));
+    ASSERT_FALSE(contains_key(valid_map, string("key1")));
+}
+
+
+TEST(remove_Test, invalid_key)
+{
+    map<string, const int> valid_map
+    {
+        { "key0" , 0 },
+        { "key1" , 1 },
+        { "key2" , 2 },
+    };
+
+    ASSERT_THROW(remove(valid_map, string("key3")), runtime_error);
+}
+
+
 } // namespace Cpp_Utils
