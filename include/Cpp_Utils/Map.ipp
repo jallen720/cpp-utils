@@ -49,7 +49,7 @@ const Value & at_key(const std::map<Key, const Value> & map, const Key & key)
 
     if (it == map.end())
     {
-        throw std::runtime_error("ERROR: map does not contain that key!");
+        throw std::runtime_error("ERROR: map doesn't contain that key!");
     }
 
     return it->second;
@@ -67,7 +67,7 @@ const Key & at_value(const std::map<Key, const Value> & map, const Value & value
 
     if (it == map.end())
     {
-        throw std::runtime_error("ERROR: map does not contain that value!");
+        throw std::runtime_error("ERROR: map doesn't contain that value!");
     }
 
     return it->first;
