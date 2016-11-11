@@ -75,7 +75,7 @@ const Key & at_value(const std::map<Key, const Value> & map, const Value & value
 
 
 template<typename Key, typename Value>
-void remove(std::map<Key, const Value> & map, const Key & key)
+void remove(std::map<Key, Value> & map, const Key & key)
 {
     if (!contains_key(map, key))
     {
