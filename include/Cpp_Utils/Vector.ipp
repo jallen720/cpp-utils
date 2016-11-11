@@ -1,4 +1,7 @@
 #include <algorithm>
+#include <stdexcept>
+
+#include "Cpp_Utils/String.hpp"
 
 
 namespace Cpp_Utils
@@ -54,6 +57,22 @@ void remove(std::vector<T> & vector, const Predicate & predicate)
     {
         vector.erase(vector_element);
     }
+}
+
+
+template<typename T>
+void remove_at_index(std::vector<T> & vector, const unsigned int index)
+{
+    const size_t vector_size = vector.size();
+
+    if (index >= vector_size)
+    {
+        throw std::runtime_error(
+            "ERROR: cannot remove element at index " + Cpp_Utils::to_string(index) + "; vector only has a size of " +
+            Cpp_Utils::to_string(vector_size));
+    }
+
+    vector.erase(vector.begin() + index);
 }
 
 
