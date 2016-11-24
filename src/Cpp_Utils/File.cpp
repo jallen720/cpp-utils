@@ -33,14 +33,15 @@ string read_file(const string & path)
         file_error(path, "read_file", "failed to open input stream");
     }
 
-    string content
-    {
-        istreambuf_iterator<char>(stream),
-        istreambuf_iterator<char>(),
-    };
-
+    string content { istreambuf_iterator<char>(stream), istreambuf_iterator<char>() };
     stream.close();
     return content;
+}
+
+
+bool file_exists(const string & path)
+{
+    return ifstream(path).good();
 }
 
 

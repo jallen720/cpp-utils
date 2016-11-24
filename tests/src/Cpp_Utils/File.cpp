@@ -70,4 +70,21 @@ TEST(read_file_Test, content_match)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// file_exists() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(file_exists_Test, file_exists)
+{
+    ASSERT_TRUE(file_exists(valid_resource_path("misc", "test.txt")));
+}
+
+
+TEST(file_exists_Test, file_does_not_exist)
+{
+    ASSERT_FALSE(file_exists(valid_resource_path("misc", "does_not_exist.txt")));
+}
+
+
 } // namespace Cpp_Utils
