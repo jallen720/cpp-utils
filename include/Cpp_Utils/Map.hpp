@@ -22,7 +22,7 @@ template<typename Key, typename Value>
 const Value & at_key(const std::map<Key, const Value> & map, const Key & key);
 
 template<typename Key, typename Value>
-const Key & at_Value(const std::map<Key, const Value> & map, const Value & value);
+const Key & at_value(const std::map<Key, const Value> & map, const Value & value);
 
 template<typename Key, typename Value>
 void remove(std::map<Key, Value> & map, const Key & key);
