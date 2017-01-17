@@ -83,6 +83,7 @@ void for_each(
     }
 }
 
+
 template<typename T, typename U, typename Callback>
 void for_each(const std::map<T, U> & map, typename std::map<T, U>::const_iterator begin, const Callback & callback)
 {
@@ -92,6 +93,7 @@ void for_each(const std::map<T, U> & map, typename std::map<T, U>::const_iterato
     }
 }
 
+
 template<typename T, typename U, typename Callback>
 void for_each(std::map<const T, U> & map, typename std::map<const T, U>::iterator begin, const Callback & callback)
 {
@@ -100,6 +102,7 @@ void for_each(std::map<const T, U> & map, typename std::map<const T, U>::iterato
         callback(it->first, it->second);
     }
 }
+
 
 template<typename T, typename U, typename Callback>
 void for_each(std::map<T, U> & map, typename std::map<T, U>::iterator begin, const Callback & callback)
