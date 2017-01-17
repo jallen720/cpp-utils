@@ -41,6 +41,36 @@ void for_each(std::map<T, U> & map, const Callback & callback);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
+// for_each(std::map<T, U>, std::map<T, U>::const_iterator, Callback) overloads
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<typename T, typename U, typename Callback>
+void for_each(
+    const std::map<const T, U> & map,
+    typename std::map<const T, U>::const_iterator begin,
+    const Callback & callback);
+
+template<typename T, typename U, typename Callback>
+void for_each(
+    const std::map<T, U> & map,
+    typename std::map<T, U>::const_iterator begin,
+    const Callback & callback);
+
+template<typename T, typename U, typename Callback>
+void for_each(
+    std::map<const T, U> & map,
+    typename std::map<const T, U>::iterator begin,
+    const Callback & callback);
+
+template<typename T, typename U, typename Callback>
+void for_each(
+    std::map<T, U> & map,
+    typename std::map<T, U>::iterator begin,
+    const Callback & callback);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
 // for_each(std::unordered_map<T, U>, Callback) overloads
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -23,6 +23,13 @@ namespace Cpp_Utils
 // for_each() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// for_each(std::vector<T>, Callback) overloads
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_F(for_each_Test, for_each_vector)
 {
     int result = 0;
@@ -43,6 +50,11 @@ TEST_F(for_each_Test, for_each_empty_vector)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// for_each(std::map<T, U>, Callback) overloads
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_F(for_each_Test, for_each_map)
 {
     vector<string> result;
@@ -69,6 +81,16 @@ TEST_F(for_each_Test, for_each_map)
 }
 
 
+TEST_F(for_each_Test, incorrect_value_type)
+{
+    const auto callback = [](const string &, const string &) -> void {};
+
+    // key_value_pairs has values of type int, so passing a callback that takes a string as the value
+    // type will fail.
+    ASSERT_THROW(for_each(key_value_pairs, callback), domain_error);
+}
+
+
 TEST_F(for_each_Test, for_each_empty_map)
 {
     // Function passed to for_each() should never be called if map is empty.
@@ -76,6 +98,62 @@ TEST_F(for_each_Test, for_each_empty_map)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// for_each(std::map<T, U>, std::map<T, U>::const_iterator, Callback) overloads
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST_F(for_each_Test, for_each_map_begin)
+{
+    vector<string> result;
+
+    const map<string, const int> values
+    {
+        { "first"  , 3 },
+        { "second" , 1 },
+        { "third"  , 2 },
+    };
+
+    for_each(values, ++values.begin(), [&](const string & key, const int value) -> void
+    {
+        result.push_back(key + to_string(value));
+    });
+
+    assert_equal_elements({ "second1", "third2" }, result);
+}
+
+
+TEST_F(for_each_Test, for_each_map_begin_non_const)
+{
+    vector<string> result;
+
+    map<string, int> values
+    {
+        { "first"  , 3 },
+        { "second" , 1 },
+        { "third"  , 2 },
+    };
+
+    for_each(values, ++values.begin(), [&](const string & /*key*/, int & value) -> void
+    {
+        value++;
+    });
+
+    for_each(values, ++values.begin(), [&](const string & key, const int value) -> void
+    {
+        result.push_back(key + to_string(value));
+    });
+
+    assert_equal_elements({ "second2", "third3" }, result);
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// for_each(JSON, Callback) overloads
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_F(for_each_Test, for_each_json)
 {
     const vector<string> expected_keys
@@ -126,19 +204,16 @@ TEST_F(for_each_Test, different_json_types)
 }
 
 
-TEST_F(for_each_Test, incorrect_value_type)
-{
-    const auto callback = [](const string &, const string &) -> void {};
-
-    // key_value_pairs has values of type int, so passing a callback that takes a string as the value
-    // type will fail.
-    ASSERT_THROW(for_each(key_value_pairs, callback), domain_error);
-}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// find() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// find() Tests
+// find(T, std::vector<T>, Predicate) overloads
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(find_Test, matching_predicate)
