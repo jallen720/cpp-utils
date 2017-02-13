@@ -169,7 +169,7 @@ TEST(at_index_Test, invalid_index)
         { "key2" , 2 },
     };
 
-    ASSERT_THROW(at_index(valid_map, 3), runtime_error);
+    ASSERT_THROW(at_index(valid_map, 4), runtime_error);
 }
 
 

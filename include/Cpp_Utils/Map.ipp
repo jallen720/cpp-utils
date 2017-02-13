@@ -10,7 +10,10 @@ namespace Cpp_Utils
 
 
 template<typename Key, typename Value>
-using Map_Iterator = typename std::map<Key, Value>::const_iterator;
+using Map_It = typename std::map<Key, Value>::iterator;
+
+template<typename Key, typename Value>
+using Map_Const_It = typename std::map<Key, Value>::const_iterator;
 
 
 template<typename Key, typename Value>
@@ -47,7 +50,7 @@ std::vector<Value> get_values(const std::map<Key, const Value> & map)
 template<typename Key, typename Value>
 const Value & at_key(const std::map<Key, const Value> & map, const Key & key)
 {
-    Map_Iterator<Key, const Value> it = map.find(key);
+    Map_Const_It<Key, const Value> it = map.find(key);
 
     if (it == map.end())
     {
@@ -61,7 +64,7 @@ const Value & at_key(const std::map<Key, const Value> & map, const Key & key)
 template<typename Key, typename Value>
 const Key & at_value(const std::map<Key, const Value> & map, const Value & value)
 {
-    Map_Iterator<Key, const Value> it =
+    Map_Const_It<Key, const Value> it =
         std::find_if(map.begin(), map.end(), [&](const std::pair<Key, const Value> & data) -> bool
         {
             return data.second == value;
@@ -79,15 +82,29 @@ const Key & at_value(const std::map<Key, const Value> & map, const Value & value
 template<typename Key, typename Value>
 std::pair<Key, const Value> at_index(const std::map<Key, const Value> & map, int index)
 {
-    Map_Iterator<Key, const Value> it = map.begin();
-    std::advance(it, index);
-
-    if (it == map.end())
+    if (index >= map.size())
     {
         throw std::runtime_error(
             "ERROR: attempting to access map of size " + to_string(map.size()) + " at index " + to_string(index) + "!");
     }
 
+    Map_Const_It<Key, const Value> it = map.begin();
+    std::advance(it, index);
+    return *it;
+}
+
+
+template<typename Key, typename Value>
+std::pair<Key, Value> at_index(const std::map<Key, Value> & map, int index)
+{
+    if (index >= map.size())
+    {
+        throw std::runtime_error(
+            "ERROR: attempting to access map of size " + to_string(map.size()) + " at index " + to_string(index) + "!");
+    }
+
+    Map_Const_It<Key, Value> it = map.begin();
+    std::advance(it, index);
     return *it;
 }
 

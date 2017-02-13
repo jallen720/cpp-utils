@@ -28,6 +28,9 @@ template<typename Key, typename Value>
 std::pair<Key, const Value> at_index(const std::map<Key, const Value> & map, int index);
 
 template<typename Key, typename Value>
+std::pair<Key, Value> at_index(const std::map<Key, Value> & map, int index);
+
+template<typename Key, typename Value>
 void remove(std::map<Key, Value> & map, const Key & key);
 
 
