@@ -1,6 +1,8 @@
 #include <stdexcept>
+#include <iterator>
 
 #include "Cpp_Utils/Fn.hpp"
+#include "Cpp_Utils/String.hpp"
 
 
 namespace Cpp_Utils
@@ -71,6 +73,22 @@ const Key & at_value(const std::map<Key, const Value> & map, const Value & value
     }
 
     return it->first;
+}
+
+
+template<typename Key, typename Value>
+std::pair<Key, const Value> at_index(const std::map<Key, const Value> & map, int index)
+{
+    Map_Iterator<Key, const Value> it = map.begin();
+    std::advance(it, index);
+
+    if (it == map.end())
+    {
+        throw std::runtime_error(
+            "ERROR: attempting to access map of size " + to_string(map.size()) + " at index " + to_string(index) + "!");
+    }
+
+    return *it;
 }
 
 
