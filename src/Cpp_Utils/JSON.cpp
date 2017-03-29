@@ -5,10 +5,14 @@
 #include "Cpp_Utils/File.hpp"
 #include "Cpp_Utils/Validators.hpp"
 #include "Cpp_Utils/Errors.hpp"
+#include "Cpp_Utils/Collection.hpp"
+#include "Cpp_Utils/Vector.hpp"
 
 
 using std::string;
+using std::vector;
 using std::invalid_argument;
+using std::runtime_error;
 
 
 namespace Cpp_Utils
@@ -49,6 +53,72 @@ string get_type_name(const JSON & json)
            json.is_object() ? "object" :
            json.is_discarded() ? "discarded" :
            "undefined";
+}
+
+
+JSON merge(const JSON & a, const JSON & b)
+{
+    JSON merged = a;
+
+    if ((a.is_object() || a.is_null()) && b.is_object())
+    {
+        for_each(b, [&](const string & key, const JSON & value) -> void
+        {
+            if (!contains_key(merged, key))
+            {
+                merged[key] = value;
+            }
+            else
+            {
+                JSON & merged_field = merged[key];
+
+                if (merged_field.type() != value.type())
+                {
+                    throw runtime_error("ERROR: mismatched types for key \"" + key + "\" when merging JSON!");
+                }
+                // object
+                else if (value.is_object())
+                {
+                    merged_field = merge(merged_field, value);
+                }
+                // array
+                else if (value.is_array())
+                {
+                    vector<JSON> merged_array = merged_field;
+
+                    for (const JSON & element : value.get<vector<JSON>>())
+                    {
+                        if (!contains(merged_array, element))
+                        {
+                            merged_array.push_back(element);
+                        }
+                    }
+
+                    merged_field = merged_array;
+                }
+                // boolean / number / string / null
+                else
+                {
+                    merged_field = value;
+                }
+            }
+        });
+    }
+
+    return merged;
+}
+
+
+JSON merge(const vector<JSON> & jsons)
+{
+    JSON merged;
+
+    for (const JSON & json : jsons)
+    {
+        merged = merge(merged, json);
+    }
+
+    return merged;
 }
 
 

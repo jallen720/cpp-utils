@@ -1,11 +1,15 @@
 #include "Cpp_Utils/JSON.hpp"
 
+#include <vector>
+#include <string>
 #include <stdexcept>
 #include <gtest/gtest.h>
 
 #include "Cpp_Utils/Test.hpp"
 
 
+using std::vector;
+using std::string;
 using std::runtime_error;
 
 
@@ -103,6 +107,101 @@ TEST(get_type_name_Test, valid_types)
     ASSERT_STREQ(get_type_name(json["object"]).c_str(), "object");
     ASSERT_STREQ(get_type_name(json["object"]["key"]).c_str(), "string");
     ASSERT_STREQ(get_type_name(json["undefined_key"]).c_str(), "undefined");
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// merge() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(merge_Test, flat_json)
+{
+    const JSON json_a = R"(
+        {
+            "key_a": 0,
+            "key_b": 1,
+            "key_c": 2
+        })"_json;
+
+    const JSON json_b = R"(
+        {
+            "key_c": 3,
+            "key_d": 4,
+            "key_e": 5
+        })"_json;
+
+    const JSON json_c = R"(
+        {
+            "key_d": 6,
+            "key_e": 7,
+            "key_f": 8
+        })"_json;
+
+    JSON merged = merge({ json_a, json_b, json_c });
+    ASSERT_TRUE(contains_key(merged, "key_a"));
+    ASSERT_TRUE(contains_key(merged, "key_b"));
+    ASSERT_TRUE(contains_key(merged, "key_c"));
+    ASSERT_TRUE(contains_key(merged, "key_d"));
+    ASSERT_TRUE(contains_key(merged, "key_e"));
+    ASSERT_TRUE(contains_key(merged, "key_f"));
+    ASSERT_EQ(merged["key_a"], 0);
+    ASSERT_EQ(merged["key_b"], 1);
+    ASSERT_EQ(merged["key_c"], 3);
+    ASSERT_EQ(merged["key_d"], 6);
+    ASSERT_EQ(merged["key_e"], 7);
+    ASSERT_EQ(merged["key_f"], 8);
+}
+
+
+TEST(merge_Test, deep_json)
+{
+    const JSON json_a = R"(
+        {
+            "key_a": 0,
+            "key_b":
+            {
+                "key_c": "test_a",
+                "key_d":
+                [
+                    2,
+                    3
+                ]
+            }
+        })"_json;
+
+    const JSON json_b = R"(
+        {
+            "key_b":
+            {
+                "key_c": "test_b",
+                "key_d":
+                [
+                    2,
+                    5
+                ]
+            }
+        })"_json;
+
+    JSON merged = merge(json_a, json_b);
+    ASSERT_TRUE(contains_key(merged, "key_a"));
+    ASSERT_TRUE(contains_key(merged, "key_b"));
+    const JSON & key_b = merged["key_b"];
+    ASSERT_TRUE(contains_key(key_b, "key_c"));
+    ASSERT_TRUE(contains_key(key_b, "key_d"));
+    ASSERT_EQ(merged["key_a"], 0);
+    ASSERT_STREQ(key_b["key_c"].get<string>().c_str(), "test_b");
+    const vector<int> key_d = key_b["key_d"];
+    ASSERT_EQ(key_d.size(), 3);
+    assert_equal_elements(key_d, { 2, 3, 5 });
+}
+
+
+TEST(merge_Test, mismatched_types)
+{
+    const JSON json_a = R"({ "key_a": 0 })"_json;
+    const JSON json_b = R"({ "key_a": true })"_json;
+    ASSERT_THROW(merge(json_a, json_b), runtime_error);
 }
 
 
