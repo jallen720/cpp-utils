@@ -1,5 +1,6 @@
 #include "Cpp_Utils/JSON.hpp"
 
+#include <vector>
 #include <stdexcept>
 
 #include "Cpp_Utils/File.hpp"
@@ -86,7 +87,7 @@ JSON merge(const JSON & a, const JSON & b)
                 {
                     vector<JSON> merged_array = merged_field;
 
-                    for (const JSON & element : value.get<vector<JSON>>())
+                    for (const JSON & element : value)
                     {
                         if (!contains(merged_array, element))
                         {
@@ -103,19 +104,6 @@ JSON merge(const JSON & a, const JSON & b)
                 }
             }
         });
-    }
-
-    return merged;
-}
-
-
-JSON merge(const vector<JSON> & jsons)
-{
-    JSON merged;
-
-    for (const JSON & json : jsons)
-    {
-        merged = merge(merged, json);
     }
 
     return merged;

@@ -131,26 +131,17 @@ TEST(merge_Test, flat_json)
             "key_e": 5
         })"_json;
 
-    const JSON json_c = R"(
-        {
-            "key_d": 6,
-            "key_e": 7,
-            "key_f": 8
-        })"_json;
-
-    JSON merged = merge({ json_a, json_b, json_c });
+    JSON merged = merge(json_a, json_b);
     ASSERT_TRUE(contains_key(merged, "key_a"));
     ASSERT_TRUE(contains_key(merged, "key_b"));
     ASSERT_TRUE(contains_key(merged, "key_c"));
     ASSERT_TRUE(contains_key(merged, "key_d"));
     ASSERT_TRUE(contains_key(merged, "key_e"));
-    ASSERT_TRUE(contains_key(merged, "key_f"));
     ASSERT_EQ(merged["key_a"], 0);
     ASSERT_EQ(merged["key_b"], 1);
     ASSERT_EQ(merged["key_c"], 3);
-    ASSERT_EQ(merged["key_d"], 6);
-    ASSERT_EQ(merged["key_e"], 7);
-    ASSERT_EQ(merged["key_f"], 8);
+    ASSERT_EQ(merged["key_d"], 4);
+    ASSERT_EQ(merged["key_e"], 5);
 }
 
 
