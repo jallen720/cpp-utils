@@ -25,7 +25,7 @@ TEST(directify_Test, valid_directory)
 {
 #ifdef _WIN32
     ASSERT_TRUE(are_equal(directify("directory\\"), "directory\\"));
-#elif linux
+#elif __gnu_linux__
     ASSERT_TRUE(are_equal(directify("directory/"), "directory/"));
 #endif
 }
@@ -35,8 +35,8 @@ TEST(directify_Test, invalid_directory)
 {
 #ifdef _WIN32
     ASSERT_TRUE(are_equal(directify("directory"), "directory\\"));
-#elif linux
-    ASSERT_TRUE(are_equal(directify("directory"), "directory\\"));
+#elif __gnu_linux__
+    ASSERT_TRUE(are_equal(directify("directory"), "directory/"));
 #endif
 }
 

@@ -19,7 +19,7 @@ string directify(const string & directory)
 {
 #ifdef _WIN32
     static const char DIRECTORY_DELIMITER = '\\';
-#elif linux
+#elif __gnu_linux__
     static const char DIRECTORY_DELIMITER = '/';
 #endif
 
