@@ -15,6 +15,24 @@ namespace Cpp_Utils
 {
 
 
+string platform_path(string path)
+{
+#ifdef _WIN32
+    // Convert to Windows directory format.
+    for (int i = 0; i < path.size(); i++)
+    {
+        if (path[i] == '/')
+        {
+            path[i] = '\\';
+        }
+    }
+#endif
+
+
+    return path;
+}
+
+
 string directify(const string & directory)
 {
 #ifdef _WIN32
@@ -32,18 +50,7 @@ string directify(const string & directory)
 
 string read_file(string path)
 {
-#ifdef _WIN32
-    // Convert to Windows directory format.
-    for (int i = 0; i < path.size(); i++)
-    {
-        if (path[i] == '/')
-        {
-            path[i] = '\\';
-        }
-    }
-#endif
-
-
+    path = platform_path(path);
     validate_not_empty("path", "read_file", path);
     ifstream stream(path);
 
