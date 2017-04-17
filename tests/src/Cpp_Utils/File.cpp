@@ -23,13 +23,21 @@ namespace Cpp_Utils
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(directify_Test, valid_directory)
 {
+#ifdef _WIN32
+    ASSERT_TRUE(are_equal(directify("directory\\"), "directory\\"));
+#elif linux
     ASSERT_TRUE(are_equal(directify("directory/"), "directory/"));
+#endif
 }
 
 
 TEST(directify_Test, invalid_directory)
 {
-    ASSERT_TRUE(are_equal(directify("directory"), "directory/"));
+#ifdef _WIN32
+    ASSERT_TRUE(are_equal(directify("directory"), "directory\\"));
+#elif linux
+    ASSERT_TRUE(are_equal(directify("directory"), "directory\\"));
+#endif
 }
 
 

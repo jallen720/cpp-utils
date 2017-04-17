@@ -9,7 +9,7 @@ namespace Cpp_Utils
 
 
 std::string directify(const std::string & directory);
-std::string read_file(const std::string & path);
+std::string read_file(std::string path);
 bool file_exists(const std::string & path);
 
 

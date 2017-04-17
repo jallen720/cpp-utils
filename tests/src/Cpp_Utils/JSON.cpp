@@ -106,7 +106,6 @@ TEST(get_type_name_Test, valid_types)
     ASSERT_STREQ(get_type_name(json["array"]).c_str(), "array");
     ASSERT_STREQ(get_type_name(json["object"]).c_str(), "object");
     ASSERT_STREQ(get_type_name(json["object"]["key"]).c_str(), "string");
-    ASSERT_STREQ(get_type_name(json["undefined_key"]).c_str(), "undefined");
 }
 
 
@@ -137,11 +136,11 @@ TEST(merge_Test, flat_json)
     ASSERT_TRUE(contains_key(merged, "key_c"));
     ASSERT_TRUE(contains_key(merged, "key_d"));
     ASSERT_TRUE(contains_key(merged, "key_e"));
-    ASSERT_EQ(merged["key_a"], 0);
-    ASSERT_EQ(merged["key_b"], 1);
-    ASSERT_EQ(merged["key_c"], 3);
-    ASSERT_EQ(merged["key_d"], 4);
-    ASSERT_EQ(merged["key_e"], 5);
+    ASSERT_EQ(merged["key_a"].get<int>(), 0);
+    ASSERT_EQ(merged["key_b"].get<int>(), 1);
+    ASSERT_EQ(merged["key_c"].get<int>(), 3);
+    ASSERT_EQ(merged["key_d"].get<int>(), 4);
+    ASSERT_EQ(merged["key_e"].get<int>(), 5);
 }
 
 
@@ -180,7 +179,7 @@ TEST(merge_Test, deep_json)
     const JSON & key_b = merged["key_b"];
     ASSERT_TRUE(contains_key(key_b, "key_c"));
     ASSERT_TRUE(contains_key(key_b, "key_d"));
-    ASSERT_EQ(merged["key_a"], 0);
+    ASSERT_EQ(merged["key_a"].get<int>(), 0);
     ASSERT_STREQ(key_b["key_c"].get<string>().c_str(), "test_b");
     const vector<int> key_d = key_b["key_d"];
     ASSERT_EQ(key_d.size(), 3);

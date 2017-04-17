@@ -17,14 +17,33 @@ namespace Cpp_Utils
 
 string directify(const string & directory)
 {
-    return directory.back() == '/'
+#ifdef _WIN32
+    static const char DIRECTORY_DELIMITER = '\\';
+#elif linux
+    static const char DIRECTORY_DELIMITER = '/';
+#endif
+
+
+    return directory.back() == DIRECTORY_DELIMITER
            ? directory
-           : directory + '/';
+           : directory + DIRECTORY_DELIMITER;
 }
 
 
-string read_file(const string & path)
+string read_file(string path)
 {
+#ifdef _WIN32
+    // Convert to Windows directory format.
+    for (int i = 0; i < path.size(); i++)
+    {
+        if (path[i] == '/')
+        {
+            path[i] = '\\';
+        }
+    }
+#endif
+
+
     validate_not_empty("path", "read_file", path);
     ifstream stream(path);
 

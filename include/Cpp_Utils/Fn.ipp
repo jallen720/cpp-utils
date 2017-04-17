@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <numeric>
 
 
 namespace Cpp_Utils
