@@ -2,9 +2,9 @@
 
 #include <stdexcept>
 
-#include "Cpp_Utils/Container/Fixtures.hpp"
 #include "Cpp_Utils/Test.hpp"
 #include "Cpp_Utils/String.hpp"
+#include "Cpp_Utils/JSON.hpp"
 
 
 using std::vector;
@@ -30,7 +30,7 @@ namespace Cpp_Utils
 // for_each(std::vector<T>, Callback) overloads
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST_F(for_each_Test, for_each_vector)
+TEST(for_each_Test, for_each_vector)
 {
     int result = 0;
     const vector<int> values { 1, 2, 3, 4 };
@@ -43,7 +43,7 @@ TEST_F(for_each_Test, for_each_vector)
 }
 
 
-TEST_F(for_each_Test, for_each_empty_vector)
+TEST(for_each_Test, for_each_empty_vector)
 {
     // Function passed to for_each() should never be called if vector is empty.
     for_each(vector<int> {}, [](const int /*value*/) -> void { FAIL(); });
@@ -55,7 +55,7 @@ TEST_F(for_each_Test, for_each_empty_vector)
 // for_each(std::map<T, U>, Callback) overloads
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST_F(for_each_Test, for_each_map)
+TEST(for_each_Test, for_each_map)
 {
     vector<string> result;
 
@@ -81,8 +81,9 @@ TEST_F(for_each_Test, for_each_map)
 }
 
 
-TEST_F(for_each_Test, incorrect_value_type)
+TEST(for_each_Test, incorrect_value_type)
 {
+    const JSON key_value_pairs = read_json_file(valid_resource_path("json", "key_value_pairs.json"));
     const auto callback = [](const string &, const string &) -> void {};
 
     // key_value_pairs has values of type int, so passing a callback that takes a string as the value
@@ -91,7 +92,7 @@ TEST_F(for_each_Test, incorrect_value_type)
 }
 
 
-TEST_F(for_each_Test, for_each_empty_map)
+TEST(for_each_Test, for_each_empty_map)
 {
     // Function passed to for_each() should never be called if map is empty.
     for_each(map<string, int> {}, [](const string & /*key*/, const int /*value*/) -> void { FAIL(); });
@@ -103,7 +104,7 @@ TEST_F(for_each_Test, for_each_empty_map)
 // for_each(std::map<T, U>, std::map<T, U>::iterator, Callback) overloads
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST_F(for_each_Test, for_each_map_begin)
+TEST(for_each_Test, for_each_map_begin)
 {
     vector<string> result;
 
@@ -123,7 +124,7 @@ TEST_F(for_each_Test, for_each_map_begin)
 }
 
 
-TEST_F(for_each_Test, for_each_map_begin_non_const)
+TEST(for_each_Test, for_each_map_begin_non_const)
 {
     vector<string> result;
 
@@ -154,8 +155,10 @@ TEST_F(for_each_Test, for_each_map_begin_non_const)
 // for_each(JSON, Callback) overloads
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST_F(for_each_Test, for_each_json)
+TEST(for_each_Test, for_each_json)
 {
+    const JSON key_value_pairs = read_json_file(valid_resource_path("json", "key_value_pairs.json"));
+
     const vector<string> expected_keys
     {
         "key0",
@@ -178,7 +181,7 @@ TEST_F(for_each_Test, for_each_json)
 }
 
 
-TEST_F(for_each_Test, unalphabetical_keys_iterated_alphabetically)
+TEST(for_each_Test, unalphabetical_keys_iterated_alphabetically)
 {
     const vector<string> expected_keys { "a", "b", "c", "d", "e", "f" };
     vector<string> actual_keys;
@@ -193,7 +196,7 @@ TEST_F(for_each_Test, unalphabetical_keys_iterated_alphabetically)
 }
 
 
-TEST_F(for_each_Test, different_json_types)
+TEST(for_each_Test, different_json_types)
 {
     const JSON json = read_json_file(valid_resource_path("json", "types.json"));
     const auto callback = [](const string &, const JSON &) -> void {};
