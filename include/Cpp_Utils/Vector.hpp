@@ -26,6 +26,9 @@ void remove_at_index(std::vector<T> & vector, const unsigned int index);
 template<typename T, typename Comparator>
 void sort(std::vector<T> & vector, const Comparator & comparator);
 
+template<typename T>
+void concat(std::vector<T> & to_vector, const std::vector<T> & from_vector);
+
 
 } // namespace Cpp_Utils
 

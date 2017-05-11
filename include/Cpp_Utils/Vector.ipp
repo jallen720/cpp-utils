@@ -69,4 +69,11 @@ void sort(std::vector<T> & vector, const Comparator & comparator)
 }
 
 
+template<typename T>
+void concat(std::vector<T> & to_vector, const std::vector<T> & from_vector)
+{
+    to_vector.insert(to_vector.end(), from_vector.begin(), from_vector.end());
+}
+
+
 } // namespace Cpp_Utils

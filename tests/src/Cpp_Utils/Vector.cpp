@@ -164,4 +164,39 @@ TEST(sort_Test, valid_vector)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// concat() Tests
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(concat_Test, valid_vectors)
+{
+    vector<int> to_vector { 1, 2, 3 };
+    vector<int> from_vector { 4, 5, 6 };
+
+    concat(to_vector, from_vector);
+    assert_equal_elements({ 1, 2, 3, 4, 5, 6 }, to_vector);
+}
+
+
+TEST(concat_Test, empty_to_vector)
+{
+    vector<int> to_vector;
+    vector<int> from_vector { 4, 5, 6 };
+
+    concat(to_vector, from_vector);
+    assert_equal_elements({ 4, 5, 6 }, to_vector);
+}
+
+
+TEST(concat_Test, empty_from_vector)
+{
+    vector<int> to_vector { 1, 2, 3 };
+    vector<int> from_vector;
+
+    concat(to_vector, from_vector);
+    assert_equal_elements({ 1, 2, 3 }, to_vector);
+}
+
+
 } // namespace Cpp_Utils
