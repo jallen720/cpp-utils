@@ -84,7 +84,7 @@ TEST(json_contains_key_Test, empty_json)
 // get_type_name() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(get_type_name_Test, valid_types)
+TEST(json_get_type_name_Test, valid_types)
 {
     const JSON json = R"(
         {
@@ -114,7 +114,7 @@ TEST(get_type_name_Test, valid_types)
 // merge() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(merge_Test, flat_json)
+TEST(json_merge_Test, flat_json)
 {
     const JSON json_a = R"(
         {
@@ -144,7 +144,7 @@ TEST(merge_Test, flat_json)
 }
 
 
-TEST(merge_Test, deep_json)
+TEST(json_merge_Test, deep_json)
 {
     const JSON json_a = R"(
         {
@@ -187,7 +187,7 @@ TEST(merge_Test, deep_json)
 }
 
 
-TEST(merge_Test, mismatched_types)
+TEST(json_merge_Test, mismatched_types)
 {
     const JSON json_a = R"({ "key_a": 0 })"_json;
     const JSON json_b = R"({ "key_a": true })"_json;
