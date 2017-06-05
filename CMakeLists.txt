@@ -15,6 +15,7 @@ configure_project()
 
 # Library
 module_dependency("GoogleTest")
+module_dependency("YAMLCPP")
 add_lib(SHARED)
 
 # Tests

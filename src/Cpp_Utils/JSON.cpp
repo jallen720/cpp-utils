@@ -89,6 +89,7 @@ JSON merge(const JSON & a, const JSON & b)
 
                     for (const JSON & element : value)
                     {
+                        // TODO: remove if nothing needs it?
                         if (!contains(merged_array, element))
                         {
                             merged_array.push_back(element);

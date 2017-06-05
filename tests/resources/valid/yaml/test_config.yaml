@@ -1,0 +1,9 @@
+null_key: null
+string: string value
+number: 2
+list:
+    - value 0
+    - value 1
+map:
+    key_0: value_0
+    key_1: value_1

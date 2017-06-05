@@ -5,6 +5,7 @@
 #include "Cpp_Utils/Test.hpp"
 #include "Cpp_Utils/String.hpp"
 #include "Cpp_Utils/JSON.hpp"
+#include "Cpp_Utils/YAML.hpp"
 
 
 using std::vector;
@@ -203,6 +204,63 @@ TEST(for_each_Test, different_json_types)
     assert_no_throw([&]() -> void { for_each(json["object"], callback); });
     ASSERT_THROW(for_each(json["list"], callback), runtime_error);
     ASSERT_THROW(for_each(json["key"], callback), runtime_error);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// for_each(YAML, Callback) overloads
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+TEST(for_each_Test, for_each_yaml)
+{
+    const YAML_Data key_value_pairs = read_yaml_file(valid_resource_path("yaml", "key_value_pairs.yaml"));
+
+    const vector<string> expected_keys
+    {
+        "key0",
+        "key1",
+        "key2",
+    };
+
+    const vector<int> expected_values { 0, 1, 2 };
+    vector<string> actual_keys;
+    vector<int> actual_values;
+
+    for_each(key_value_pairs, [&](const string & key, const YAML_Data & value) -> void
+    {
+        actual_keys.push_back(key);
+        actual_values.push_back(value.as<int>());
+    });
+
+    assert_equal_elements(expected_keys, actual_keys);
+    assert_equal_elements(expected_values, actual_values);
+}
+
+
+TEST(for_each_Test, unalphabetical_yaml_keys_iterated_as_is)
+{
+    const vector<string> expected_keys { "a", "f", "d", "c", "e", "b" };
+    vector<string> actual_keys;
+    const YAML_Data yaml = read_yaml_file(valid_resource_path("yaml", "unalphabetical_keys.yaml"));
+
+    for_each(yaml, [&](const string & key, const YAML_Data &) -> void
+    {
+        actual_keys.push_back(key);
+    });
+
+    assert_equal_elements(expected_keys, actual_keys);
+}
+
+
+TEST(for_each_Test, different_yaml_types)
+{
+    const YAML_Data yaml = read_yaml_file(valid_resource_path("yaml", "types.yaml"));
+    const auto callback = [](const string &, const YAML_Data &) -> void {};
+
+    assert_no_throw([&]() -> void { for_each(yaml["map"], callback); });
+    ASSERT_THROW(for_each(yaml["list"], callback), runtime_error);
+    ASSERT_THROW(for_each(yaml["key"], callback), runtime_error);
 }
 
 
