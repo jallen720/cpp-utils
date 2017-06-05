@@ -21,7 +21,7 @@ namespace Cpp_Utils
 // contains_key() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(contains_key_Test, valid_map)
+TEST(map_contains_key_Test, valid_map)
 {
     const map<string, const string> valid_map
     {
@@ -38,7 +38,7 @@ TEST(contains_key_Test, valid_map)
 }
 
 
-TEST(contains_key_Test, empty_map)
+TEST(map_contains_key_Test, empty_map)
 {
     const map<string, const string> empty_map;
     ASSERT_FALSE(contains_key(empty_map, string("key0")));

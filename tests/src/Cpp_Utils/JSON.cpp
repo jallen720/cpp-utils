@@ -54,7 +54,7 @@ TEST(read_json_file_Test, parse_error)
 // contains_key() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(contains_key_Test, valid_json)
+TEST(json_contains_key_Test, valid_json)
 {
     const JSON valid_json
     {
@@ -71,7 +71,7 @@ TEST(contains_key_Test, valid_json)
 }
 
 
-TEST(contains_key_Test, empty_json)
+TEST(json_contains_key_Test, empty_json)
 {
     const JSON empty_json;
     ASSERT_FALSE(contains_key(empty_json, "key0"));
