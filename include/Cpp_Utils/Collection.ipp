@@ -181,15 +181,15 @@ void for_each(const JSON & json, const Callback & callback)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// for_each(YAML_Data, Callback) overloads
+// for_each(YAML::Node, Callback) overloads
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template<typename Callback>
-void for_each(const YAML_Data & yaml, const Callback & callback)
+void for_each(const YAML::Node & yaml, const Callback & callback)
 {
     if (!yaml.IsMap())
     {
-        throw std::runtime_error("ERROR: Cannot iterate YAML_Data that is not a map!");
+        throw std::runtime_error("ERROR: Cannot iterate YAML::Node that is not a map!");
     }
 
     for (YAML::const_iterator it = yaml.begin(); it != yaml.end(); it++)

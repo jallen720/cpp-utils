@@ -15,6 +15,7 @@ using std::runtime_error;
 
 // yaml-cpp/yaml.h
 using YAML::Load;
+using YAML::Node;
 using YAML::NodeType;
 
 
@@ -22,16 +23,16 @@ namespace Cpp_Utils
 {
 
 
-YAML_Data read_yaml(const string & yaml_text)
+Node read_yaml(const string & yaml_text)
 {
     return Load(yaml_text);
 }
 
 
-YAML_Data read_yaml_file(const string & path)
+Node read_yaml_file(const string & path)
 {
     validate_not_empty("path", "read_yaml_file", path);
-    YAML_Data yaml;
+    Node yaml;
 
     try
     {
@@ -46,13 +47,13 @@ YAML_Data read_yaml_file(const string & path)
 }
 
 
-bool contains_key(const YAML_Data & yaml, const string & key)
+bool contains_key(const Node & yaml, const string & key)
 {
     return yaml[key];
 }
 
 
-string get_type_name(const YAML_Data & yaml)
+string get_type_name(const Node & yaml)
 {
     switch (yaml.Type())
     {
@@ -66,13 +67,13 @@ string get_type_name(const YAML_Data & yaml)
 }
 
 
-YAML_Data merge(const YAML_Data & a, const YAML_Data & b)
+Node merge(const Node & a, const Node & b)
 {
-    YAML_Data merged = a;
+    Node merged = a;
 
     if ((a.IsMap() || a.IsNull()) && b.IsMap())
     {
-        for_each(b, [&](const string & key, const YAML_Data & value) -> void
+        for_each(b, [&](const string & key, const Node & value) -> void
         {
             if (!contains_key(merged, key))
             {
@@ -80,7 +81,7 @@ YAML_Data merge(const YAML_Data & a, const YAML_Data & b)
             }
             else
             {
-                YAML_Data merged_field = merged[key];
+                Node merged_field = merged[key];
 
                 if (merged_field.Type() != value.Type())
                 {

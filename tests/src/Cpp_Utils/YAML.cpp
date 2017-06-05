@@ -12,6 +12,9 @@ using std::vector;
 using std::string;
 using std::runtime_error;
 
+// yaml-cpp/yaml.h
+using YAML::Node;
+
 
 namespace Cpp_Utils
 {
@@ -70,7 +73,7 @@ TEST(read_yaml_file_Test, parse_error)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(yaml_contains_key_Test, valid_yaml)
 {
-    const YAML_Data valid_yaml = read_yaml(R"(
+    const Node valid_yaml = read_yaml(R"(
         key0: value0
         key1: value1
         key2: value2
@@ -86,7 +89,7 @@ TEST(yaml_contains_key_Test, valid_yaml)
 
 TEST(yaml_contains_key_Test, empty_yaml)
 {
-    const YAML_Data empty_yaml;
+    const Node empty_yaml;
     ASSERT_FALSE(contains_key(empty_yaml, "key0"));
     ASSERT_FALSE(contains_key(empty_yaml, ""));
 }
@@ -99,7 +102,7 @@ TEST(yaml_contains_key_Test, empty_yaml)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(yaml_get_type_name_Test, valid_types)
 {
-    const YAML_Data yaml = read_yaml(R"(
+    const Node yaml = read_yaml(R"(
         null_key: null
         scalar: 1
         sequence: [ 1, 2, 3 ]
@@ -124,19 +127,19 @@ TEST(yaml_get_type_name_Test, valid_types)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(yaml_merge_Test, flat_yaml)
 {
-    const YAML_Data yaml_a = read_yaml(R"(
+    const Node yaml_a = read_yaml(R"(
         key_a: 0
         key_b: 1
         key_c: 2
         )");
 
-    const YAML_Data yaml_b = read_yaml(R"(
+    const Node yaml_b = read_yaml(R"(
         key_c: 3
         key_d: 4
         key_e: 5
         )");
 
-    YAML_Data merged = merge(yaml_a, yaml_b);
+    Node merged = merge(yaml_a, yaml_b);
     ASSERT_TRUE(contains_key(merged, "key_a"));
     ASSERT_TRUE(contains_key(merged, "key_b"));
     ASSERT_TRUE(contains_key(merged, "key_c"));
@@ -152,23 +155,23 @@ TEST(yaml_merge_Test, flat_yaml)
 
 TEST(yaml_merge_Test, deep_yaml)
 {
-    const YAML_Data yaml_a = read_yaml(R"(
+    const Node yaml_a = read_yaml(R"(
         key_a: 0
         key_b:
             key_c: test_a
             key_d: [ 2, 3 ]
         )");
 
-    const YAML_Data yaml_b = read_yaml(R"(
+    const Node yaml_b = read_yaml(R"(
         key_b:
             key_c: test_b
             key_d: [ 2, 5 ]
         )");
 
-    YAML_Data merged = merge(yaml_a, yaml_b);
+    Node merged = merge(yaml_a, yaml_b);
     ASSERT_TRUE(contains_key(merged, "key_a"));
     ASSERT_TRUE(contains_key(merged, "key_b"));
-    const YAML_Data & key_b = merged["key_b"];
+    const Node & key_b = merged["key_b"];
     ASSERT_TRUE(contains_key(key_b, "key_c"));
     ASSERT_TRUE(contains_key(key_b, "key_d"));
     ASSERT_EQ(merged["key_a"].as<int>(), 0);
@@ -176,7 +179,7 @@ TEST(yaml_merge_Test, deep_yaml)
     const vector<int> key_d = key_b["key_d"].as<vector<int>>();
 
 
-    // YAML_Data doesn't support comparison, so duplicate sequence elements are left in.
+    // Node doesn't support comparison, so duplicate sequence elements are left in.
     ASSERT_EQ(key_d.size(), 4);
     assert_equal_elements(key_d, { 2, 3, 2, 5 });
 }
@@ -184,8 +187,8 @@ TEST(yaml_merge_Test, deep_yaml)
 
 TEST(yaml_merge_Test, mismatched_types)
 {
-    const YAML_Data yaml_a = read_yaml(R"(key_a: [ 1, 2 ])");
-    const YAML_Data yaml_b = read_yaml(R"(key_a: true)");
+    const Node yaml_a = read_yaml(R"(key_a: [ 1, 2 ])");
+    const Node yaml_b = read_yaml(R"(key_a: true)");
     ASSERT_THROW(merge(yaml_a, yaml_b), runtime_error);
 }
 

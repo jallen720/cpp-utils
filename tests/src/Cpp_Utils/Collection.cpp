@@ -14,6 +14,9 @@ using std::string;
 using std::runtime_error;
 using std::domain_error;
 
+// yaml-cpp/yaml.h
+using YAML::Node;
+
 
 namespace Cpp_Utils
 {
@@ -209,12 +212,12 @@ TEST(for_each_Test, different_json_types)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// for_each(YAML, Callback) overloads
+// for_each(YAML::Node, Callback) overloads
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST(for_each_Test, for_each_yaml)
 {
-    const YAML_Data key_value_pairs = read_yaml_file(valid_resource_path("yaml", "key_value_pairs.yaml"));
+    const Node key_value_pairs = read_yaml_file(valid_resource_path("yaml", "key_value_pairs.yaml"));
 
     const vector<string> expected_keys
     {
@@ -227,7 +230,7 @@ TEST(for_each_Test, for_each_yaml)
     vector<string> actual_keys;
     vector<int> actual_values;
 
-    for_each(key_value_pairs, [&](const string & key, const YAML_Data & value) -> void
+    for_each(key_value_pairs, [&](const string & key, const Node & value) -> void
     {
         actual_keys.push_back(key);
         actual_values.push_back(value.as<int>());
@@ -242,9 +245,9 @@ TEST(for_each_Test, unalphabetical_yaml_keys_iterated_as_is)
 {
     const vector<string> expected_keys { "a", "f", "d", "c", "e", "b" };
     vector<string> actual_keys;
-    const YAML_Data yaml = read_yaml_file(valid_resource_path("yaml", "unalphabetical_keys.yaml"));
+    const Node yaml = read_yaml_file(valid_resource_path("yaml", "unalphabetical_keys.yaml"));
 
-    for_each(yaml, [&](const string & key, const YAML_Data &) -> void
+    for_each(yaml, [&](const string & key, const Node &) -> void
     {
         actual_keys.push_back(key);
     });
@@ -255,8 +258,8 @@ TEST(for_each_Test, unalphabetical_yaml_keys_iterated_as_is)
 
 TEST(for_each_Test, different_yaml_types)
 {
-    const YAML_Data yaml = read_yaml_file(valid_resource_path("yaml", "types.yaml"));
-    const auto callback = [](const string &, const YAML_Data &) -> void {};
+    const Node yaml = read_yaml_file(valid_resource_path("yaml", "types.yaml"));
+    const auto callback = [](const string &, const Node &) -> void {};
 
     assert_no_throw([&]() -> void { for_each(yaml["map"], callback); });
     ASSERT_THROW(for_each(yaml["list"], callback), runtime_error);
