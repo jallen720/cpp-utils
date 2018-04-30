@@ -6,7 +6,6 @@ const CPP_UTILS_TESTS_SRC_DIR = "tests/src";
 
 // yaml-cpp
 const YAML_CPP_DIR = "<PACKAGES>/yaml-cpp";
-const YAML_CPP_LIB_DIR = "<PACKAGES>/yaml-cpp/build";
 
 module.exports =
 {
@@ -44,15 +43,19 @@ module.exports =
                 `${ YAML_CPP_DIR }/include`,
             ],
             "library_dirs": [],
-            "libraries": [ "yaml-cpp", "cpp_utils" ],
+            "libraries":
+            [
+                "yaml-cpp",
+                "cpp_utils",
+            ],
             "library_import_paths":
             [
                 "lib/libcpp_utils.so",
-                `${ YAML_CPP_LIB_DIR }/libyaml-cpp.so.0.6`,
+                "<PACKAGES>/yaml-cpp/build/libyaml-cpp.so.0.6",
             ],
             "pkg_config": [],
             "compiler_options": COMPILER_OPTIONS,
-            "linker_options": [ `Wl,-rpath,'$$ORIGIN/lib'` ],
+            "linker_options": [ "Wl,-rpath,'$$ORIGIN/lib'" ],
         },
     }
 };
