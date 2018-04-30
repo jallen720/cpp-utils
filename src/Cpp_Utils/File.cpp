@@ -1,19 +1,14 @@
-#include "Cpp_Utils/File.hpp"
-
 #include <fstream>
-
+#include "Cpp_Utils/File.hpp"
 #include "Cpp_Utils/Errors.hpp"
 #include "Cpp_Utils/Validators.hpp"
-
 
 using std::string;
 using std::ifstream;
 using std::istreambuf_iterator;
 
-
 namespace Cpp_Utils
 {
-
 
 string platform_path(string path)
 {
@@ -28,10 +23,8 @@ string platform_path(string path)
     }
 #endif
 
-
     return path;
 }
-
 
 string directify(const string & directory)
 {
@@ -41,12 +34,10 @@ string directify(const string & directory)
     static const char DIRECTORY_DELIMITER = '/';
 #endif
 
-
     return directory.back() == DIRECTORY_DELIMITER
            ? directory
            : directory + DIRECTORY_DELIMITER;
 }
-
 
 string read_file(string path)
 {
@@ -64,11 +55,9 @@ string read_file(string path)
     return content;
 }
 
-
 bool file_exists(const string & path)
 {
     return ifstream(path).good();
 }
-
 
 } // namespace Cpp_Utils

@@ -1,10 +1,8 @@
 #include <stdexcept>
 #include <algorithm>
 
-
 namespace Cpp_Utils
 {
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -35,7 +33,6 @@ void for_each(const std::map<const T, U> & map, const Callback & callback)
     }
 }
 
-
 template<typename T, typename U, typename Callback>
 void for_each(const std::map<T, U> & map, const Callback & callback)
 {
@@ -45,7 +42,6 @@ void for_each(const std::map<T, U> & map, const Callback & callback)
     }
 }
 
-
 template<typename T, typename U, typename Callback>
 void for_each(std::map<const T, U> & map, const Callback & callback)
 {
@@ -54,7 +50,6 @@ void for_each(std::map<const T, U> & map, const Callback & callback)
         callback(element.first, element.second);
     }
 }
-
 
 template<typename T, typename U, typename Callback>
 void for_each(std::map<T, U> & map, const Callback & callback)
@@ -83,7 +78,6 @@ void for_each(
     }
 }
 
-
 template<typename T, typename U, typename Callback>
 void for_each(const std::map<T, U> & map, typename std::map<T, U>::const_iterator begin, const Callback & callback)
 {
@@ -93,7 +87,6 @@ void for_each(const std::map<T, U> & map, typename std::map<T, U>::const_iterato
     }
 }
 
-
 template<typename T, typename U, typename Callback>
 void for_each(std::map<const T, U> & map, typename std::map<const T, U>::iterator begin, const Callback & callback)
 {
@@ -102,7 +95,6 @@ void for_each(std::map<const T, U> & map, typename std::map<const T, U>::iterato
         callback(it->first, it->second);
     }
 }
-
 
 template<typename T, typename U, typename Callback>
 void for_each(std::map<T, U> & map, typename std::map<T, U>::iterator begin, const Callback & callback)
@@ -128,7 +120,6 @@ void for_each(const std::unordered_map<const T, U> & map, const Callback & callb
     }
 }
 
-
 template<typename T, typename U, typename Callback>
 void for_each(const std::unordered_map<T, U> & map, const Callback & callback)
 {
@@ -138,7 +129,6 @@ void for_each(const std::unordered_map<T, U> & map, const Callback & callback)
     }
 }
 
-
 template<typename T, typename U, typename Callback>
 void for_each(std::unordered_map<const T, U> & map, const Callback & callback)
 {
@@ -147,7 +137,6 @@ void for_each(std::unordered_map<const T, U> & map, const Callback & callback)
         callback(element.first, element.second);
     }
 }
-
 
 template<typename T, typename U, typename Callback>
 void for_each(std::unordered_map<T, U> & map, const Callback & callback)

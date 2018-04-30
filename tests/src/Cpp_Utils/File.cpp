@@ -7,16 +7,9 @@ using std::string;
 using std::vector;
 using std::runtime_error;
 
-
 namespace Cpp_Utils
 {
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// directify() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("file::directify() - valid directory", "[file][directify]")
 {
 #ifdef _WIN32
@@ -25,7 +18,6 @@ TEST_CASE("file::directify() - valid directory", "[file][directify]")
     REQUIRE(are_equal(directify("directory/"), "directory/"));
 #endif
 }
-
 
 TEST_CASE("file::directify() - invalid directory", "[file][directify]")
 {
@@ -36,12 +28,6 @@ TEST_CASE("file::directify() - invalid directory", "[file][directify]")
 #endif
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// platform_path() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("file::platform_path() - valid path", "[file][platform_path]")
 {
 #ifdef _WIN32
@@ -51,12 +37,6 @@ TEST_CASE("file::platform_path() - valid path", "[file][platform_path]")
 #endif
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// read_file() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("file::read_file() - valid file", "[file][read_file]")
 {
     assert_no_throw([]() -> void
@@ -65,18 +45,15 @@ TEST_CASE("file::read_file() - valid file", "[file][read_file]")
     });
 }
 
-
 TEST_CASE("file::read_file() - non existant file", "[file][read_file]")
 {
     REQUIRE_THROWS_AS(read_file("does_not_exist"), runtime_error);
 }
 
-
 TEST_CASE("file::read_file() - empty path", "[file][read_file]")
 {
     REQUIRE_THROWS_AS(read_file(""), runtime_error);
 }
-
 
 TEST_CASE("file::read_file() - content match", "[file][read_file]")
 {
@@ -88,22 +65,14 @@ TEST_CASE("file::read_file() - content match", "[file][read_file]")
     REQUIRE(expectedContent == read_file(valid_resource_path("misc", "test.txt")));
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// file_exists() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("file::file_exists() - file exists", "[file][file_exists]")
 {
     REQUIRE(file_exists(valid_resource_path("misc", "test.txt")));
 }
 
-
 TEST_CASE("file::file_exists() - file does not exist", "[file][file_exists]")
 {
     REQUIRE_FALSE(file_exists(valid_resource_path("misc", "does_not_exist.txt")));
 }
-
 
 } // namespace Cpp_Utils

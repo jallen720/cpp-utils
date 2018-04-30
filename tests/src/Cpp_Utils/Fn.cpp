@@ -5,27 +5,18 @@
 #include "Cpp_Utils/Test.hpp"
 #include "Cpp_Utils/String.hpp"
 
-
 using std::vector;
 using std::map;
 using std::pair;
 using std::string;
 
-
 namespace Cpp_Utils
 {
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// accumulate() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static int vector_accumulator(const int accumulation, const int element)
 {
     return accumulation + element;
 }
-
 
 TEST_CASE("fn::accumulate() - accumulate vector", "[fn][accumulate]")
 {
@@ -33,18 +24,15 @@ TEST_CASE("fn::accumulate() - accumulate vector", "[fn][accumulate]")
     REQUIRE(6 == accumulate(0, numbers, vector_accumulator));
 }
 
-
 TEST_CASE("fn::accumulate() - accumulate empty vector", "[fn][accumulate]")
 {
     REQUIRE(0 == accumulate(0, vector<int>(), vector_accumulator));
 }
 
-
 static string map_accumulator(const string accumulation, const pair<string, const int> & element)
 {
     return accumulation + element.first + ": " + to_string(element.second) + "\n";
 }
-
 
 TEST_CASE("fn::accumulate() - accumulate map", "[fn][accumulate]")
 {
@@ -62,23 +50,15 @@ TEST_CASE("fn::accumulate() - accumulate map", "[fn][accumulate]")
         == accumulate<string>("", mapped_data, map_accumulator));
 }
 
-
 TEST_CASE("fn::accumulate() - accumulate empty map", "[fn][accumulate]")
 {
     REQUIRE("" == accumulate<string>("", map<string, const int>(), map_accumulator));
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// transform() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static string vector_transformer(const string & element)
 {
     return element.back() + element + "!";
 }
-
 
 TEST_CASE("fn::transform() - transform vector", "[fn][transform]")
 {
@@ -98,18 +78,15 @@ TEST_CASE("fn::transform() - transform vector", "[fn][transform]")
         transform<string>(strings, vector_transformer));
 }
 
-
 TEST_CASE("fn::transform() - transform empty vector", "[fn][transform]")
 {
     assert_equal_elements({}, transform<string>(vector<string>(), vector_transformer));
 }
 
-
 static int map_transformer(const pair<int, int> & element)
 {
     return element.first + element.second;
 }
-
 
 TEST_CASE("fn::transform() - transform map", "[fn][transform]")
 {
@@ -123,23 +100,15 @@ TEST_CASE("fn::transform() - transform map", "[fn][transform]")
     assert_equal_elements({ 1, 5, 11 }, transform<int>(mapped_numbers, map_transformer));
 }
 
-
 TEST_CASE("fn::transform() - transform empty map", "[fn][transform]")
 {
     assert_equal_elements({}, transform<int>(map<int, int>(), map_transformer));
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// filter() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool vector_predicate(int element)
 {
     return element > 2;
 }
-
 
 TEST_CASE("fn::filter() - filter vector", "[fn][filter]")
 {
@@ -147,11 +116,9 @@ TEST_CASE("fn::filter() - filter vector", "[fn][filter]")
     assert_equal_elements({ 3, 4 }, filter(numbers, vector_predicate));
 }
 
-
 TEST_CASE("fn::filter() - filter empty vector", "[fn][filter]")
 {
     assert_equal_elements({}, filter(vector<int>(), vector_predicate));
 }
-
 
 } // namespace Cpp_Utils

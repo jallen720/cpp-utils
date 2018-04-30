@@ -1,12 +1,9 @@
 #include <algorithm>
 #include <stdexcept>
-
 #include "Cpp_Utils/String.hpp"
-
 
 namespace Cpp_Utils
 {
-
 
 template<typename T>
 bool contains(const std::vector<T> & vector, const T & element)
@@ -14,13 +11,11 @@ bool contains(const std::vector<T> & vector, const T & element)
     return std::find(vector.begin(), vector.end(), element) != vector.end();
 }
 
-
 template<typename T, typename Predicate>
 bool contains(const std::vector<T> & vector, const Predicate & predicate)
 {
     return std::find_if(vector.begin(), vector.end(), predicate) != vector.end();
 }
-
 
 template<typename T>
 void remove(std::vector<T> & vector, const T & element)
@@ -33,7 +28,6 @@ void remove(std::vector<T> & vector, const T & element)
     }
 }
 
-
 template<typename T, typename Predicate>
 void remove(std::vector<T> & vector, const Predicate & predicate)
 {
@@ -44,7 +38,6 @@ void remove(std::vector<T> & vector, const Predicate & predicate)
         vector.erase(vector_element);
     }
 }
-
 
 template<typename T>
 void remove_at_index(std::vector<T> & vector, const unsigned int index)
@@ -61,7 +54,6 @@ void remove_at_index(std::vector<T> & vector, const unsigned int index)
     vector.erase(vector.begin() + index);
 }
 
-
 template<typename T, typename Comparator>
 void sort(std::vector<T> & vector, const Comparator & comparator)
 {
@@ -74,6 +66,5 @@ void concat(std::vector<T> & to_vector, const std::vector<T> & from_vector)
 {
     to_vector.insert(to_vector.end(), from_vector.begin(), from_vector.end());
 }
-
 
 } // namespace Cpp_Utils

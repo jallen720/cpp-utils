@@ -1,12 +1,9 @@
 #pragma once
 
-
 #include <vector>
-
 
 namespace Cpp_Utils
 {
-
 
 template<typename T>
 bool contains(const std::vector<T> & vector, const T & element);
@@ -29,8 +26,6 @@ void sort(std::vector<T> & vector, const Comparator & comparator);
 template<typename T>
 void concat(std::vector<T> & to_vector, const std::vector<T> & from_vector);
 
-
 } // namespace Cpp_Utils
-
 
 #include "Cpp_Utils/Vector.ipp"

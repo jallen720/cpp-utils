@@ -12,49 +12,27 @@ using std::runtime_error;
 using std::domain_error;
 using YAML::Node;
 
-
 namespace Cpp_Utils
 {
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// for_each() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// for_each(std::vector<T>, Callback) overloads
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST_CASE("collection::for_each() - for each vector", "[collection][for_each]")
+TEST_CASE("collection::for_each(std::vector<T>, Callback) - for each vector", "[collection][for_each]")
 {
     int result = 0;
     const vector<int> values { 1, 2, 3, 4 };
     const auto value_handler = [&](const int value) -> void { result += value; };
-
     for_each(values, value_handler);
     REQUIRE(result == 10);
     for_each(values, value_handler);
     REQUIRE(result == 20);
 }
 
-
-TEST_CASE("collection::for_each() - for each empty vector", "[collection][for_each]")
+TEST_CASE("collection::for_each(std::vector<T>, Callback) - for each empty vector", "[collection][for_each]")
 {
     // Function passed to for_each() should never be called if vector is empty.
     for_each(vector<int> {}, [](const int /*value*/) -> void { FAIL(); });
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// for_each(std::map<T, U>, Callback) overloads
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST_CASE("collection::for_each() - for each map", "[collection][for_each]")
+TEST_CASE("collection::for_each(std::map<T, U>, Callback) - for each map", "[collection][for_each]")
 {
     vector<string> result;
 
@@ -79,8 +57,7 @@ TEST_CASE("collection::for_each() - for each map", "[collection][for_each]")
         result);
 }
 
-
-TEST_CASE("collection::for_each() - incorrect value type", "[collection][for_each]")
+TEST_CASE("collection::for_each(std::map<T, U>, Callback) - incorrect value type", "[collection][for_each]")
 {
     const JSON key_value_pairs = read_json_file(valid_resource_path("json", "key_value_pairs.json"));
     const auto callback = [](const string &, const string &) -> void {};
@@ -90,20 +67,13 @@ TEST_CASE("collection::for_each() - incorrect value type", "[collection][for_eac
     REQUIRE_THROWS_AS(for_each(key_value_pairs, callback), domain_error);
 }
 
-
 TEST_CASE("collection::for_each() - for each empty map", "[collection][for_each]")
 {
     // Function passed to for_each() should never be called if map is empty.
     for_each(map<string, int> {}, [](const string & /*key*/, const int /*value*/) -> void { FAIL(); });
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// for_each(std::map<T, U>, std::map<T, U>::iterator, Callback) overloads
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST_CASE("collection::for_each() - for each map begin", "[collection][for_each]")
+TEST_CASE("collection::for_each(std::map<T, U>, std::map<T, U>::iterator, Callback) - for each map begin", "[collection][for_each]")
 {
     vector<string> result;
 
@@ -122,8 +92,7 @@ TEST_CASE("collection::for_each() - for each map begin", "[collection][for_each]
     assert_equal_elements({ "second1", "third2" }, result);
 }
 
-
-TEST_CASE("collection::for_each() - for each map begin non-const", "[collection][for_each]")
+TEST_CASE("collection::for_each(std::map<T, U>, std::map<T, U>::iterator, Callback) - for each map begin non-const", "[collection][for_each]")
 {
     vector<string> result;
 
@@ -147,13 +116,7 @@ TEST_CASE("collection::for_each() - for each map begin non-const", "[collection]
     assert_equal_elements({ "second2", "third3" }, result);
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// for_each(JSON, Callback) overloads
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST_CASE("collection::for_each() - json", "[collection][for_each]")
+TEST_CASE("collection::for_each(JSON, Callback) - json", "[collection][for_each]")
 {
     const JSON key_value_pairs = read_json_file(valid_resource_path("json", "key_value_pairs.json"));
 
@@ -178,8 +141,7 @@ TEST_CASE("collection::for_each() - json", "[collection][for_each]")
     assert_equal_elements(expected_values, actual_values);
 }
 
-
-TEST_CASE("collection::for_each() - unalphabetical json keys iterated alphabetically", "[collection][for_each]")
+TEST_CASE("collection::for_each(JSON, Callback) - unalphabetical json keys iterated alphabetically", "[collection][for_each]")
 {
     const vector<string> expected_keys { "a", "b", "c", "d", "e", "f" };
     vector<string> actual_keys;
@@ -193,24 +155,16 @@ TEST_CASE("collection::for_each() - unalphabetical json keys iterated alphabetic
     assert_equal_elements(expected_keys, actual_keys);
 }
 
-
-TEST_CASE("collection::for_each() - different json types", "[collection][for_each]")
+TEST_CASE("collection::for_each(JSON, Callback) - different json types", "[collection][for_each]")
 {
     const JSON json = read_json_file(valid_resource_path("json", "types.json"));
     const auto callback = [](const string &, const JSON &) -> void {};
-
     assert_no_throw([&]() -> void { for_each(json["object"], callback); });
     REQUIRE_THROWS_AS(for_each(json["list"], callback), runtime_error);
     REQUIRE_THROWS_AS(for_each(json["key"], callback), runtime_error);
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// for_each(YAML::Node, Callback) overloads
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST_CASE("collection::for_each() - yaml", "[collection][for_each]")
+TEST_CASE("collection::for_each(YAML::Node, Callback) - yaml", "[collection][for_each]")
 {
     const Node key_value_pairs = read_yaml_file(valid_resource_path("yaml", "key_value_pairs.yaml"));
 
@@ -235,8 +189,7 @@ TEST_CASE("collection::for_each() - yaml", "[collection][for_each]")
     assert_equal_elements(expected_values, actual_values);
 }
 
-
-TEST_CASE("collection::for_each() - unalphabetical yaml keys iterated as is", "[collection][for_each]")
+TEST_CASE("collection::for_each(YAML::Node, Callback) - unalphabetical yaml keys iterated as is", "[collection][for_each]")
 {
     const vector<string> expected_keys { "a", "f", "d", "c", "e", "b" };
     vector<string> actual_keys;
@@ -250,45 +203,27 @@ TEST_CASE("collection::for_each() - unalphabetical yaml keys iterated as is", "[
     assert_equal_elements(expected_keys, actual_keys);
 }
 
-
-TEST_CASE("collection::for_each() - different yaml types", "[collection][for_each]")
+TEST_CASE("collection::for_each(YAML::Node, Callback) - different yaml types", "[collection][for_each]")
 {
     const Node yaml = read_yaml_file(valid_resource_path("yaml", "types.yaml"));
     const auto callback = [](const string &, const Node &) -> void {};
-
     assert_no_throw([&]() -> void { for_each(yaml["map"], callback); });
     REQUIRE_THROWS_AS(for_each(yaml["list"], callback), runtime_error);
     REQUIRE_THROWS_AS(for_each(yaml["key"], callback), runtime_error);
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// find() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// find(T, std::vector<T>, Predicate) overloads
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST_CASE("collection::find() - matching predicate", "[collection][find]")
+TEST_CASE("collection::find(T, std::vector<T>, Predicate) - matching predicate", "[collection][find]")
 {
     const vector<int> values { 1, 2, 3, 4 };
     int value = 0;
-
     REQUIRE(find(value, values, [](const int value) -> bool { return value > 2; }));
     REQUIRE(value == 3);
 }
 
-
-TEST_CASE("collection::find() - non-matching predicate", "[collection][find]")
+TEST_CASE("collection::find(T, std::vector<T>, Predicate) - non-matching predicate", "[collection][find]")
 {
     const vector<int> values { 1, 2, 3, 4 };
     int value = 0;
-
     REQUIRE_FALSE(find(value, values, [](const int value) -> bool { return value > 4; }));
     REQUIRE(value == 0);
 }

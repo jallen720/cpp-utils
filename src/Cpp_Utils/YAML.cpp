@@ -1,33 +1,25 @@
-#include "Cpp_Utils/YAML.hpp"
-
 #include <vector>
 #include <stdexcept>
-
+#include "Cpp_Utils/YAML.hpp"
 #include "Cpp_Utils/Validators.hpp"
 #include "Cpp_Utils/Errors.hpp"
 #include "Cpp_Utils/File.hpp"
 #include "Cpp_Utils/Collection.hpp"
 
-
 using std::string;
 using std::vector;
 using std::runtime_error;
-
-// yaml-cpp/yaml.h
 using YAML::Load;
 using YAML::Node;
 using YAML::NodeType;
 
-
 namespace Cpp_Utils
 {
-
 
 Node read_yaml(const string & yaml_text)
 {
     return Load(yaml_text);
 }
-
 
 Node read_yaml_file(const string & path)
 {
@@ -46,12 +38,10 @@ Node read_yaml_file(const string & path)
     return yaml;
 }
 
-
 bool contains_key(const Node & yaml, const string & key)
 {
     return yaml[key];
 }
-
 
 string get_type_name(const Node & yaml)
 {
@@ -65,7 +55,6 @@ string get_type_name(const Node & yaml)
         default: return "undefined";
     };
 }
-
 
 Node merge(const Node & a, const Node & b)
 {
@@ -115,6 +104,5 @@ Node merge(const Node & a, const Node & b)
 
     return merged;
 }
-
 
 } // namespace Cpp_Utils

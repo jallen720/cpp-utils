@@ -1,9 +1,7 @@
 #include "Cpp_Utils/__internal__/catch.hpp"
 
-
 namespace Cpp_Utils
 {
-
 
 template<typename T>
 void assert_equal_elements(const std::vector<T> & expected_elements, const std::vector<T> & actual_elements)
@@ -15,6 +13,5 @@ void assert_equal_elements(const std::vector<T> & expected_elements, const std::
         REQUIRE(expected_elements[i] == actual_elements[i]);
     }
 }
-
 
 } // namespace Cpp_Utils

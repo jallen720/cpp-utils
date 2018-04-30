@@ -1,13 +1,10 @@
 #pragma once
 
-
 #include <map>
 #include <vector>
 
-
 namespace Cpp_Utils
 {
-
 
 template<typename Key, typename Value>
 bool contains_key(const std::map<Key, Value> & map, const Key & key);
@@ -33,8 +30,6 @@ std::pair<Key, Value> at_index(const std::map<Key, Value> & map, size_t index);
 template<typename Key, typename Value>
 void remove(std::map<Key, Value> & map, const Key & key);
 
-
 } // namespace Cpp_Utils
-
 
 #include "Cpp_Utils/Map.ipp"

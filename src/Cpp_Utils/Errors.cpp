@@ -1,15 +1,11 @@
-#include "Cpp_Utils/Errors.hpp"
-
 #include <stdexcept>
-
+#include "Cpp_Utils/Errors.hpp"
 
 using std::string;
 using std::runtime_error;
 
-
 namespace Cpp_Utils
 {
-
 
 string build_arg_message(
     const string & parameter_name,
@@ -24,12 +20,10 @@ string build_arg_message(
            arg_info;
 }
 
-
 static string build_file_message(const string & path, const string & function_name, const string & message)
 {
     return "error in file at " + path + " accessed by " + function_name + "(): " + message;
 }
-
 
 void empty_string_arg_error(const string & parameter_name, const string & function_name)
 {
@@ -40,7 +34,6 @@ void empty_string_arg_error(const string & parameter_name, const string & functi
         "string argument"));
 }
 
-
 void null_arg_error(const string & parameter_name, const string & function_name)
 {
     throw runtime_error(build_arg_message(
@@ -49,11 +42,9 @@ void null_arg_error(const string & parameter_name, const string & function_name)
         " cannot be null"));
 }
 
-
 void file_error(const string & path, const string & function_name, const string & message)
 {
     throw runtime_error(build_file_message(path, function_name, message));
 }
-
 
 } // namespace Cpp_Utils

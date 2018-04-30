@@ -9,16 +9,9 @@ using std::string;
 using std::runtime_error;
 using YAML::Node;
 
-
 namespace Cpp_Utils
 {
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// read_yaml() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("yaml::read_yaml() - valid yaml", "[yaml][read_yaml]")
 {
     assert_no_throw([]() -> void
@@ -27,18 +20,11 @@ TEST_CASE("yaml::read_yaml() - valid yaml", "[yaml][read_yaml]")
     });
 }
 
-
 TEST_CASE("yaml::read_yaml() - parse error", "[yaml][read_yaml]")
 {
     REQUIRE_THROWS_AS(read_yaml("key: value with extra colon :"), runtime_error);
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// read_yaml_file() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("yaml::read_yaml_file() - load valid file", "[yaml][read_yaml_file]")
 {
     assert_no_throw([]() -> void
@@ -47,24 +33,16 @@ TEST_CASE("yaml::read_yaml_file() - load valid file", "[yaml][read_yaml_file]")
     });
 }
 
-
 TEST_CASE("yaml::read_yaml_file() - empty path", "[yaml][read_yaml_file]")
 {
     REQUIRE_THROWS_AS(read_yaml_file(""), runtime_error);
 }
-
 
 TEST_CASE("yaml::read_yaml_file() - parse error", "[yaml][read_yaml_file]")
 {
     REQUIRE_THROWS_AS(read_yaml_file(invalid_resource_path("yaml", "parse_error.yaml")), runtime_error);
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// contains_key() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("yaml::yaml_contains_key() - valid yaml", "[yaml][yaml_contains_key]")
 {
     const Node valid_yaml = read_yaml(R"(
@@ -80,7 +58,6 @@ TEST_CASE("yaml::yaml_contains_key() - valid yaml", "[yaml][yaml_contains_key]")
     REQUIRE_FALSE(contains_key(valid_yaml, "value0"));
 }
 
-
 TEST_CASE("yaml::yaml_contains_key() - empty yaml", "[yaml][yaml_contains_key]")
 {
     const Node empty_yaml;
@@ -88,12 +65,6 @@ TEST_CASE("yaml::yaml_contains_key() - empty yaml", "[yaml][yaml_contains_key]")
     REQUIRE_FALSE(contains_key(empty_yaml, ""));
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// get_type_name() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("yaml::yaml_get_type_name() - valid types", "[yaml][yaml_get_type_name]")
 {
     const Node yaml = read_yaml(R"(
@@ -113,12 +84,6 @@ TEST_CASE("yaml::yaml_get_type_name() - valid types", "[yaml][yaml_get_type_name
     REQUIRE(get_type_name(yaml["map"]["sequence"]) == "sequence");
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// merge() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("yaml::yaml_merge() - flat yaml", "[yaml][yaml_merge]")
 {
     const Node yaml_a = read_yaml(R"(
@@ -145,7 +110,6 @@ TEST_CASE("yaml::yaml_merge() - flat yaml", "[yaml][yaml_merge]")
     REQUIRE(merged["key_d"].as<int>() == 4);
     REQUIRE(merged["key_e"].as<int>() == 5);
 }
-
 
 TEST_CASE("yaml::yaml_merge() - deep yaml", "[yaml][yaml_merge]")
 {
@@ -178,13 +142,11 @@ TEST_CASE("yaml::yaml_merge() - deep yaml", "[yaml][yaml_merge]")
     assert_equal_elements(key_d, { 2, 3, 2, 5 });
 }
 
-
 TEST_CASE("yaml::yaml_merge() - mismatched types", "[yaml][yaml_merge]")
 {
     const Node yaml_a = read_yaml(R"(key_a: [ 1, 2 ])");
     const Node yaml_b = read_yaml(R"(key_a: true)");
     REQUIRE_THROWS_AS(merge(yaml_a, yaml_b), runtime_error);
 }
-
 
 } // namespace Cpp_Utils

@@ -1,24 +1,19 @@
-#include "Cpp_Utils/JSON.hpp"
-
 #include <vector>
 #include <stdexcept>
-
+#include "Cpp_Utils/JSON.hpp"
 #include "Cpp_Utils/File.hpp"
 #include "Cpp_Utils/Validators.hpp"
 #include "Cpp_Utils/Errors.hpp"
 #include "Cpp_Utils/Collection.hpp"
 #include "Cpp_Utils/Vector.hpp"
 
-
 using std::string;
 using std::vector;
 using std::invalid_argument;
 using std::runtime_error;
 
-
 namespace Cpp_Utils
 {
-
 
 JSON read_json_file(const string & path)
 {
@@ -37,12 +32,10 @@ JSON read_json_file(const string & path)
     return json;
 }
 
-
 bool contains_key(const JSON & json, const string & key)
 {
     return json.find(key) != json.end();
 }
-
 
 string get_type_name(const JSON & json)
 {
@@ -55,7 +48,6 @@ string get_type_name(const JSON & json)
            json.is_discarded() ? "discarded" :
            "undefined";
 }
-
 
 JSON merge(const JSON & a, const JSON & b)
 {
@@ -109,6 +101,5 @@ JSON merge(const JSON & a, const JSON & b)
 
     return merged;
 }
-
 
 } // namespace Cpp_Utils

@@ -1,13 +1,10 @@
 #include <stdexcept>
 #include <iterator>
-
 #include "Cpp_Utils/Fn.hpp"
 #include "Cpp_Utils/String.hpp"
 
-
 namespace Cpp_Utils
 {
-
 
 template<typename Key, typename Value>
 using Map_It = typename std::map<Key, Value>::iterator;
@@ -15,13 +12,11 @@ using Map_It = typename std::map<Key, Value>::iterator;
 template<typename Key, typename Value>
 using Map_Const_It = typename std::map<Key, Value>::const_iterator;
 
-
 template<typename Key, typename Value>
 bool contains_key(const std::map<Key, Value> & map, const Key & key)
 {
     return map.find(key) != map.end();
 }
-
 
 template<typename Key, typename Value>
 std::vector<Value> get_values(const std::map<Key, Value> & map)
@@ -34,7 +29,6 @@ std::vector<Value> get_values(const std::map<Key, Value> & map)
     return transform<Value>(map, value_selector);
 }
 
-
 template<typename Key, typename Value>
 std::vector<Value> get_values(const std::map<Key, const Value> & map)
 {
@@ -45,7 +39,6 @@ std::vector<Value> get_values(const std::map<Key, const Value> & map)
 
     return transform<Value>(map, value_selector);
 }
-
 
 template<typename Key, typename Value>
 const Value & at_key(const std::map<Key, const Value> & map, const Key & key)
@@ -59,7 +52,6 @@ const Value & at_key(const std::map<Key, const Value> & map, const Key & key)
 
     return it->second;
 }
-
 
 template<typename Key, typename Value>
 const Key & at_value(const std::map<Key, const Value> & map, const Value & value)
@@ -78,7 +70,6 @@ const Key & at_value(const std::map<Key, const Value> & map, const Value & value
     return it->first;
 }
 
-
 template<typename Key, typename Value>
 std::pair<Key, const Value> at_index(const std::map<Key, const Value> & map, size_t index)
 {
@@ -92,7 +83,6 @@ std::pair<Key, const Value> at_index(const std::map<Key, const Value> & map, siz
     std::advance(it, index);
     return *it;
 }
-
 
 template<typename Key, typename Value>
 std::pair<Key, Value> at_index(const std::map<Key, Value> & map, size_t index)
@@ -108,7 +98,6 @@ std::pair<Key, Value> at_index(const std::map<Key, Value> & map, size_t index)
     return *it;
 }
 
-
 template<typename Key, typename Value>
 void remove(std::map<Key, Value> & map, const Key & key)
 {
@@ -119,6 +108,5 @@ void remove(std::map<Key, Value> & map, const Key & key)
 
     map.erase(key);
 }
-
 
 } // namespace Cpp_Utils

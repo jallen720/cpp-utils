@@ -8,16 +8,9 @@ using std::vector;
 using std::string;
 using std::runtime_error;
 
-
 namespace Cpp_Utils
 {
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// read_json_file() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("json::read_json_file() - load valid file", "[json][read_json_file]")
 {
     assert_no_throw([]() -> void
@@ -26,30 +19,21 @@ TEST_CASE("json::read_json_file() - load valid file", "[json][read_json_file]")
     });
 }
 
-
 TEST_CASE("json::read_json_file() - empty path", "[json][read_json_file]")
 {
     REQUIRE_THROWS_AS(read_json_file(""), runtime_error);
 }
-
 
 TEST_CASE("json::read_json_file() - empty file", "[json][read_json_file]")
 {
     REQUIRE_THROWS_AS(read_json_file(invalid_resource_path("json", "empty.json")), runtime_error);
 }
 
-
 TEST_CASE("json::read_json_file() - parse error", "[json][read_json_file]")
 {
     REQUIRE_THROWS_AS(read_json_file(invalid_resource_path("json", "parse_error.json")), runtime_error);
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// contains_key() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("json::json_contains_key() - valid json", "[json][json_contains_key]")
 {
     const JSON valid_json
@@ -66,7 +50,6 @@ TEST_CASE("json::json_contains_key() - valid json", "[json][json_contains_key]")
     REQUIRE_FALSE(contains_key(valid_json, "value0"));
 }
 
-
 TEST_CASE("json::json_contains_key() - empty json", "[json][json_contains_key]")
 {
     const JSON empty_json;
@@ -74,12 +57,6 @@ TEST_CASE("json::json_contains_key() - empty json", "[json][json_contains_key]")
     REQUIRE_FALSE(contains_key(empty_json, ""));
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// get_type_name() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("json::json_get_type_name() - valid types", "[json][json_get_type_name]")
 {
     const JSON json = R"(
@@ -104,12 +81,6 @@ TEST_CASE("json::json_get_type_name() - valid types", "[json][json_get_type_name
     REQUIRE(get_type_name(json["object"]["key"]) == "string");
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-// merge() Tests
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TEST_CASE("json::json_merge() - flat json", "[json][json_merge]")
 {
     const JSON json_a = R"(
@@ -138,7 +109,6 @@ TEST_CASE("json::json_merge() - flat json", "[json][json_merge]")
     REQUIRE(merged["key_d"].get<int>() == 4);
     REQUIRE(merged["key_e"].get<int>() == 5);
 }
-
 
 TEST_CASE("json::json_merge() - deep json", "[json][json_merge]")
 {
@@ -182,13 +152,11 @@ TEST_CASE("json::json_merge() - deep json", "[json][json_merge]")
     assert_equal_elements(key_d, { 2, 3, 5 });
 }
 
-
 TEST_CASE("json::json_merge() - mismatched types", "[json][json_merge]")
 {
     const JSON json_a = R"({ "key_a": 0 })"_json;
     const JSON json_b = R"({ "key_a": true })"_json;
     REQUIRE_THROWS_AS(merge(json_a, json_b), runtime_error);
 }
-
 
 } // namespace Cpp_Utils

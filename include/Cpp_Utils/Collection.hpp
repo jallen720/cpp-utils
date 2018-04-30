@@ -1,17 +1,13 @@
 #pragma once
 
-
 #include <vector>
 #include <map>
 #include <unordered_map>
 #include <yaml-cpp/yaml.h>
-
 #include "Cpp_Utils/JSON.hpp"
-
 
 namespace Cpp_Utils
 {
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -107,6 +103,5 @@ bool find(T & out, const std::vector<T> & vector, const Predicate & predicate);
 
 
 } // namespace Cpp_Utils
-
 
 #include "Cpp_Utils/Collection.ipp"

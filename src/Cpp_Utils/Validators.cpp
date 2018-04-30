@@ -1,15 +1,11 @@
 #include "Cpp_Utils/Validators.hpp"
-
 #include "Cpp_Utils/Errors.hpp"
 #include "Cpp_Utils/String.hpp"
 
-
 using std::string;
-
 
 namespace Cpp_Utils
 {
-
 
 void validate_not_empty(const string & parameter_name, const string & function_name, const string & arg)
 {
@@ -19,7 +15,6 @@ void validate_not_empty(const string & parameter_name, const string & function_n
     }
 }
 
-
 void validate_not_empty(const string & parameter_name, const string & function_name, const char * arg)
 {
     if (is_empty(arg))
@@ -28,7 +23,6 @@ void validate_not_empty(const string & parameter_name, const string & function_n
     }
 }
 
-
 void validate_not_null(const string & parameter_name, const string & function_name, const void * arg)
 {
     if (arg == nullptr)
@@ -36,6 +30,5 @@ void validate_not_null(const string & parameter_name, const string & function_na
         null_arg_error(parameter_name, function_name);
     }
 }
-
 
 } // namespace Cpp_Utils
