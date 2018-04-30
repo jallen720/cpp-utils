@@ -2,8 +2,7 @@
 
 #include <iostream>
 #include <exception>
-#include <gtest/gtest.h>
-
+#include "Cpp_Utils/__internal__/catch.hpp"
 #include "Cpp_Utils/File.hpp"
 
 

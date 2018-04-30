@@ -1,18 +1,12 @@
-#include "Cpp_Utils/YAML.hpp"
-
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include <gtest/gtest.h>
-
+#include "Cpp_Utils/YAML.hpp"
 #include "Cpp_Utils/Test.hpp"
-
 
 using std::vector;
 using std::string;
 using std::runtime_error;
-
-// yaml-cpp/yaml.h
 using YAML::Node;
 
 
@@ -25,7 +19,7 @@ namespace Cpp_Utils
 // read_yaml() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(read_yaml_Test, valid_yaml)
+TEST_CASE("yaml::read_yaml() - valid yaml", "[yaml][read_yaml]")
 {
     assert_no_throw([]() -> void
     {
@@ -34,9 +28,9 @@ TEST(read_yaml_Test, valid_yaml)
 }
 
 
-TEST(read_yaml_Test, parse_error)
+TEST_CASE("yaml::read_yaml() - parse error", "[yaml][read_yaml]")
 {
-    ASSERT_THROW(read_yaml("key: value with extra colon :"), runtime_error);
+    REQUIRE_THROWS_AS(read_yaml("key: value with extra colon :"), runtime_error);
 }
 
 
@@ -45,7 +39,7 @@ TEST(read_yaml_Test, parse_error)
 // read_yaml_file() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(read_yaml_file_Test, load_valid_file)
+TEST_CASE("yaml::read_yaml_file() - load valid file", "[yaml][read_yaml_file]")
 {
     assert_no_throw([]() -> void
     {
@@ -54,15 +48,15 @@ TEST(read_yaml_file_Test, load_valid_file)
 }
 
 
-TEST(read_yaml_file_Test, empty_path)
+TEST_CASE("yaml::read_yaml_file() - empty path", "[yaml][read_yaml_file]")
 {
-    ASSERT_THROW(read_yaml_file(""), runtime_error);
+    REQUIRE_THROWS_AS(read_yaml_file(""), runtime_error);
 }
 
 
-TEST(read_yaml_file_Test, parse_error)
+TEST_CASE("yaml::read_yaml_file() - parse error", "[yaml][read_yaml_file]")
 {
-    ASSERT_THROW(read_yaml_file(invalid_resource_path("yaml", "parse_error.yaml")), runtime_error);
+    REQUIRE_THROWS_AS(read_yaml_file(invalid_resource_path("yaml", "parse_error.yaml")), runtime_error);
 }
 
 
@@ -71,7 +65,7 @@ TEST(read_yaml_file_Test, parse_error)
 // contains_key() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(yaml_contains_key_Test, valid_yaml)
+TEST_CASE("yaml::yaml_contains_key() - valid yaml", "[yaml][yaml_contains_key]")
 {
     const Node valid_yaml = read_yaml(R"(
         key0: value0
@@ -79,19 +73,19 @@ TEST(yaml_contains_key_Test, valid_yaml)
         key2: value2
         )");
 
-    ASSERT_TRUE(contains_key(valid_yaml, "key0"));
-    ASSERT_TRUE(contains_key(valid_yaml, "key1"));
-    ASSERT_TRUE(contains_key(valid_yaml, "key2"));
-    ASSERT_FALSE(contains_key(valid_yaml, "key3"));
-    ASSERT_FALSE(contains_key(valid_yaml, "value0"));
+    REQUIRE(contains_key(valid_yaml, "key0"));
+    REQUIRE(contains_key(valid_yaml, "key1"));
+    REQUIRE(contains_key(valid_yaml, "key2"));
+    REQUIRE_FALSE(contains_key(valid_yaml, "key3"));
+    REQUIRE_FALSE(contains_key(valid_yaml, "value0"));
 }
 
 
-TEST(yaml_contains_key_Test, empty_yaml)
+TEST_CASE("yaml::yaml_contains_key() - empty yaml", "[yaml][yaml_contains_key]")
 {
     const Node empty_yaml;
-    ASSERT_FALSE(contains_key(empty_yaml, "key0"));
-    ASSERT_FALSE(contains_key(empty_yaml, ""));
+    REQUIRE_FALSE(contains_key(empty_yaml, "key0"));
+    REQUIRE_FALSE(contains_key(empty_yaml, ""));
 }
 
 
@@ -100,7 +94,7 @@ TEST(yaml_contains_key_Test, empty_yaml)
 // get_type_name() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(yaml_get_type_name_Test, valid_types)
+TEST_CASE("yaml::yaml_get_type_name() - valid types", "[yaml][yaml_get_type_name]")
 {
     const Node yaml = read_yaml(R"(
         null_key: null
@@ -111,12 +105,12 @@ TEST(yaml_get_type_name_Test, valid_types)
             sequence: [ 1, 2, 3 ]
         )");
 
-    ASSERT_STREQ(get_type_name(yaml["null_key"]).c_str(), "null");
-    ASSERT_STREQ(get_type_name(yaml["scalar"]).c_str(), "scalar");
-    ASSERT_STREQ(get_type_name(yaml["sequence"]).c_str(), "sequence");
-    ASSERT_STREQ(get_type_name(yaml["map"]).c_str(), "map");
-    ASSERT_STREQ(get_type_name(yaml["map"]["key"]).c_str(), "scalar");
-    ASSERT_STREQ(get_type_name(yaml["map"]["sequence"]).c_str(), "sequence");
+    REQUIRE(get_type_name(yaml["null_key"]) == "null");
+    REQUIRE(get_type_name(yaml["scalar"]) == "scalar");
+    REQUIRE(get_type_name(yaml["sequence"]) == "sequence");
+    REQUIRE(get_type_name(yaml["map"]) == "map");
+    REQUIRE(get_type_name(yaml["map"]["key"]) == "scalar");
+    REQUIRE(get_type_name(yaml["map"]["sequence"]) == "sequence");
 }
 
 
@@ -125,7 +119,7 @@ TEST(yaml_get_type_name_Test, valid_types)
 // merge() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(yaml_merge_Test, flat_yaml)
+TEST_CASE("yaml::yaml_merge() - flat yaml", "[yaml][yaml_merge]")
 {
     const Node yaml_a = read_yaml(R"(
         key_a: 0
@@ -140,20 +134,20 @@ TEST(yaml_merge_Test, flat_yaml)
         )");
 
     Node merged = merge(yaml_a, yaml_b);
-    ASSERT_TRUE(contains_key(merged, "key_a"));
-    ASSERT_TRUE(contains_key(merged, "key_b"));
-    ASSERT_TRUE(contains_key(merged, "key_c"));
-    ASSERT_TRUE(contains_key(merged, "key_d"));
-    ASSERT_TRUE(contains_key(merged, "key_e"));
-    ASSERT_EQ(merged["key_a"].as<int>(), 0);
-    ASSERT_EQ(merged["key_b"].as<int>(), 1);
-    ASSERT_EQ(merged["key_c"].as<int>(), 3);
-    ASSERT_EQ(merged["key_d"].as<int>(), 4);
-    ASSERT_EQ(merged["key_e"].as<int>(), 5);
+    REQUIRE(contains_key(merged, "key_a"));
+    REQUIRE(contains_key(merged, "key_b"));
+    REQUIRE(contains_key(merged, "key_c"));
+    REQUIRE(contains_key(merged, "key_d"));
+    REQUIRE(contains_key(merged, "key_e"));
+    REQUIRE(merged["key_a"].as<int>() == 0);
+    REQUIRE(merged["key_b"].as<int>() == 1);
+    REQUIRE(merged["key_c"].as<int>() == 3);
+    REQUIRE(merged["key_d"].as<int>() == 4);
+    REQUIRE(merged["key_e"].as<int>() == 5);
 }
 
 
-TEST(yaml_merge_Test, deep_yaml)
+TEST_CASE("yaml::yaml_merge() - deep yaml", "[yaml][yaml_merge]")
 {
     const Node yaml_a = read_yaml(R"(
         key_a: 0
@@ -169,27 +163,27 @@ TEST(yaml_merge_Test, deep_yaml)
         )");
 
     Node merged = merge(yaml_a, yaml_b);
-    ASSERT_TRUE(contains_key(merged, "key_a"));
-    ASSERT_TRUE(contains_key(merged, "key_b"));
+    REQUIRE(contains_key(merged, "key_a"));
+    REQUIRE(contains_key(merged, "key_b"));
     const Node & key_b = merged["key_b"];
-    ASSERT_TRUE(contains_key(key_b, "key_c"));
-    ASSERT_TRUE(contains_key(key_b, "key_d"));
-    ASSERT_EQ(merged["key_a"].as<int>(), 0);
-    ASSERT_STREQ(key_b["key_c"].as<string>().c_str(), "test_b");
+    REQUIRE(contains_key(key_b, "key_c"));
+    REQUIRE(contains_key(key_b, "key_d"));
+    REQUIRE(merged["key_a"].as<int>() == 0);
+    REQUIRE(key_b["key_c"].as<string>() == "test_b");
     const vector<int> key_d = key_b["key_d"].as<vector<int>>();
 
 
     // Node doesn't support comparison, so duplicate sequence elements are left in.
-    ASSERT_EQ(key_d.size(), 4);
+    REQUIRE(key_d.size() == 4);
     assert_equal_elements(key_d, { 2, 3, 2, 5 });
 }
 
 
-TEST(yaml_merge_Test, mismatched_types)
+TEST_CASE("yaml::yaml_merge() - mismatched types", "[yaml][yaml_merge]")
 {
     const Node yaml_a = read_yaml(R"(key_a: [ 1, 2 ])");
     const Node yaml_b = read_yaml(R"(key_a: true)");
-    ASSERT_THROW(merge(yaml_a, yaml_b), runtime_error);
+    REQUIRE_THROWS_AS(merge(yaml_a, yaml_b), runtime_error);
 }
 
 

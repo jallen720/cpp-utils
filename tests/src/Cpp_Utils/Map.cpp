@@ -1,11 +1,7 @@
-#include "Cpp_Utils/Map.hpp"
-
 #include <string>
 #include <stdexcept>
-#include <gtest/gtest.h>
-
+#include "Cpp_Utils/Map.hpp"
 #include "Cpp_Utils/Test.hpp"
-
 
 using std::map;
 using std::string;
@@ -21,7 +17,7 @@ namespace Cpp_Utils
 // contains_key() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(map_contains_key_Test, valid_map)
+TEST_CASE("map::map_contains_key() - valid map", "[map][map_contains_key]")
 {
     const map<string, const string> valid_map
     {
@@ -30,19 +26,19 @@ TEST(map_contains_key_Test, valid_map)
         { "key2" , "value2" },
     };
 
-    ASSERT_TRUE(contains_key(valid_map, string("key0")));
-    ASSERT_TRUE(contains_key(valid_map, string("key1")));
-    ASSERT_TRUE(contains_key(valid_map, string("key2")));
-    ASSERT_FALSE(contains_key(valid_map, string("key3")));
-    ASSERT_FALSE(contains_key(valid_map, string("value0")));
+    REQUIRE(contains_key(valid_map, string("key0")));
+    REQUIRE(contains_key(valid_map, string("key1")));
+    REQUIRE(contains_key(valid_map, string("key2")));
+    REQUIRE_FALSE(contains_key(valid_map, string("key3")));
+    REQUIRE_FALSE(contains_key(valid_map, string("value0")));
 }
 
 
-TEST(map_contains_key_Test, empty_map)
+TEST_CASE("map::map_contains_key() - empty map", "[map][map_contains_key]")
 {
     const map<string, const string> empty_map;
-    ASSERT_FALSE(contains_key(empty_map, string("key0")));
-    ASSERT_FALSE(contains_key(empty_map, string("")));
+    REQUIRE_FALSE(contains_key(empty_map, string("key0")));
+    REQUIRE_FALSE(contains_key(empty_map, string("")));
 }
 
 
@@ -51,7 +47,7 @@ TEST(map_contains_key_Test, empty_map)
 // get_values() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(get_values_Test, valid_map)
+TEST_CASE("map::get_values() - valid map", "[map][get_values]")
 {
     const map<string, const int> valid_map
     {
@@ -64,7 +60,7 @@ TEST(get_values_Test, valid_map)
 }
 
 
-TEST(get_values_Test, empty_map)
+TEST_CASE("map::get_values() - empty map", "[map][get_values]")
 {
     const map<string, const int> empty_map;
     assert_equal_elements({}, get_values(empty_map));
@@ -76,7 +72,7 @@ TEST(get_values_Test, empty_map)
 // at_key() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(at_key_Test, valid_key)
+TEST_CASE("map::at_key() - valid key", "[map][at_key]")
 {
     const map<string, const int> valid_map
     {
@@ -87,12 +83,12 @@ TEST(at_key_Test, valid_key)
 
     assert_no_throw([&]() -> void
     {
-        ASSERT_EQ(at_key(valid_map, string("key1")), 1);
+        REQUIRE(at_key(valid_map, string("key1")) == 1);
     });
 }
 
 
-TEST(at_key_Test, invalid_key)
+TEST_CASE("map::at_key() - invalid key", "[map][at_key]")
 {
     const map<string, const int> valid_map
     {
@@ -101,7 +97,7 @@ TEST(at_key_Test, invalid_key)
         { "key2" , 2 },
     };
 
-    ASSERT_THROW(at_key(valid_map, string("key3")), runtime_error);
+    REQUIRE_THROWS_AS(at_key(valid_map, string("key3")), runtime_error);
 }
 
 
@@ -110,7 +106,7 @@ TEST(at_key_Test, invalid_key)
 // at_value() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(at_value_Test, valid_value)
+TEST_CASE("map::at_value() - valid value", "[map][at_value]")
 {
     const map<string, const int> valid_map
     {
@@ -121,12 +117,12 @@ TEST(at_value_Test, valid_value)
 
     assert_no_throw([&]() -> void
     {
-        ASSERT_TRUE(at_value(valid_map, 1) == string("key1"));
+        REQUIRE(at_value(valid_map, 1) == string("key1"));
     });
 }
 
 
-TEST(at_value_Test, invalid_value)
+TEST_CASE("map::at_value() - invalid value", "[map][at_value]")
 {
     const map<string, const int> valid_map
     {
@@ -135,7 +131,7 @@ TEST(at_value_Test, invalid_value)
         { "key2" , 2 },
     };
 
-    ASSERT_THROW(at_value(valid_map, 3), runtime_error);
+    REQUIRE_THROWS_AS(at_value(valid_map, 3), runtime_error);
 }
 
 
@@ -144,7 +140,7 @@ TEST(at_value_Test, invalid_value)
 // at_index() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(at_index_Test, valid_index)
+TEST_CASE("map::at_index() - valid index", "[map][at_index]")
 {
     const map<string, const int> valid_map
     {
@@ -155,12 +151,12 @@ TEST(at_index_Test, valid_index)
 
     assert_no_throw([&]() -> void
     {
-        ASSERT_TRUE(at_index(valid_map, 1).first == string("key1"));
+        REQUIRE(at_index(valid_map, 1).first == string("key1"));
     });
 }
 
 
-TEST(at_index_Test, invalid_index)
+TEST_CASE("map::at_index() - invalid index", "[map][at_index]")
 {
     const map<string, const int> valid_map
     {
@@ -169,7 +165,7 @@ TEST(at_index_Test, invalid_index)
         { "key2" , 2 },
     };
 
-    ASSERT_THROW(at_index(valid_map, 4), runtime_error);
+    REQUIRE_THROWS_AS(at_index(valid_map, 4), runtime_error);
 }
 
 
@@ -178,7 +174,7 @@ TEST(at_index_Test, invalid_index)
 // remove() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(remove_Test, valid_key)
+TEST_CASE("map::remove() - valid key", "[map][remove]")
 {
     map<string, const int> valid_map
     {
@@ -188,11 +184,11 @@ TEST(remove_Test, valid_key)
     };
 
     remove(valid_map, string("key1"));
-    ASSERT_FALSE(contains_key(valid_map, string("key1")));
+    REQUIRE_FALSE(contains_key(valid_map, string("key1")));
 }
 
 
-TEST(remove_Test, invalid_key)
+TEST_CASE("map::remove() - invalid key", "[map][remove]")
 {
     map<string, const int> valid_map
     {
@@ -201,7 +197,7 @@ TEST(remove_Test, invalid_key)
         { "key2" , 2 },
     };
 
-    ASSERT_THROW(remove(valid_map, string("key3")), runtime_error);
+    REQUIRE_THROWS_AS(remove(valid_map, string("key3")), runtime_error);
 }
 
 

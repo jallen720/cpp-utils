@@ -1,10 +1,6 @@
-#include "Cpp_Utils/Vector.hpp"
-
 #include <stdexcept>
-#include <gtest/gtest.h>
-
+#include "Cpp_Utils/Vector.hpp"
 #include "Cpp_Utils/Test.hpp"
-
 
 using std::vector;
 using std::runtime_error;
@@ -19,40 +15,40 @@ namespace Cpp_Utils
 // contains() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(contains_Test, valid_vector_contains_element)
+TEST_CASE("vector::contains() - valid vector contains element", "[vector][contains]")
 {
     const vector<int> valid_vector { 1, 2, 3, 4 };
 
-    ASSERT_TRUE(contains(valid_vector, 1));
-    ASSERT_FALSE(contains(valid_vector, 5));
+    REQUIRE(contains(valid_vector, 1));
+    REQUIRE_FALSE(contains(valid_vector, 5));
 }
 
 
-TEST(contains_Test, empty_vector_contains_element)
+TEST_CASE("vector::contains() - empty vector contains element", "[vector][contains]")
 {
     const vector<int> empty_vector;
 
-    ASSERT_FALSE(contains(empty_vector, 1));
+    REQUIRE_FALSE(contains(empty_vector, 1));
 }
 
 
-TEST(contains_Test, valid_vector_contains_predicate)
+TEST_CASE("vector::contains() - valid vector contains predicate", "[vector][contains]")
 {
     const vector<int> valid_vector { 1, 2, 3, 4 };
 
-    ASSERT_TRUE(contains(valid_vector, [](const int element) -> bool { return element < 3; }));
-    ASSERT_TRUE(contains(valid_vector, [](const int element) -> bool { return element == 4; }));
-    ASSERT_FALSE(contains(valid_vector, [](const int element) -> bool { return element > 4; }));
-    ASSERT_FALSE(contains(valid_vector, [](const int element) -> bool { return element < 1; }));
+    REQUIRE(contains(valid_vector, [](const int element) -> bool { return element < 3; }));
+    REQUIRE(contains(valid_vector, [](const int element) -> bool { return element == 4; }));
+    REQUIRE_FALSE(contains(valid_vector, [](const int element) -> bool { return element > 4; }));
+    REQUIRE_FALSE(contains(valid_vector, [](const int element) -> bool { return element < 1; }));
 }
 
 
-TEST(contains_Test, empty_vector_contains_predicate)
+TEST_CASE("vector::contains() - empty vector contains predicate", "[vector][contains]")
 {
     const vector<int> empty_vector;
 
-    ASSERT_FALSE(contains(empty_vector, [](const int element) -> bool { return element >= 1; }));
-    ASSERT_FALSE(contains(empty_vector, [](const int element) -> bool { return element == 0; }));
+    REQUIRE_FALSE(contains(empty_vector, [](const int element) -> bool { return element >= 1; }));
+    REQUIRE_FALSE(contains(empty_vector, [](const int element) -> bool { return element == 0; }));
 }
 
 
@@ -61,7 +57,7 @@ TEST(contains_Test, empty_vector_contains_predicate)
 // remove() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(remove_Test, valid_vector_remove_element)
+TEST_CASE("vector::remove() - valid vector remove element", "[vector][remove]")
 {
     vector<int> valid_vector { 1, 2, 1, 3, 4, 3 };
 
@@ -76,7 +72,7 @@ TEST(remove_Test, valid_vector_remove_element)
 }
 
 
-TEST(remove_Test, empty_vector_remove_element)
+TEST_CASE("vector::remove() - empty vector remove element", "[vector][remove]")
 {
     vector<int> empty_vector;
 
@@ -85,7 +81,7 @@ TEST(remove_Test, empty_vector_remove_element)
 }
 
 
-TEST(remove_Test, valid_vector_remove_predicate)
+TEST_CASE("vector::remove() - valid vector remove predicate", "[vector][remove]")
 {
     vector<int> valid_vector { 1, 2, 3, 4 };
 
@@ -100,7 +96,7 @@ TEST(remove_Test, valid_vector_remove_predicate)
 }
 
 
-TEST(remove_Test, empty_vector_remove_predicate)
+TEST_CASE("vector::remove() - empty vector remove predicate", "[vector][remove]")
 {
     vector<int> empty_vector;
 
@@ -114,7 +110,7 @@ TEST(remove_Test, empty_vector_remove_predicate)
 // remove_at_index() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(remove_at_index_Test, valid_vector)
+TEST_CASE("vector::remove_at_index() - valid vector", "[vector][remove_at_index]")
 {
     vector<int> valid_vector { 1, 2, 1, 3, 4, 3 };
 
@@ -127,15 +123,15 @@ TEST(remove_at_index_Test, valid_vector)
     remove_at_index(valid_vector, 0);
     assert_equal_elements({ 2, 3, 4 }, valid_vector);
 
-    ASSERT_THROW(remove_at_index(valid_vector, 3), runtime_error);
+    REQUIRE_THROWS_AS(remove_at_index(valid_vector, 3), runtime_error);
 }
 
 
-TEST(remove_at_index_Test, empty_vector)
+TEST_CASE("vector::remove_at_index() - empty vector", "[vector][remove_at_index]")
 {
     vector<int> empty_vector;
 
-    ASSERT_THROW(remove_at_index(empty_vector, 0), runtime_error);
+    REQUIRE_THROWS_AS(remove_at_index(empty_vector, 0), runtime_error);
 }
 
 
@@ -144,7 +140,7 @@ TEST(remove_at_index_Test, empty_vector)
 // sort() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(sort_Test, valid_vector)
+TEST_CASE("vector::sort() - valid vector", "[vector][sort]")
 {
     vector<int> values { 2, 4, 3, 1 };
 
@@ -169,7 +165,7 @@ TEST(sort_Test, valid_vector)
 // concat() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(concat_Test, valid_vectors)
+TEST_CASE("vector::concat() - valid vectors", "[vector][concat]")
 {
     vector<int> to_vector { 1, 2, 3 };
     vector<int> from_vector { 4, 5, 6 };
@@ -179,7 +175,7 @@ TEST(concat_Test, valid_vectors)
 }
 
 
-TEST(concat_Test, empty_to_vector)
+TEST_CASE("vector::concat() - empty to vector", "[vector][concat]")
 {
     vector<int> to_vector;
     vector<int> from_vector { 4, 5, 6 };
@@ -189,7 +185,7 @@ TEST(concat_Test, empty_to_vector)
 }
 
 
-TEST(concat_Test, empty_from_vector)
+TEST_CASE("vector::concat() - empty from vector", "[vector][concat]")
 {
     vector<int> to_vector { 1, 2, 3 };
     vector<int> from_vector;

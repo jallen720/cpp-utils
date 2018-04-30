@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+#include "Cpp_Utils/__internal__/catch.hpp"
 
 
 namespace Cpp_Utils
@@ -8,11 +8,11 @@ namespace Cpp_Utils
 template<typename T>
 void assert_equal_elements(const std::vector<T> & expected_elements, const std::vector<T> & actual_elements)
 {
-    ASSERT_EQ(expected_elements.size(), actual_elements.size());
+    REQUIRE(expected_elements.size() == actual_elements.size());
 
     for (auto i = 0u; i < expected_elements.size(); i++)
     {
-        ASSERT_EQ(expected_elements[i], actual_elements[i]);
+        REQUIRE(expected_elements[i] == actual_elements[i]);
     }
 }
 

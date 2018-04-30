@@ -1,10 +1,7 @@
-#include "Cpp_Utils/Fn.hpp"
-
 #include <vector>
 #include <map>
 #include <string>
-#include <gtest/gtest.h>
-
+#include "Cpp_Utils/Fn.hpp"
 #include "Cpp_Utils/Test.hpp"
 #include "Cpp_Utils/String.hpp"
 
@@ -30,16 +27,16 @@ static int vector_accumulator(const int accumulation, const int element)
 }
 
 
-TEST(accumulate_Test, accumulate_vector)
+TEST_CASE("fn::accumulate() - accumulate vector", "[fn][accumulate]")
 {
     const vector<int> numbers { 1, 2, 3 };
-    ASSERT_EQ(6, accumulate(0, numbers, vector_accumulator));
+    REQUIRE(6 == accumulate(0, numbers, vector_accumulator));
 }
 
 
-TEST(accumulate_Test, accumulate_empty_vector)
+TEST_CASE("fn::accumulate() - accumulate empty vector", "[fn][accumulate]")
 {
-    ASSERT_EQ(0, accumulate(0, vector<int>(), vector_accumulator));
+    REQUIRE(0 == accumulate(0, vector<int>(), vector_accumulator));
 }
 
 
@@ -49,7 +46,7 @@ static string map_accumulator(const string accumulation, const pair<string, cons
 }
 
 
-TEST(accumulate_Test, accumulate_map)
+TEST_CASE("fn::accumulate() - accumulate map", "[fn][accumulate]")
 {
     const map<string, const int> mapped_data
     {
@@ -58,17 +55,17 @@ TEST(accumulate_Test, accumulate_map)
         { "third"  , 3 },
     };
 
-    ASSERT_EQ(
+    REQUIRE(
         "first: 1\n"
         "second: 2\n"
-        "third: 3\n",
-        accumulate<string>("", mapped_data, map_accumulator));
+        "third: 3\n"
+        == accumulate<string>("", mapped_data, map_accumulator));
 }
 
 
-TEST(accumulate_Test, accumulate_empty_map)
+TEST_CASE("fn::accumulate() - accumulate empty map", "[fn][accumulate]")
 {
-    ASSERT_EQ("", accumulate<string>("", map<string, const int>(), map_accumulator));
+    REQUIRE("" == accumulate<string>("", map<string, const int>(), map_accumulator));
 }
 
 
@@ -83,7 +80,7 @@ static string vector_transformer(const string & element)
 }
 
 
-TEST(transform_Test, transform_vector)
+TEST_CASE("fn::transform() - transform vector", "[fn][transform]")
 {
     const vector<string> strings
     {
@@ -102,7 +99,7 @@ TEST(transform_Test, transform_vector)
 }
 
 
-TEST(transform_Test, transform_empty_vector)
+TEST_CASE("fn::transform() - transform empty vector", "[fn][transform]")
 {
     assert_equal_elements({}, transform<string>(vector<string>(), vector_transformer));
 }
@@ -114,7 +111,7 @@ static int map_transformer(const pair<int, int> & element)
 }
 
 
-TEST(transform_Test, transform_map)
+TEST_CASE("fn::transform() - transform map", "[fn][transform]")
 {
     const map<int, int> mapped_numbers
     {
@@ -127,7 +124,7 @@ TEST(transform_Test, transform_map)
 }
 
 
-TEST(transform_Test, transform_empty_map)
+TEST_CASE("fn::transform() - transform empty map", "[fn][transform]")
 {
     assert_equal_elements({}, transform<int>(map<int, int>(), map_transformer));
 }
@@ -144,14 +141,14 @@ static bool vector_predicate(int element)
 }
 
 
-TEST(filter_Test, filter_vector)
+TEST_CASE("fn::filter() - filter vector", "[fn][filter]")
 {
     const vector<int> numbers = { 1, 2, 3, 4 };
     assert_equal_elements({ 3, 4 }, filter(numbers, vector_predicate));
 }
 
 
-TEST(filter_Test, filter_empty_vector)
+TEST_CASE("fn::filter() - filter empty vector", "[fn][filter]")
 {
     assert_equal_elements({}, filter(vector<int>(), vector_predicate));
 }

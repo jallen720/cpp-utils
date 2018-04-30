@@ -1,11 +1,7 @@
-#include "Cpp_Utils/File.hpp"
-
 #include <stdexcept>
-#include <gtest/gtest.h>
-
+#include "Cpp_Utils/File.hpp"
 #include "Cpp_Utils/String.hpp"
 #include "Cpp_Utils/Test.hpp"
-
 
 using std::string;
 using std::vector;
@@ -21,22 +17,22 @@ namespace Cpp_Utils
 // directify() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(directify_Test, valid_directory)
+TEST_CASE("file::directify() - valid directory", "[file][directify]")
 {
 #ifdef _WIN32
-    ASSERT_TRUE(are_equal(directify("directory\\"), "directory\\"));
+    REQUIRE(are_equal(directify("directory\\"), "directory\\"));
 #elif __gnu_linux__
-    ASSERT_TRUE(are_equal(directify("directory/"), "directory/"));
+    REQUIRE(are_equal(directify("directory/"), "directory/"));
 #endif
 }
 
 
-TEST(directify_Test, invalid_directory)
+TEST_CASE("file::directify() - invalid directory", "[file][directify]")
 {
 #ifdef _WIN32
-    ASSERT_TRUE(are_equal(directify("directory"), "directory\\"));
+    REQUIRE(are_equal(directify("directory"), "directory\\"));
 #elif __gnu_linux__
-    ASSERT_TRUE(are_equal(directify("directory"), "directory/"));
+    REQUIRE(are_equal(directify("directory"), "directory/"));
 #endif
 }
 
@@ -46,12 +42,12 @@ TEST(directify_Test, invalid_directory)
 // platform_path() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(platform_path_Test, valid_path)
+TEST_CASE("file::platform_path() - valid path", "[file][platform_path]")
 {
 #ifdef _WIN32
-    ASSERT_TRUE(are_equal(platform_path("platform/path/"), "platform\\path\\"));
+    REQUIRE(are_equal(platform_path("platform/path/"), "platform\\path\\"));
 #elif __gnu_linux__
-    ASSERT_TRUE(are_equal(platform_path("platform/path/"), "platform/path/"));
+    REQUIRE(are_equal(platform_path("platform/path/"), "platform/path/"));
 #endif
 }
 
@@ -61,7 +57,7 @@ TEST(platform_path_Test, valid_path)
 // read_file() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(read_file_Test, valid_file)
+TEST_CASE("file::read_file() - valid file", "[file][read_file]")
 {
     assert_no_throw([]() -> void
     {
@@ -70,26 +66,26 @@ TEST(read_file_Test, valid_file)
 }
 
 
-TEST(read_file_Test, non_existant_file)
+TEST_CASE("file::read_file() - non existant file", "[file][read_file]")
 {
-    ASSERT_THROW(read_file("does_not_exist"), runtime_error);
+    REQUIRE_THROWS_AS(read_file("does_not_exist"), runtime_error);
 }
 
 
-TEST(read_file_Test, empty_path)
+TEST_CASE("file::read_file() - empty path", "[file][read_file]")
 {
-    ASSERT_THROW(read_file(""), runtime_error);
+    REQUIRE_THROWS_AS(read_file(""), runtime_error);
 }
 
 
-TEST(read_file_Test, content_match)
+TEST_CASE("file::read_file() - content match", "[file][read_file]")
 {
     const string expectedContent =
         "line1\n"
         "line2\n"
         "line3\n";
 
-    ASSERT_EQ(expectedContent, read_file(valid_resource_path("misc", "test.txt")));
+    REQUIRE(expectedContent == read_file(valid_resource_path("misc", "test.txt")));
 }
 
 
@@ -98,15 +94,15 @@ TEST(read_file_Test, content_match)
 // file_exists() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(file_exists_Test, file_exists)
+TEST_CASE("file::file_exists() - file exists", "[file][file_exists]")
 {
-    ASSERT_TRUE(file_exists(valid_resource_path("misc", "test.txt")));
+    REQUIRE(file_exists(valid_resource_path("misc", "test.txt")));
 }
 
 
-TEST(file_exists_Test, file_does_not_exist)
+TEST_CASE("file::file_exists() - file does not exist", "[file][file_exists]")
 {
-    ASSERT_FALSE(file_exists(valid_resource_path("misc", "does_not_exist.txt")));
+    REQUIRE_FALSE(file_exists(valid_resource_path("misc", "does_not_exist.txt")));
 }
 
 

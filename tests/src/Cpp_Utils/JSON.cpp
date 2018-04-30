@@ -1,12 +1,8 @@
-#include "Cpp_Utils/JSON.hpp"
-
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include <gtest/gtest.h>
-
+#include "Cpp_Utils/JSON.hpp"
 #include "Cpp_Utils/Test.hpp"
-
 
 using std::vector;
 using std::string;
@@ -22,7 +18,7 @@ namespace Cpp_Utils
 // read_json_file() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(read_json_file_Test, load_valid_file)
+TEST_CASE("json::read_json_file() - load valid file", "[json][read_json_file]")
 {
     assert_no_throw([]() -> void
     {
@@ -31,21 +27,21 @@ TEST(read_json_file_Test, load_valid_file)
 }
 
 
-TEST(read_json_file_Test, empty_path)
+TEST_CASE("json::read_json_file() - empty path", "[json][read_json_file]")
 {
-    ASSERT_THROW(read_json_file(""), runtime_error);
+    REQUIRE_THROWS_AS(read_json_file(""), runtime_error);
 }
 
 
-TEST(read_json_file_Test, empty_file)
+TEST_CASE("json::read_json_file() - empty file", "[json][read_json_file]")
 {
-    ASSERT_THROW(read_json_file(invalid_resource_path("json", "empty.json")), runtime_error);
+    REQUIRE_THROWS_AS(read_json_file(invalid_resource_path("json", "empty.json")), runtime_error);
 }
 
 
-TEST(read_json_file_Test, parse_error)
+TEST_CASE("json::read_json_file() - parse error", "[json][read_json_file]")
 {
-    ASSERT_THROW(read_json_file(invalid_resource_path("json", "parse_error.json")), runtime_error);
+    REQUIRE_THROWS_AS(read_json_file(invalid_resource_path("json", "parse_error.json")), runtime_error);
 }
 
 
@@ -54,7 +50,7 @@ TEST(read_json_file_Test, parse_error)
 // contains_key() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(json_contains_key_Test, valid_json)
+TEST_CASE("json::json_contains_key() - valid json", "[json][json_contains_key]")
 {
     const JSON valid_json
     {
@@ -63,19 +59,19 @@ TEST(json_contains_key_Test, valid_json)
         { "key2" , "value2" },
     };
 
-    ASSERT_TRUE(contains_key(valid_json, "key0"));
-    ASSERT_TRUE(contains_key(valid_json, "key1"));
-    ASSERT_TRUE(contains_key(valid_json, "key2"));
-    ASSERT_FALSE(contains_key(valid_json, "key3"));
-    ASSERT_FALSE(contains_key(valid_json, "value0"));
+    REQUIRE(contains_key(valid_json, "key0"));
+    REQUIRE(contains_key(valid_json, "key1"));
+    REQUIRE(contains_key(valid_json, "key2"));
+    REQUIRE_FALSE(contains_key(valid_json, "key3"));
+    REQUIRE_FALSE(contains_key(valid_json, "value0"));
 }
 
 
-TEST(json_contains_key_Test, empty_json)
+TEST_CASE("json::json_contains_key() - empty json", "[json][json_contains_key]")
 {
     const JSON empty_json;
-    ASSERT_FALSE(contains_key(empty_json, "key0"));
-    ASSERT_FALSE(contains_key(empty_json, ""));
+    REQUIRE_FALSE(contains_key(empty_json, "key0"));
+    REQUIRE_FALSE(contains_key(empty_json, ""));
 }
 
 
@@ -84,7 +80,7 @@ TEST(json_contains_key_Test, empty_json)
 // get_type_name() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(json_get_type_name_Test, valid_types)
+TEST_CASE("json::json_get_type_name() - valid types", "[json][json_get_type_name]")
 {
     const JSON json = R"(
         {
@@ -99,13 +95,13 @@ TEST(json_get_type_name_Test, valid_types)
             }
         })"_json;
 
-    ASSERT_STREQ(get_type_name(json["null"]).c_str(), "null");
-    ASSERT_STREQ(get_type_name(json["boolean"]).c_str(), "boolean");
-    ASSERT_STREQ(get_type_name(json["number"]).c_str(), "number");
-    ASSERT_STREQ(get_type_name(json["string"]).c_str(), "string");
-    ASSERT_STREQ(get_type_name(json["array"]).c_str(), "array");
-    ASSERT_STREQ(get_type_name(json["object"]).c_str(), "object");
-    ASSERT_STREQ(get_type_name(json["object"]["key"]).c_str(), "string");
+    REQUIRE(get_type_name(json["null"]) == "null");
+    REQUIRE(get_type_name(json["boolean"]) == "boolean");
+    REQUIRE(get_type_name(json["number"]) == "number");
+    REQUIRE(get_type_name(json["string"]) == "string");
+    REQUIRE(get_type_name(json["array"]) == "array");
+    REQUIRE(get_type_name(json["object"]) == "object");
+    REQUIRE(get_type_name(json["object"]["key"]) == "string");
 }
 
 
@@ -114,7 +110,7 @@ TEST(json_get_type_name_Test, valid_types)
 // merge() Tests
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TEST(json_merge_Test, flat_json)
+TEST_CASE("json::json_merge() - flat json", "[json][json_merge]")
 {
     const JSON json_a = R"(
         {
@@ -131,20 +127,20 @@ TEST(json_merge_Test, flat_json)
         })"_json;
 
     JSON merged = merge(json_a, json_b);
-    ASSERT_TRUE(contains_key(merged, "key_a"));
-    ASSERT_TRUE(contains_key(merged, "key_b"));
-    ASSERT_TRUE(contains_key(merged, "key_c"));
-    ASSERT_TRUE(contains_key(merged, "key_d"));
-    ASSERT_TRUE(contains_key(merged, "key_e"));
-    ASSERT_EQ(merged["key_a"].get<int>(), 0);
-    ASSERT_EQ(merged["key_b"].get<int>(), 1);
-    ASSERT_EQ(merged["key_c"].get<int>(), 3);
-    ASSERT_EQ(merged["key_d"].get<int>(), 4);
-    ASSERT_EQ(merged["key_e"].get<int>(), 5);
+    REQUIRE(contains_key(merged, "key_a"));
+    REQUIRE(contains_key(merged, "key_b"));
+    REQUIRE(contains_key(merged, "key_c"));
+    REQUIRE(contains_key(merged, "key_d"));
+    REQUIRE(contains_key(merged, "key_e"));
+    REQUIRE(merged["key_a"].get<int>() == 0);
+    REQUIRE(merged["key_b"].get<int>() == 1);
+    REQUIRE(merged["key_c"].get<int>() == 3);
+    REQUIRE(merged["key_d"].get<int>() == 4);
+    REQUIRE(merged["key_e"].get<int>() == 5);
 }
 
 
-TEST(json_merge_Test, deep_json)
+TEST_CASE("json::json_merge() - deep json", "[json][json_merge]")
 {
     const JSON json_a = R"(
         {
@@ -174,24 +170,24 @@ TEST(json_merge_Test, deep_json)
         })"_json;
 
     JSON merged = merge(json_a, json_b);
-    ASSERT_TRUE(contains_key(merged, "key_a"));
-    ASSERT_TRUE(contains_key(merged, "key_b"));
+    REQUIRE(contains_key(merged, "key_a"));
+    REQUIRE(contains_key(merged, "key_b"));
     const JSON & key_b = merged["key_b"];
-    ASSERT_TRUE(contains_key(key_b, "key_c"));
-    ASSERT_TRUE(contains_key(key_b, "key_d"));
-    ASSERT_EQ(merged["key_a"].get<int>(), 0);
-    ASSERT_STREQ(key_b["key_c"].get<string>().c_str(), "test_b");
+    REQUIRE(contains_key(key_b, "key_c"));
+    REQUIRE(contains_key(key_b, "key_d"));
+    REQUIRE(merged["key_a"].get<int>() == 0);
+    REQUIRE(key_b["key_c"].get<string>() == "test_b");
     const vector<int> key_d = key_b["key_d"];
-    ASSERT_EQ(key_d.size(), 3);
+    REQUIRE(key_d.size() == 3);
     assert_equal_elements(key_d, { 2, 3, 5 });
 }
 
 
-TEST(json_merge_Test, mismatched_types)
+TEST_CASE("json::json_merge() - mismatched types", "[json][json_merge]")
 {
     const JSON json_a = R"({ "key_a": 0 })"_json;
     const JSON json_b = R"({ "key_a": true })"_json;
-    ASSERT_THROW(merge(json_a, json_b), runtime_error);
+    REQUIRE_THROWS_AS(merge(json_a, json_b), runtime_error);
 }
 
 
