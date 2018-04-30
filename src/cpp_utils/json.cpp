@@ -1,11 +1,11 @@
 #include <vector>
 #include <stdexcept>
-#include "Cpp_Utils/JSON.hpp"
-#include "Cpp_Utils/File.hpp"
-#include "Cpp_Utils/Validators.hpp"
-#include "Cpp_Utils/Errors.hpp"
-#include "Cpp_Utils/Collection.hpp"
-#include "Cpp_Utils/Vector.hpp"
+#include "cpp_utils/json.hpp"
+#include "cpp_utils/file.hpp"
+#include "cpp_utils/validators.hpp"
+#include "cpp_utils/errors.hpp"
+#include "cpp_utils/collection.hpp"
+#include "cpp_utils/vector.hpp"
 
 using std::string;
 using std::vector;

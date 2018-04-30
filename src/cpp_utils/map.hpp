@@ -32,4 +32,4 @@ void remove(std::map<Key, Value> & map, const Key & key);
 
 } // namespace Cpp_Utils
 
-#include "Cpp_Utils/Map.ipp"
+#include "cpp_utils/map.ipp"

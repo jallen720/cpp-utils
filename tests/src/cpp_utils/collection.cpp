@@ -1,9 +1,9 @@
 #include <stdexcept>
-#include "Cpp_Utils/Collection.hpp"
-#include "Cpp_Utils/Test.hpp"
-#include "Cpp_Utils/String.hpp"
-#include "Cpp_Utils/JSON.hpp"
-#include "Cpp_Utils/YAML.hpp"
+#include "cpp_utils/collection.hpp"
+#include "cpp_utils/test.hpp"
+#include "cpp_utils/string.hpp"
+#include "cpp_utils/json.hpp"
+#include "cpp_utils/yaml.hpp"
 
 using std::vector;
 using std::map;

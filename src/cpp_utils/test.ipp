@@ -1,4 +1,4 @@
-#include "Cpp_Utils/__internal__/catch.hpp"
+#include "cpp_utils/dependencies/catch.hpp"
 
 namespace Cpp_Utils
 {

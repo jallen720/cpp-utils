@@ -1,7 +1,7 @@
 #include <stdexcept>
-#include "Cpp_Utils/File.hpp"
-#include "Cpp_Utils/String.hpp"
-#include "Cpp_Utils/Test.hpp"
+#include "cpp_utils/file.hpp"
+#include "cpp_utils/string.hpp"
+#include "cpp_utils/test.hpp"
 
 using std::string;
 using std::vector;

@@ -1,8 +1,8 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include "Cpp_Utils/JSON.hpp"
-#include "Cpp_Utils/Test.hpp"
+#include "cpp_utils/json.hpp"
+#include "cpp_utils/test.hpp"
 
 using std::vector;
 using std::string;

@@ -1,7 +1,7 @@
 #include <string>
 #include <stdexcept>
-#include "Cpp_Utils/Map.hpp"
-#include "Cpp_Utils/Test.hpp"
+#include "cpp_utils/map.hpp"
+#include "cpp_utils/test.hpp"
 
 using std::map;
 using std::string;

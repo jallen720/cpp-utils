@@ -1,8 +1,8 @@
 #include <iostream>
 #include <exception>
-#include "Cpp_Utils/Test.hpp"
-#include "Cpp_Utils/__internal__/catch.hpp"
-#include "Cpp_Utils/File.hpp"
+#include "cpp_utils/test.hpp"
+#include "cpp_utils/dependencies/catch.hpp"
+#include "cpp_utils/file.hpp"
 
 using std::cerr;
 using std::exception;

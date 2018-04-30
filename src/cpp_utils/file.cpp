@@ -1,7 +1,7 @@
 #include <fstream>
-#include "Cpp_Utils/File.hpp"
-#include "Cpp_Utils/Errors.hpp"
-#include "Cpp_Utils/Validators.hpp"
+#include "cpp_utils/file.hpp"
+#include "cpp_utils/errors.hpp"
+#include "cpp_utils/validators.hpp"
 
 using std::string;
 using std::ifstream;

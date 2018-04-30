@@ -1,10 +1,10 @@
 #include <vector>
 #include <stdexcept>
-#include "Cpp_Utils/YAML.hpp"
-#include "Cpp_Utils/Validators.hpp"
-#include "Cpp_Utils/Errors.hpp"
-#include "Cpp_Utils/File.hpp"
-#include "Cpp_Utils/Collection.hpp"
+#include "cpp_utils/yaml.hpp"
+#include "cpp_utils/validators.hpp"
+#include "cpp_utils/errors.hpp"
+#include "cpp_utils/file.hpp"
+#include "cpp_utils/collection.hpp"
 
 using std::string;
 using std::vector;

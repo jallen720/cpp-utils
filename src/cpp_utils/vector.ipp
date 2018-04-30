@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <stdexcept>
-#include "Cpp_Utils/String.hpp"
+#include "cpp_utils/string.hpp"
 
 namespace Cpp_Utils
 {

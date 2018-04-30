@@ -16,4 +16,4 @@ std::vector<T> filter(const std::vector<T> & vector, const Predicate & predicate
 
 } // namespace Cpp_Utils
 
-#include "Cpp_Utils/Fn.ipp"
+#include "cpp_utils/fn.ipp"

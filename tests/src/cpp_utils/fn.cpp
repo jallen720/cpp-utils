@@ -1,9 +1,9 @@
 #include <vector>
 #include <map>
 #include <string>
-#include "Cpp_Utils/Fn.hpp"
-#include "Cpp_Utils/Test.hpp"
-#include "Cpp_Utils/String.hpp"
+#include "cpp_utils/fn.hpp"
+#include "cpp_utils/test.hpp"
+#include "cpp_utils/string.hpp"
 
 using std::vector;
 using std::map;

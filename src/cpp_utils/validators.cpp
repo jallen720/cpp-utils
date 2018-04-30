@@ -1,6 +1,6 @@
-#include "Cpp_Utils/Validators.hpp"
-#include "Cpp_Utils/Errors.hpp"
-#include "Cpp_Utils/String.hpp"
+#include "cpp_utils/validators.hpp"
+#include "cpp_utils/errors.hpp"
+#include "cpp_utils/string.hpp"
 
 using std::string;
 

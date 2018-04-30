@@ -1,7 +1,7 @@
 #include <stdexcept>
 #include <iterator>
-#include "Cpp_Utils/Fn.hpp"
-#include "Cpp_Utils/String.hpp"
+#include "cpp_utils/fn.hpp"
+#include "cpp_utils/string.hpp"
 
 namespace Cpp_Utils
 {

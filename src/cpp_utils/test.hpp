@@ -16,4 +16,4 @@ std::string valid_resource_path(const std::string & sub_directory, const std::st
 
 } // namespace Cpp_Utils
 
-#include "Cpp_Utils/Test.ipp"
+#include "cpp_utils/test.ipp"

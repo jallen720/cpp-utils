@@ -1,8 +1,8 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include "Cpp_Utils/YAML.hpp"
-#include "Cpp_Utils/Test.hpp"
+#include "cpp_utils/yaml.hpp"
+#include "cpp_utils/test.hpp"
 
 using std::vector;
 using std::string;

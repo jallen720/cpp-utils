@@ -1,6 +1,6 @@
 #include <stdexcept>
-#include "Cpp_Utils/Vector.hpp"
-#include "Cpp_Utils/Test.hpp"
+#include "cpp_utils/vector.hpp"
+#include "cpp_utils/test.hpp"
 
 using std::vector;
 using std::runtime_error;

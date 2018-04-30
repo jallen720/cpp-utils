@@ -19,4 +19,4 @@ std::string to_string(const bool value);
 
 } // namespace Cpp_Utils
 
-#include "Cpp_Utils/String.ipp"
+#include "cpp_utils/string.ipp"

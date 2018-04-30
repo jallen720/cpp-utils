@@ -1,5 +1,5 @@
-#include "Cpp_Utils/__internal__/catch.hpp"
-#include "Cpp_Utils/Type.hpp"
+#include "cpp_utils/dependencies/catch.hpp"
+#include "cpp_utils/type.hpp"
 
 namespace Cpp_Utils
 {

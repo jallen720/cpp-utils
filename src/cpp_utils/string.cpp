@@ -1,7 +1,7 @@
 #include <cstring>
 #include <sstream>
-#include "Cpp_Utils/String.hpp"
-#include "Cpp_Utils/Validators.hpp"
+#include "cpp_utils/string.hpp"
+#include "cpp_utils/validators.hpp"
 
 using std::vector;
 using std::stringstream;

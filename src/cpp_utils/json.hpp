@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Cpp_Utils/__internal__/json.hpp"
+#include "cpp_utils/dependencies/json.hpp"
 
 namespace Cpp_Utils
 {

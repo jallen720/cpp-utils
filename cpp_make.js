@@ -1,7 +1,7 @@
 const COMPILER_OPTIONS = [ "std=c++14", "ggdb", "Wall", "Wextra", "pedantic-errors", "c" ];
 
 // cpp_utils
-const CPP_UTILS_INCLUDE_DIR = "include";
+const CPP_UTILS_SRC_DIR = "src";
 const CPP_UTILS_TESTS_SRC_DIR = "tests/src";
 
 // yaml-cpp
@@ -14,13 +14,13 @@ module.exports =
     "header_extension": "hpp",
     "targets":
     {
-        "Cpp_Utils":
+        "cpp_utils":
         {
             "type": "shared_library",
-            "source_dirs": [ `src/Cpp_Utils` ],
+            "source_dirs": [ `src/cpp_utils` ],
             "include_dirs":
             [
-                CPP_UTILS_INCLUDE_DIR,
+                CPP_UTILS_SRC_DIR,
                 `${ YAML_CPP_DIR }/include`,
             ],
             "library_dirs":
@@ -36,18 +36,18 @@ module.exports =
         "test":
         {
             "type": "application",
-            // "main": `${ CPP_UTILS_TESTS_SRC_DIR }/main`,
-            "source_dirs": [ `${ CPP_UTILS_TESTS_SRC_DIR }/Cpp_Utils` ],
+            "main": `${ CPP_UTILS_TESTS_SRC_DIR }/main`,
+            "source_dirs": [ `${ CPP_UTILS_TESTS_SRC_DIR }/cpp_utils` ],
             "include_dirs":
             [
-                CPP_UTILS_INCLUDE_DIR,
+                CPP_UTILS_SRC_DIR,
                 `${ YAML_CPP_DIR }/include`,
             ],
             "library_dirs": [],
-            "libraries": [ "yaml-cpp", "Cpp_Utils" ],
+            "libraries": [ "yaml-cpp", "cpp_utils" ],
             "library_import_paths":
             [
-                "lib/libCpp_Utils.so",
+                "lib/libcpp_utils.so",
                 `${ YAML_CPP_LIB_DIR }/libyaml-cpp.so.0.6`,
             ],
             "pkg_config": [],

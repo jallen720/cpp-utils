@@ -4,7 +4,7 @@
 #include <map>
 #include <unordered_map>
 #include <yaml-cpp/yaml.h>
-#include "Cpp_Utils/JSON.hpp"
+#include "cpp_utils/json.hpp"
 
 namespace Cpp_Utils
 {
@@ -104,4 +104,4 @@ bool find(T & out, const std::vector<T> & vector, const Predicate & predicate);
 
 } // namespace Cpp_Utils
 
-#include "Cpp_Utils/Collection.ipp"
+#include "cpp_utils/collection.ipp"
