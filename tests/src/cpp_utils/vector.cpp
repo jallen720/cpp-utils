@@ -5,7 +5,7 @@
 using std::vector;
 using std::runtime_error;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 TEST_CASE("vector::contains() - valid vector contains element", "[vector][contains]")
@@ -134,4 +134,4 @@ TEST_CASE("vector::concat() - empty from vector", "[vector][concat]")
     assert_equal_elements({ 1, 2, 3 }, to_vector);
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

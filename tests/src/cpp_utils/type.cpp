@@ -1,7 +1,7 @@
 #include "cpp_utils/dependencies/catch.hpp"
 #include "cpp_utils/type.hpp"
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 TEST_CASE("type::type_of() - equal types", "[type][type_of]")
@@ -21,4 +21,4 @@ TEST_CASE("type::type_of() - types with cv qualifiers", "[type][type_of]")
     REQUIRE(type_of<const int * const>() == type_of<const int *>());
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

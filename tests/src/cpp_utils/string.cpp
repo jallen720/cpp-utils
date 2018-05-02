@@ -8,7 +8,7 @@ using std::string;
 using std::vector;
 using std::runtime_error;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 TEST_CASE("string::are_equal() - string and c string", "[string][are_equal]")
@@ -69,4 +69,4 @@ TEST_CASE("string::to_string() - valid strings", "[string][to_string]")
     REQUIRE(to_string(false) == "false");
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

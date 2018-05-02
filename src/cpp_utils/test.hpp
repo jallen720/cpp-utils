@@ -4,7 +4,7 @@
 #include <vector>
 #include <functional>
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 template<typename T>
@@ -14,6 +14,6 @@ void assert_no_throw(const std::function<void()> & block);
 std::string invalid_resource_path(const std::string & sub_directory, const std::string & name);
 std::string valid_resource_path(const std::string & sub_directory, const std::string & name);
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils
 
 #include "cpp_utils/test.ipp"

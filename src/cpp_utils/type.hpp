@@ -2,7 +2,7 @@
 
 #include <typeindex>
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 using Type = std::type_index;
@@ -10,6 +10,6 @@ using Type = std::type_index;
 template<typename T>
 Type type_of();
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils
 
 #include "cpp_utils/type.ipp"

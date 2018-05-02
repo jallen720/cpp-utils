@@ -7,7 +7,7 @@ using std::string;
 using std::ifstream;
 using std::istreambuf_iterator;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 string platform_path(string path)
@@ -60,4 +60,4 @@ bool file_exists(const string & path)
     return ifstream(path).good();
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

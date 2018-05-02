@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 bool are_equal(const std::string & string, const char * cString);
@@ -17,6 +17,6 @@ std::string to_string(const T value);
 template<>
 std::string to_string(const bool value);
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils
 
 #include "cpp_utils/string.ipp"

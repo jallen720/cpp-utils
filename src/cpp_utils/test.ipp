@@ -1,6 +1,6 @@
 #include "cpp_utils/dependencies/catch.hpp"
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 template<typename T>
@@ -14,4 +14,4 @@ void assert_equal_elements(const std::vector<T> & expected_elements, const std::
     }
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

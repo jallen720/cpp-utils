@@ -12,7 +12,7 @@ using std::runtime_error;
 using std::domain_error;
 using YAML::Node;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 TEST_CASE("collection::for_each(std::vector<T>, Callback) - for each vector", "[collection][for_each]")
@@ -229,4 +229,4 @@ TEST_CASE("collection::find(T, std::vector<T>, Predicate) - non-matching predica
 }
 
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

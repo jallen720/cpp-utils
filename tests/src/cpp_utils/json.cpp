@@ -8,7 +8,7 @@ using std::vector;
 using std::string;
 using std::runtime_error;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 TEST_CASE("json::read_json_file() - load valid file", "[json][read_json_file]")
@@ -159,4 +159,4 @@ TEST_CASE("json::json_merge() - mismatched types", "[json][json_merge]")
     REQUIRE_THROWS_AS(merge(json_a, json_b), runtime_error);
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

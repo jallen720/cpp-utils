@@ -3,7 +3,7 @@
 #include <map>
 #include <vector>
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 template<typename Key, typename Value>
@@ -30,6 +30,6 @@ std::pair<Key, Value> at_index(const std::map<Key, Value> & map, size_t index);
 template<typename Key, typename Value>
 void remove(std::map<Key, Value> & map, const Key & key);
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils
 
 #include "cpp_utils/map.ipp"

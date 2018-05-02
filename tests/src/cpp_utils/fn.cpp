@@ -10,7 +10,7 @@ using std::map;
 using std::pair;
 using std::string;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 static int vector_accumulator(const int accumulation, const int element)
@@ -121,4 +121,4 @@ TEST_CASE("fn::filter() - filter empty vector", "[fn][filter]")
     assert_equal_elements({}, filter(vector<int>(), vector_predicate));
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

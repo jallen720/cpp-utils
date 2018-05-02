@@ -12,7 +12,7 @@ using std::vector;
 using std::invalid_argument;
 using std::runtime_error;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 JSON read_json_file(const string & path)
@@ -102,4 +102,4 @@ JSON merge(const JSON & a, const JSON & b)
     return merged;
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include "cpp_utils/string.hpp"
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 template<typename T>
@@ -47,8 +47,8 @@ void remove_at_index(std::vector<T> & vector, const unsigned int index)
     if (index >= vector_size)
     {
         throw std::runtime_error(
-            "ERROR: cannot remove element at index " + Cpp_Utils::to_string(index) + "; vector only has a size of " +
-            Cpp_Utils::to_string(vector_size));
+            "ERROR: cannot remove element at index " + cpp_utils::to_string(index) + "; vector only has a size of " +
+            cpp_utils::to_string(vector_size));
     }
 
     vector.erase(vector.begin() + index);
@@ -67,4 +67,4 @@ void concat(std::vector<T> & to_vector, const std::vector<T> & from_vector)
     to_vector.insert(to_vector.end(), from_vector.begin(), from_vector.end());
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

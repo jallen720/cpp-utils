@@ -2,7 +2,7 @@
 
 #include <vector>
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 template<typename T, typename Container, typename Accumulator>
@@ -14,6 +14,6 @@ std::vector<T> transform(const Container & container, const Transformer & transf
 template<typename T, typename Predicate>
 std::vector<T> filter(const std::vector<T> & vector, const Predicate & predicate);
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils
 
 #include "cpp_utils/fn.ipp"

@@ -2,7 +2,7 @@
 
 #include <vector>
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 template<typename T>
@@ -26,6 +26,6 @@ void sort(std::vector<T> & vector, const Comparator & comparator);
 template<typename T>
 void concat(std::vector<T> & to_vector, const std::vector<T> & from_vector);
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils
 
 #include "cpp_utils/vector.ipp"

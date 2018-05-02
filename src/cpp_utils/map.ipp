@@ -3,7 +3,7 @@
 #include "cpp_utils/fn.hpp"
 #include "cpp_utils/string.hpp"
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 template<typename Key, typename Value>
@@ -109,4 +109,4 @@ void remove(std::map<Key, Value> & map, const Key & key)
     map.erase(key);
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

@@ -6,7 +6,7 @@
 #include "yaml-cpp/yaml.h"
 #include "cpp_utils/json.hpp"
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,6 +102,6 @@ template<typename T, typename Predicate>
 bool find(T & out, const std::vector<T> & vector, const Predicate & predicate);
 
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils
 
 #include "cpp_utils/collection.ipp"

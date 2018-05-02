@@ -7,7 +7,7 @@ using std::vector;
 using std::stringstream;
 using std::getline;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 bool are_equal(const std::string & string, const char * c_string)
@@ -46,4 +46,4 @@ std::string to_string(const bool value)
     return value == true ? "true" : "false";
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

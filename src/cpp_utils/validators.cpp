@@ -4,7 +4,7 @@
 
 using std::string;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 void validate_not_empty(const string & parameter_name, const string & function_name, const string & arg)
@@ -31,4 +31,4 @@ void validate_not_null(const string & parameter_name, const string & function_na
     }
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

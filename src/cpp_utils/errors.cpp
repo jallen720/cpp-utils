@@ -4,7 +4,7 @@
 using std::string;
 using std::runtime_error;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 string build_arg_message(
@@ -47,4 +47,4 @@ void file_error(const string & path, const string & function_name, const string 
     throw runtime_error(build_file_message(path, function_name, message));
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

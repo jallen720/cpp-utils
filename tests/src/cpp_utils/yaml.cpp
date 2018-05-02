@@ -9,7 +9,7 @@ using std::string;
 using std::runtime_error;
 using YAML::Node;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 TEST_CASE("yaml::read_yaml() - valid yaml", "[yaml][read_yaml]")
@@ -149,4 +149,4 @@ TEST_CASE("yaml::yaml_merge() - mismatched types", "[yaml][yaml_merge]")
     REQUIRE_THROWS_AS(merge(yaml_a, yaml_b), runtime_error);
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

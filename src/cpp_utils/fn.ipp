@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <numeric>
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 template<typename T, typename Container, typename Accumulator>
@@ -34,4 +34,4 @@ std::vector<T> filter(const std::vector<T> & vector, const Predicate & predicate
     return result;
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

@@ -13,7 +13,7 @@ using YAML::Load;
 using YAML::Node;
 using YAML::NodeType;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 Node read_yaml(const string & yaml_text)
@@ -105,4 +105,4 @@ Node merge(const Node & a, const Node & b)
     return merged;
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

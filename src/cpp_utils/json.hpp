@@ -3,7 +3,7 @@
 #include <string>
 #include "cpp_utils/dependencies/json.hpp"
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 using JSON = nlohmann::json;
@@ -13,4 +13,4 @@ bool contains_key(const JSON & json, const std::string & key);
 std::string get_type_name(const JSON & json);
 JSON merge(const JSON & a, const JSON & b);
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

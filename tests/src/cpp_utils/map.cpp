@@ -7,7 +7,7 @@ using std::map;
 using std::string;
 using std::runtime_error;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 TEST_CASE("map::map_contains_key() - valid map", "[map][map_contains_key]")
@@ -157,4 +157,4 @@ TEST_CASE("map::remove() - invalid key", "[map][remove]")
     REQUIRE_THROWS_AS(remove(valid_map, string("key3")), runtime_error);
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

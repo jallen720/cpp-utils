@@ -1,7 +1,7 @@
 #include <stdexcept>
 #include <algorithm>
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -210,4 +210,4 @@ bool find(T & out, const std::vector<T> & vector, const Predicate & predicate)
 }
 
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils

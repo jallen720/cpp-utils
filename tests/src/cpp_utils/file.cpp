@@ -7,7 +7,7 @@ using std::string;
 using std::vector;
 using std::runtime_error;
 
-namespace Cpp_Utils
+namespace cpp_utils
 {
 
 TEST_CASE("file::directify() - valid directory", "[file][directify]")
@@ -75,4 +75,4 @@ TEST_CASE("file::file_exists() - file does not exist", "[file][file_exists]")
     REQUIRE_FALSE(file_exists(valid_resource_path("misc", "does_not_exist.txt")));
 }
 
-} // namespace Cpp_Utils
+} // namespace cpp_utils
